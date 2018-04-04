@@ -17,15 +17,6 @@ module.exports = {
 					presets: ['env', 'react']
 				}
 			},
-			{
-			  test: /\.(jpg|png)$/,
-			  use: {
-			    loader: "url-loader",
-			    options: {
-			      limit: 25000,
-			    },
-			  },
-			},
 		]
 	},
 	devtool: 'source-map',

@@ -5,9 +5,11 @@ export default () => {
   // const logo = require('./logo_transparent_background.png');
   return (
   <div className="splash">
-    CrossOff
     <section>
-      <h2>CrossOff Your Tasks</h2>
+      <h2>CrossOff your tasks, </h2>
+      <h2>manage your life.</h2>
+
+
     </section>
   </div>
 );

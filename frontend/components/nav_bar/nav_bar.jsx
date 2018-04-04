@@ -3,10 +3,16 @@ import React from 'react';
 export default () => {
   return (
     <header className="nav-bar">
-      <span className="logo">
+      <section className="logo">
+      </section>
 
-      </span>
-
+      <section className="nav-links">
+        <ul>
+          <li>Sign In</li>
+          <li>Create Account</li>
+          <li>Demo</li>
+        </ul>
+      </section>
     </header>
   );
 };

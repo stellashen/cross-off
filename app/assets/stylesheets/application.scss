@@ -14,8 +14,58 @@
  *= require_self
  */
 
-.logo {
-  background-image: image-url("logo_transparent_background.png");
-  width: 40px;
-  height: 20px;
+#root {
+  min-height: 100%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.nav-bar {
+  position: absolute;
+  top: 30px;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+
+  .logo {
+    padding: 20px;
+    background-image: image-url("logo_transparent_background.png");
+    width: 200px;
+    height: 60px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
+
+  ul{
+    display: flex;
+    justify-content: space-between;
+    li {
+      padding: 20px;
+      padding-top: 10px;
+    }
+  }
+}
+
+.splash {
+  position: absolute;
+  top: 110px;
+  width: 90%;
+  left: 8%;
+
+  h2 {
+    font-size: 45px;
+  }
+}
+
+.footer {
+  position:absolute;
+  bottom: 25px;
+  width: 90%;
+
+  display: flex;
+  justify-content: space-between;
+  a {
+    padding: 10px;
+    font-size: 32px;
+  }
 }
