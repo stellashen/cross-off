@@ -41,5 +41,8 @@
   "bugs": {
     "url": "https://github.com/stellashen/cross-off/issues"
   },
-  "homepage": "https://github.com/stellashen/cross-off#readme"
+  "homepage": "https://github.com/stellashen/cross-off#readme",
+  "devDependencies": {
+    "url-loader": "^1.0.1"
+  }
 }

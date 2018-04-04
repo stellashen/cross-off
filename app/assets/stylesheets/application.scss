@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+
+.logo {
+  background-image: image-url("logo_transparent_background.png");
+  width: 40px;
+  height: 20px;
+}
