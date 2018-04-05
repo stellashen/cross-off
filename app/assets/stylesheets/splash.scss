@@ -48,8 +48,10 @@ $gray: #9EA7B1;
 
   width: 100%;
 
-  display: flex;
-  justify-content: space-between;
+  .first-page{
+    display: flex;
+    justify-content: space-between;
+  }
 
   overflow: scroll;
 
@@ -130,6 +132,7 @@ $gray: #9EA7B1;
 
   display: flex;
   justify-content: space-between;
+  box-sizing: border-box;
 
   border-top: 1px solid $gray;
 
@@ -138,9 +141,9 @@ $gray: #9EA7B1;
     font-size: 32px;
   }
   p{
-    position: fixed;
-    bottom: 20px;
-    right: 45px;
+    position: sticky;
+    bottom: 0;
+    margin-top: 13px;
   }
 }
 
