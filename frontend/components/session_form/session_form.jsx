@@ -6,6 +6,7 @@ class SessionForm extends React.Component {
     super(props);
     this.state = {
       username: '',
+      email: '',
       password: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -37,7 +38,6 @@ class SessionForm extends React.Component {
 
   render() {
     const formType = this.props.formType;
-    const buttonName = `${formType} button`;
     const askUsername = (type)=>{
       if (type === 'signup') {
         return (
@@ -58,8 +58,8 @@ class SessionForm extends React.Component {
 
     return (
       <div className="login-form-container">
+        <img src="assets/icon_transparent_background.png" className="big-crossoff-icon" />
         <form onSubmit={this.handleSubmit} className="login-form-box">
-          <img src="assets/icon_transparent_background.png" className="big-crossoff-icon" />
 
           <div className="login-form">
             {usernameForm}
@@ -80,7 +80,7 @@ class SessionForm extends React.Component {
               />
             </label>
             <br/>
-            <input className={buttonName} type="submit" value={this.props.formType} />
+            <input className="signup button" type="submit" value={this.props.formType} />
           </div>
 
           <div className="errors">{this.renderErrors()}</div>

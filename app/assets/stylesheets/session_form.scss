@@ -1,3 +1,26 @@
 .big-crossoff-icon{
   width: 80px;
 }
+
+.login-form-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 100px;
+}
+
+.login-form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.login-input {
+  margin-left: 50px;
+}
+
+.login-form-box {
+  width: 400px;
+  outline: 1px solid black;
+  padding: 20px;
+}
