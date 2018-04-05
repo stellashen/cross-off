@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-// import { AuthRoute, ProtectedRoute } from '../util/route_util';
+import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import NavBar from './nav_bar/nav_bar';
 import Splash from './splash/splash';
 import Footer from './footer/footer';
@@ -12,9 +12,9 @@ const App = () => (
     <Route exact path="/" component={NavBar} />
     <Route exact path="/" component={Splash} />
     <Route exact path="/" component={Footer} />
-    <Route exact path="/signin" component={SignInFormContainer} />
-    <Route exact path="/signup" component={SignUpFormContainer} />
-    <Route path="/lists" component={Sidebar} />
+    <AuthRoute exact path="/signin" component={SignInFormContainer} />
+    <AuthRoute exact path="/signup" component={SignUpFormContainer} />
+    <ProtectedRoute path="/lists" component={Sidebar} />
   </div>
 );
 
