@@ -36,18 +36,38 @@ class SessionForm extends React.Component {
   }
 
   render() {
-    const buttonName = `${this.props.formType} button`;
+    const formType = this.props.formType;
+    const buttonName = `${formType} button`;
+    const askUsername = (type)=>{
+      if (type === 'signup') {
+        return (
+        <label>Username:
+          <input type="text"
+            value={this.state.username}
+            onChange={this.update('username')}
+            className="login-input"
+          />
+        </label>
+        );
+      } else {
+        return <div></div>;
+      }
+    };
+
+    const usernameForm = askUsername(formType);
+
     return (
       <div className="login-form-container">
         <form onSubmit={this.handleSubmit} className="login-form-box">
           <img src="assets/icon_transparent_background.png" className="big-crossoff-icon" />
 
           <div className="login-form">
+            {usernameForm}
             <br/>
-            <label>Username:
+            <label>Email:
               <input type="text"
-                value={this.state.username}
-                onChange={this.update('username')}
+                value={this.state.email}
+                onChange={this.update('email')}
                 className="login-input"
               />
             </label>
