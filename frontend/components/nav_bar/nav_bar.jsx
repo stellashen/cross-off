@@ -8,9 +8,15 @@ export default () => {
 
       <section className="nav-links">
         <ul>
-          <li>Sign In</li>
-          <li>Create Account</li>
-          <li>Demo</li>
+          <li>
+            <button type="button" className="signin button">Sign In</button>
+          </li>
+          <li>
+            <button type="button" className="signup button">Create Account</button>
+          </li>
+          <li>
+            <button type="button" className="demo button">Demo</button>
+          </li>
         </ul>
       </section>
     </header>

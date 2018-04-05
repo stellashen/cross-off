@@ -10,5 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
   window.dispatch = store.dispatch;
 
   const root = document.getElementById('root');
+  document.body.style.background = "#FAFAFA";
   ReactDOM.render(<Root store={ store }/>, root);
 });
