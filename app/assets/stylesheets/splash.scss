@@ -1,7 +1,7 @@
 $backgroundgray: #FAFAFA;
 $blue: #5576D8;
 $gray: #9EA7B1;
-$text: #041835;
+
 // splash page structure:
 // root
 //  + nav-bar
@@ -11,19 +11,22 @@ $text: #041835;
 #root {
   position: relative;
   font-family: 'Open Sans', sans-serif;
-  margin-left: 5%;
-  margin-right: 5%;
 }
 
 .nav-bar {
   position: fixed;
   top: 0;
-  margin-top: 25px;
-  width: 90%;
+  padding-top: 20px;
+  padding-left: 45px;
+  padding-right: 45px;
+  width: 100%;
   border-bottom: 1px solid $gray;
+  background-color: darken( $backgroundgray, 2% );
 
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  box-sizing: border-box;
 
   .logo {
     padding: 10px;
@@ -41,9 +44,10 @@ $text: #041835;
 }
 
 .splash {
+  padding-left: 45px;
+  padding-right: 45px;
   margin-top: 150px;
-  width: 90%;
-  left: 2%;
+  width: 100%;
 
   img {
     width: 250px;
@@ -83,10 +87,9 @@ $text: #041835;
 .footer {
   position: fixed;
   bottom: 0;
-  padding-bottom: 25px;
-  padding-top: 15px;
-  width: 90%;
-  color: $text;
+  padding: 15px 45px 15px 45px;
+  width: 100%;
+  background-color: darken( $backgroundgray, 2% );
 
   display: flex;
   justify-content: space-between;
@@ -99,7 +102,7 @@ $text: #041835;
   }
   p{
     position: fixed;
-    bottom: 30px;
+    bottom: 20px;
     right: 5%;
   }
 }
