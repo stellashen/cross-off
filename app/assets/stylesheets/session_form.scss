@@ -1,12 +1,14 @@
-.big-crossoff-icon{
-  width: 80px;
-}
-
 .login-form-container {
   display: flex;
   justify-content: center;
   flex-direction: column;
   margin-top: 100px;
+  width: 100%;
+}
+
+.big-crossoff-icon{
+  width: 80px;
+  margin-left: 40%;
 }
 
 .login-form {

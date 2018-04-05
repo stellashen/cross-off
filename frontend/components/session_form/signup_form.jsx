@@ -43,7 +43,6 @@ class SessionForm extends React.Component {
       <div className="login-form-container">
         <img src="assets/icon_transparent_background.png" className="big-crossoff-icon" />
         <form onSubmit={this.handleSubmit} className="login-form-box">
-
           <div className="login-form">
             <label>Username (Optional):
               <input type="text"
