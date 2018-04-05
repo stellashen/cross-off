@@ -19,8 +19,9 @@ export default () => {
           <img src="assets/7281-person-raising-both-hands-in-celebration.png"/>
         </div>
 
-        <button type="button" className="signup button mainbutton">Create Account</button>
-
+        <Link to="/signup">
+          <button type="button" className="signup button mainbutton">Create Account</button>
+        </Link>
       </section>
 
       <section class="splash-right">
