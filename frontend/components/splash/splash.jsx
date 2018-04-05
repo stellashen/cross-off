@@ -24,6 +24,7 @@ export default () => {
 
     <section class="splash-right">
       <div id="laptop">
+        <img id="checklist" src="assets/checklist" />
       </div>
     </section>
   </div>
