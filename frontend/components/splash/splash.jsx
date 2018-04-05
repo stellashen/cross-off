@@ -5,7 +5,7 @@ export default () => {
   // const logo = require('./logo_transparent_background.png');
   return (
   <div className="splash">
-    <section>
+    <section class="splash-left">
 
       <div>
       <img src="assets/crossoff.png" /><h2>your tasks, </h2>
@@ -20,6 +20,11 @@ export default () => {
 
       <button type="button" className="signup button">Create Account</button>
 
+    </section>
+
+    <section class="splash-right">
+      <div id="laptop">
+      </div>
     </section>
   </div>
 );
