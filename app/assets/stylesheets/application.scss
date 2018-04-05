@@ -10,6 +10,9 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
  *= require_self
  */
+@import "reset.scss";
+@import "splash.scss";
+@import "session_form.scss";
+@import url("https://fonts.googleapis.com/css?family=Architects+Daughter|Open+Sans");
