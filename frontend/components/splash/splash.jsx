@@ -5,7 +5,7 @@ export default () => {
   return (
   <div className="splash">
     <section className="first-page">
-      <section class="splash-left">
+      <section className="splash-left">
 
         <div>
         <img src="assets/crossoff.png" /><h2>your tasks, </h2>
@@ -23,7 +23,7 @@ export default () => {
         </Link>
       </section>
 
-      <section class="splash-right">
+      <section className="splash-right">
         <div id="laptop">
           <img id="checklist" src="assets/checklist" />
         </div>
