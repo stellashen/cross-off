@@ -44,8 +44,8 @@ $gray: #9EA7B1;
 }
 
 .splash {
-  padding-left: 45px;
-  padding-right: 45px;
+  padding: 20px 45px;
+
   width: 100%;
 
   display: flex;
@@ -67,8 +67,13 @@ $gray: #9EA7B1;
     display:inline-block;
   }
 
+  #manage {
+    margin-left: 20px;
+  }
+
   p {
     font-size: 16px;
+    margin-left: 20px;
   }
 
   #first-line {
@@ -87,8 +92,12 @@ $gray: #9EA7B1;
     }
   }
 
+  .mainbutton {
+    margin-left: 20px;
+  }
+
   .splash-left {
-    margin-top: 100px;
+    margin-top: 37px;
   }
 
   .splash-right {
@@ -131,7 +140,7 @@ $gray: #9EA7B1;
   p{
     position: fixed;
     bottom: 20px;
-    right: 5%;
+    right: 45px;
   }
 }
 
