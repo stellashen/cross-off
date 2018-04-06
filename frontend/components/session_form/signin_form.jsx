@@ -1,6 +1,9 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import fontawesome from '@fortawesome/fontawesome';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import solids from '@fortawesome/fontawesome-free-solid';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -38,36 +41,48 @@ class SessionForm extends React.Component {
 
   render() {
     return (
-      <div className="login-form-container">
-        <img src="assets/icon_transparent_background.png" className="big-crossoff-icon" />
-        <form onSubmit={this.handleSubmit} className="login-form-box">
-
-          <div className="login-form">
-            <label>Email:
-              <input type="text"
-                value={this.state.email}
-                onChange={this.update('email')}
-                className="login-input"
-              />
-            </label>
-            <br/>
-            <label>Password:
-              <input type="password"
-                value={this.state.password}
-                onChange={this.update('password')}
-                className="login-input"
-              />
-            </label>
-            <br/>
-            <input className="signup button" type="submit" value= "Sign In" />
+      <div className="session-page">
+        <div className="session-form-container">
+          <div className="big-crossoff-logo">
+            <img src="assets/icon_transparent_background.png" className="big-crossoff-icon" />
           </div>
+          <form onSubmit={this.handleSubmit} className="session-form-box">
+            <div className="session-form">
+              <label for="email">
+                <div className="session-icon">
+                  <FontAwesomeIcon icon='envelope'/>
+                </div>
+                <input type="text"
+                  value={this.state.email}
+                  onChange={this.update('email')}
+                  className="session-input"
+                />
+              </label>
+              <br/>
+              <label>
+                <div className="session-icon">
+                  <FontAwesomeIcon icon='lock'/>
+                </div>
+                <input type="password"
+                  value={this.state.password}
+                  onChange={this.update('password')}
+                  className="session-input"
+                />
+              </label>
+              <br/>
+              <input className="signup button" type="submit" value= "Sign In" />
+            </div>
 
-          <div className="errors">{this.renderErrors()}</div>
-          <div className="alt-session-link">
-            <Link to="/signup">Create Account</Link>
-          </div>
+            <div className="errors">{this.renderErrors()}</div>
+            <div className="alt-session-link">
+              <p>Don't have an account?</p>&nbsp;&nbsp;
+              <div className="link-text">
+                <Link to="/signup">Create Account</Link>
+              </div>
+            </div>
 
-        </form>
+          </form>
+        </div>
       </div>
     );
   }

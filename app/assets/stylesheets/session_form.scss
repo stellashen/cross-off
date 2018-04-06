@@ -1,28 +1,85 @@
-.login-form-container {
+// structure:
+// .session-form-container
+// + .big-crossoff-icon
+// + .session-form-box
+//   + .session-form
+//   + .errors
+//   + .alt-session-link
+
+$error-pink: #ff3180;
+
+.session-page {
+  max-width: 400px;
+  min-width: 300px;
+  margin: 50px auto;
+  background-color: $backgroundgray;
+}
+.session-form-container {
   display: flex;
   justify-content: center;
   flex-direction: column;
   margin-top: 100px;
-  width: 100%;
+  position: relative;
 }
 
-.big-crossoff-icon{
-  width: 80px;
-  margin-left: 40%;
+.big-crossoff-logo{
+  margin: 0 auto;
+  .big-crossoff-icon{
+    width: 80px;
+  }
 }
 
-.login-form {
+.session-form-box {
+  min-width: 300px;
+  min-height: 300px;
+  outline: 1px solid $gray;
+  border-radius: 2px;
+  padding: 40px 50px;
+  background-color: white;
+}
+
+.session-form {
   display: flex;
   justify-content: center;
   flex-direction: column;
+
+  label {
+    height: 40px;
+    border-bottom: 1px solid $gray;
+  }
+
+  label:hover {
+    border-bottom: 1px solid $blue;
+  }
+
+  .button {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
 }
 
-.login-input {
-  margin-left: 50px;
+.session-icon {
+  font-size: 25px;
+  color: $gray;
 }
 
-.login-form-box {
-  width: 400px;
-  outline: 1px solid black;
-  padding: 20px;
+.session-input {
+  width: 130px;
+  font-size: 16px;
+}
+
+.alt-session-link {
+  margin-top: 20px;
+  display: flex;
+}
+
+.link-text {
+  color: $blue;
+}
+
+.session-form-box .errors {
+  color: $error-pink;
+  font-size: 13px;
+  line-height: 1.3;
 }
