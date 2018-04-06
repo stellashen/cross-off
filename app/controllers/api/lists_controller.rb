@@ -6,11 +6,6 @@ class Api::ListsController < ApplicationController
     render "api/lists/index"
   end
 
-  def new
-    @list = List.new
-    render "api/lists/new"
-  end
-
   def show
     @list = current_user.lists.find(params[:id])
     render "api/lists/show"
