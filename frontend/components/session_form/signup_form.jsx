@@ -108,6 +108,10 @@ class SessionForm extends React.Component {
               </div>
             </div>
 
+            <div className="link-text">
+              <Link to="/">back to homepage</Link>
+            </div>
+
           </form>
         </div>
       </div>
