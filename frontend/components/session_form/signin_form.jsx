@@ -48,27 +48,34 @@ class SessionForm extends React.Component {
           </div>
           <form onSubmit={this.handleSubmit} className="session-form-box">
             <div className="session-form">
-              <label for="email">
-                <div className="session-icon">
-                  <FontAwesomeIcon icon='envelope'/>
-                </div>
-                <input type="text"
-                  value={this.state.email}
-                  onChange={this.update('email')}
-                  className="session-input"
-                />
-              </label>
+              <div className="row">
+                <label for="email-signin">
+                  <div className="session-icon">
+                    <FontAwesomeIcon icon='envelope'/>
+                  </div>
+                </label>
+              <input type="text"
+                id="email-signin"
+                value={this.state.email}
+                onChange={this.update('email')}
+                className="session-input"
+              />
+              </div>
+
               <br/>
-              <label>
-                <div className="session-icon">
-                  <FontAwesomeIcon icon='lock'/>
-                </div>
-                <input type="password"
+              <div className="row">
+                <label for="password-signin">
+                  <div className="session-icon">
+                    <FontAwesomeIcon icon='lock'/>
+                  </div>
+                </label>
+                <input type="password-signin"
+                  id="password"
                   value={this.state.password}
                   onChange={this.update('password')}
                   className="session-input"
                 />
-              </label>
+              </div>
               <br/>
               <input className="signup button" type="submit" value= "Sign In" />
             </div>

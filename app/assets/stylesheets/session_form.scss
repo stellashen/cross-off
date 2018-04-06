@@ -45,11 +45,6 @@ $error-pink: #ff3180;
 
   label {
     height: 40px;
-    border-bottom: 1px solid $gray;
-  }
-
-  label:hover {
-    border-bottom: 1px solid $blue;
   }
 
   .button {
@@ -59,9 +54,21 @@ $error-pink: #ff3180;
   }
 }
 
+.row {
+  margin-bottom: 28px;
+  display: flex;
+  border-bottom: 1px solid $gray;
+}
+
+.row:hover {
+  border-bottom: 1px solid $blue;
+}
+
 .session-icon {
   font-size: 25px;
   color: $gray;
+  margin-left: 5px;
+  margin-right: 15px;
 }
 
 .session-input {
