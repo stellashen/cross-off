@@ -29,6 +29,8 @@ export default () => {
         </div>
       </section>
     </section>
+
+    <section className="second-page"></section>
   </div>
 );
 };

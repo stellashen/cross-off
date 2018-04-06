@@ -1,7 +1,3 @@
-$backgroundgray: #FAFAFA;
-$blue: #5576D8;
-$gray: rgba(0,0,0,.06);
-
 // splash page structure:
 // root
 //  + nav-bar
@@ -23,7 +19,7 @@ $gray: rgba(0,0,0,.06);
   padding-right: 45px;
   width: 100%;
   border-bottom: 1px solid $gray;
-  background-color: darken( $backgroundgray, 2% );
+  background-color: $darkbackgroundgray;
 
   display: flex;
   justify-content: space-between;
@@ -47,6 +43,7 @@ $gray: rgba(0,0,0,.06);
 .splash {
   padding: 20px 45px;
   height: 100%;
+  overflow: scroll;
 
   .first-page{
     display: flex;
@@ -55,8 +52,6 @@ $gray: rgba(0,0,0,.06);
     height: 100vh;
     // match the viewport height of the browser window
   }
-
-  overflow: scroll;
 
   img {
     width: 250px;
@@ -163,11 +158,22 @@ $gray: rgba(0,0,0,.06);
   border: 2px solid black;
 }
 
+.signin:hover, .demo:hover {
+  border: 2px solid white;
+  background-color: white;
+  color: $lightblue;
+}
+
 .signup {
   background-color: $blue;
   color: white;
   font-weight: bold;
   border: 2px solid $blue;
+}
+
+.signup:hover {
+  background-color: $darkblue;
+  border: 2px solid $darkblue;
 }
 
 .nav-bar .signup {
