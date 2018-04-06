@@ -153,7 +153,7 @@
 }
 
 .signin:hover, .demo:hover {
-  border: 2px solid white;
+  border: 2px solid $lightblue;
   background-color: white;
   color: $lightblue;
 }
@@ -181,4 +181,8 @@
 .demo {
   margin-left: 15px;
   border: 2px solid black;
+}
+
+.footer a:hover {
+  color: $lightblue;
 }
