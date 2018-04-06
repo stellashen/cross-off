@@ -1,0 +1,366 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+ */
+@import url("https://fonts.googleapis.com/css?family=Architects+Daughter|Open+Sans");
+/* PHASE 0: Reset */
+/* line 3, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/reset.scss */
+html, body, header, nav, h1, a,
+ul, li, strong, main, button, i,
+section, img, div, h2, p, form,
+fieldset, label, input, textarea,
+span, article, footer, time, small {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  vertical-align: inherit;
+  box-sizing: inherit;
+  background: transparent;
+}
+
+/* line 21, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/reset.scss */
+ul {
+  list-style: none;
+}
+
+/* line 25, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/reset.scss */
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* line 31, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/reset.scss */
+input[type="password"],
+input[type="email"],
+input[type="text"],
+input[type="submit"],
+textarea,
+button {
+  /*
+  Get rid of native styling. Read more here:
+  http://css-tricks.com/almanac/properties/a/appearance/
+  */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+/* line 45, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/reset.scss */
+button,
+input[type="submit"] {
+  cursor: pointer;
+}
+
+/* line 7, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/splash.scss */
+#app {
+  position: relative;
+  font-family: 'Open Sans', sans-serif;
+  width: 100%;
+  min-height: 100%;
+}
+
+/* line 14, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/splash.scss */
+.nav-bar {
+  position: sticky;
+  top: 0;
+  padding-top: 20px;
+  padding-left: 45px;
+  padding-right: 45px;
+  width: 100%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  background-color: whitesmoke;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+/* line 29, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/splash.scss */
+.nav-bar .logo {
+  padding: 10px;
+  background-image: url("logo_transparent_background.png");
+  width: 200px;
+  height: 60px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+/* line 38, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/splash.scss */
+.nav-bar .nav-links ul {
+  display: flex;
+}
+
+/* line 43, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/splash.scss */
+.splash {
+  padding: 20px 45px;
+  height: 100%;
+  overflow: scroll;
+}
+/* line 48, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/splash.scss */
+.splash .first-page {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  height: 100vh;
+}
+/* line 56, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/splash.scss */
+.splash img {
+  width: 250px;
+  display: inline-block;
+  margin-right: 16px;
+  vertical-align: bottom;
+  margin-bottom: 10px;
+}
+/* line 64, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/splash.scss */
+.splash h2 {
+  font-size: 45px;
+  font-family: 'Architects Daughter';
+  display: inline-block;
+}
+/* line 70, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/splash.scss */
+.splash #manage {
+  margin-left: 20px;
+}
+/* line 74, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/splash.scss */
+.splash p {
+  font-size: 16px;
+  margin-left: 20px;
+}
+/* line 79, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/splash.scss */
+.splash #first-line {
+  margin-top: 20px;
+}
+/* line 82, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/splash.scss */
+.splash #second-line {
+  margin-top: 10px;
+  display: flex;
+}
+/* line 85, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/splash.scss */
+.splash #second-line p {
+  padding-top: 10px;
+}
+/* line 88, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/splash.scss */
+.splash #second-line img {
+  margin-left: 20px;
+  width: 40px;
+  height: 40px;
+}
+/* line 95, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/splash.scss */
+.splash .mainbutton {
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+/* line 100, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/splash.scss */
+.splash .splash-left {
+  margin-top: 37px;
+}
+/* line 104, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/splash.scss */
+.splash .splash-right {
+  margin-right: 80px;
+}
+/* line 108, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/splash.scss */
+.splash #laptop {
+  padding: 10px;
+  background-image: url("laptop.png");
+  width: 450px;
+  height: 400px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+/* line 116, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/splash.scss */
+.splash #laptop #checklist {
+  width: 130px;
+  height: auto;
+  margin-top: 140px;
+  margin-left: 160px;
+}
+
+/* line 125, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/splash.scss */
+.footer {
+  position: sticky;
+  bottom: 0;
+  padding: 15px 45px 15px 45px;
+  width: 100%;
+  background-color: whitesmoke;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+/* line 138, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/splash.scss */
+.footer a {
+  padding: 10px;
+  font-size: 32px;
+}
+/* line 142, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/splash.scss */
+.footer p {
+  position: sticky;
+  bottom: 0;
+  margin-top: 13px;
+}
+
+/* line 151, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/splash.scss */
+.button {
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 6px;
+}
+
+/* line 157, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/splash.scss */
+.signin {
+  border: 2px solid black;
+}
+
+/* line 161, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/splash.scss */
+.signin:hover, .demo:hover {
+  border: 2px solid white;
+  background-color: white;
+  color: #617fde;
+}
+
+/* line 167, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/splash.scss */
+.signup {
+  background-color: #5576D8;
+  color: white;
+  font-weight: bold;
+  border: 2px solid #5576D8;
+}
+
+/* line 174, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/splash.scss */
+.signup:hover {
+  background-color: #4065d3;
+  border: 2px solid #4065d3;
+}
+
+/* line 179, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/splash.scss */
+.nav-bar .signup {
+  margin-left: 15px;
+}
+
+/* line 183, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/splash.scss */
+.splash .signup {
+  margin-top: 20px;
+}
+
+/* line 187, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/splash.scss */
+.demo {
+  margin-left: 15px;
+  border: 2px solid black;
+}
+
+/* line 13, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/api/sessions.scss */
+.session-page {
+  max-width: 400px;
+  min-width: 300px;
+  margin: 50px auto;
+  background-color: #FAFAFA;
+  height: 100vh;
+}
+
+/* line 20, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/api/sessions.scss */
+.session-form-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 100px;
+  position: relative;
+}
+
+/* line 28, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/api/sessions.scss */
+.big-crossoff-logo {
+  margin: 0 auto;
+}
+/* line 30, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/api/sessions.scss */
+.big-crossoff-logo .big-crossoff-icon {
+  width: 80px;
+}
+
+/* line 35, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/api/sessions.scss */
+.session-form-box {
+  min-width: 300px;
+  min-height: 300px;
+  outline: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 2px;
+  padding: 40px 50px;
+  background-color: white;
+}
+
+/* line 44, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/api/sessions.scss */
+.session-form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+/* line 49, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/api/sessions.scss */
+.session-form label {
+  height: 40px;
+}
+/* line 53, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/api/sessions.scss */
+.session-form .button {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+/* line 60, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/api/sessions.scss */
+.row {
+  margin-bottom: 28px;
+  display: flex;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* line 66, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/api/sessions.scss */
+.row:hover {
+  border-bottom: 1px solid #5576D8;
+}
+
+/* line 70, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/api/sessions.scss */
+.session-icon {
+  font-size: 25px;
+  color: rgba(0, 0, 0, 0.06);
+  margin-left: 5px;
+  margin-right: 15px;
+}
+
+/* line 77, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/api/sessions.scss */
+.session-input {
+  width: 245px;
+  font-size: 16px;
+}
+
+/* line 82, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/api/sessions.scss */
+.alt-session-link {
+  margin-top: 20px;
+  display: flex;
+  margin-bottom: 20px;
+}
+
+/* line 88, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/api/sessions.scss */
+.link-text {
+  color: #5576D8;
+}
+
+/* line 92, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/api/sessions.scss */
+.link-text:hover {
+  text-decoration: underline;
+}
+
+/* line 96, /Users/sheny/Dropbox/AA/cross_off/app/assets/stylesheets/api/sessions.scss */
+.session-form-box .errors {
+  color: #ff3180;
+  font-size: 13px;
+  line-height: 1.3;
+}
