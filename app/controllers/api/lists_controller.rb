@@ -18,6 +18,7 @@ class Api::ListsController < ApplicationController
 
   def create
     @list = List.new(list_params)
+    @list.user_id = current_user.id
 
     if @list.save
       login(@list)
@@ -25,11 +26,6 @@ class Api::ListsController < ApplicationController
     else
       render json: @list.errors.full_messages, status: 422
     end
-  end
-
-  def edit
-    @list = current_user.lists.find(params[:id])
-    render "api/lists/edit"
   end
 
   def update
