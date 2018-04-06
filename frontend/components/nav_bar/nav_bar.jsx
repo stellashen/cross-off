@@ -4,11 +4,6 @@ import { Link } from 'react-router-dom';
 class NavBar extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   email: "",
-    //   password: ""
-    // };
-    // this.demoSignin = this.demoSignin.bind(this);
   }
 
   demoSignin() {
@@ -20,10 +15,6 @@ class NavBar extends React.Component {
         password: "password",
       });
       login(demoUser);
-      // this.setState({
-      //   email: "",
-      //   password: ""
-      // });
   };
 }
 
