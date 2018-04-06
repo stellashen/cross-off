@@ -29,40 +29,6 @@ export default () => {
         </div>
       </section>
     </section>
-
-    <section className="second-page">
-      <h2>More Content TBD</h2>
-      <p>enaopirhgnepawoi;egnvpowaienbv;oqENV;qoenbvq;owBENqowevnqwbnveo;qbnvqo;wINVWo;enq;bn</p>
-      <p>enaopirhgnepawoi;egnvpowaienbv;oqENV;qoenbvq;owBENqowevnqwbnveo;qbnvqo;wINVWo;enq;bn</p>
-      <p>enaopirhgnepawoi;egnvpowaienbv;oqENV;qoenbvq;owBENqowevnqwbnveo;qbnvqo;wINVWo;enq;bn</p>
-      <p>enaopirhgnepawoi;egnvpowaienbv;oqENV;qoenbvq;owBENqowevnqwbnveo;qbnvqo;wINVWo;enq;bn</p>
-      <p>enaopirhgnepawoi;egnvpowaienbv;oqENV;qoenbvq;owBENqowevnqwbnveo;qbnvqo;wINVWo;enq;bn</p>
-      <p>enaopirhgnepawoi;egnvpowaienbv;oqENV;qoenbvq;owBENqowevnqwbnveo;qbnvqo;wINVWo;enq;bn</p>
-      <p>enaopirhgnepawoi;egnvpowaienbv;oqENV;qoenbvq;owBENqowevnqwbnveo;qbnvqo;wINVWo;enq;bn</p>
-      <p>enaopirhgnepawoi;egnvpowaienbv;oqENV;qoenbvq;owBENqowevnqwbnveo;qbnvqo;wINVWo;enq;bn</p>
-      <p>enaopirhgnepawoi;egnvpowaienbv;oqENV;qoenbvq;owBENqowevnqwbnveo;qbnvqo;wINVWo;enq;bn</p>
-      <p>enaopirhgnepawoi;egnvpowaienbv;oqENV;qoenbvq;owBENqowevnqwbnveo;qbnvqo;wINVWo;enq;bn</p>
-      <p>enaopirhgnepawoi;egnvpowaienbv;oqENV;qoenbvq;owBENqowevnqwbnveo;qbnvqo;wINVWo;enq;bn</p>
-      <p>enaopirhgnepawoi;egnvpowaienbv;oqENV;qoenbvq;owBENqowevnqwbnveo;qbnvqo;wINVWo;enq;bn</p>
-      <p>enaopirhgnepawoi;egnvpowaienbv;oqENV;qoenbvq;owBENqowevnqwbnveo;qbnvqo;wINVWo;enq;bn</p>
-      <p>enaopirhgnepawoi;egnvpowaienbv;oqENV;qoenbvq;owBENqowevnqwbnveo;qbnvqo;wINVWo;enq;bn</p>
-      <p>enaopirhgnepawoi;egnvpowaienbv;oqENV;qoenbvq;owBENqowevnqwbnveo;qbnvqo;wINVWo;enq;bn</p>
-      <p>enaopirhgnepawoi;egnvpowaienbv;oqENV;qoenbvq;owBENqowevnqwbnveo;qbnvqo;wINVWo;enq;bn</p>
-      <p>enaopirhgnepawoi;egnvpowaienbv;oqENV;qoenbvq;owBENqowevnqwbnveo;qbnvqo;wINVWo;enq;bn</p>
-      <p>enaopirhgnepawoi;egnvpowaienbv;oqENV;qoenbvq;owBENqowevnqwbnveo;qbnvqo;wINVWo;enq;bn</p>
-      <p>enaopirhgnepawoi;egnvpowaienbv;oqENV;qoenbvq;owBENqowevnqwbnveo;qbnvqo;wINVWo;enq;bn</p>
-      <p>enaopirhgnepawoi;egnvpowaienbv;oqENV;qoenbvq;owBENqowevnqwbnveo;qbnvqo;wINVWo;enq;bn</p>
-      <p>enaopirhgnepawoi;egnvpowaienbv;oqENV;qoenbvq;owBENqowevnqwbnveo;qbnvqo;wINVWo;enq;bn</p>
-      <p>enaopirhgnepawoi;egnvpowaienbv;oqENV;qoenbvq;owBENqowevnqwbnveo;qbnvqo;wINVWo;enq;bn</p>
-      <p>enaopirhgnepawoi;egnvpowaienbv;oqENV;qoenbvq;owBENqowevnqwbnveo;qbnvqo;wINVWo;enq;bn</p>
-      <p>enaopirhgnepawoi;egnvpowaienbv;oqENV;qoenbvq;owBENqowevnqwbnveo;qbnvqo;wINVWo;enq;bn</p>
-      <p>enaopirhgnepawoi;egnvpowaienbv;oqENV;qoenbvq;owBENqowevnqwbnveo;qbnvqo;wINVWo;enq;bn</p>
-      <p>enaopirhgnepawoi;egnvpowaienbv;oqENV;qoenbvq;owBENqowevnqwbnveo;qbnvqo;wINVWo;enq;bn</p>
-      <p>enaopirhgnepawoi;egnvpowaienbv;oqENV;qoenbvq;owBENqowevnqwbnveo;qbnvqo;wINVWo;enq;bn</p>
-      <p>enaopirhgnepawoi;egnvpowaienbv;oqENV;qoenbvq;owBENqowevnqwbnveo;qbnvqo;wINVWo;enq;bn</p>
-      <p>enaopirhgnepawoi;egnvpowaienbv;oqENV;qoenbvq;owBENqowevnqwbnveo;qbnvqo;wINVWo;enq;bn</p>
-      <p>enaopirhgnepawoi;egnvpowaienbv;oqENV;qoenbvq;owBENqowevnqwbnveo;qbnvqo;wINVWo;enq;bn</p>
-    </section>
   </div>
 );
 };

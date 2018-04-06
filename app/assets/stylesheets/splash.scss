@@ -39,9 +39,8 @@ $gray: rgba(0,0,0,.06);
     background-repeat: no-repeat;
   }
 
-  ul{
+  .nav-links ul{
     display: flex;
-    justify-content: space-between;
   }
 }
 
@@ -51,7 +50,8 @@ $gray: rgba(0,0,0,.06);
 
   .first-page{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    flex-wrap: wrap;
     height: 100vh;
     // match the viewport height of the browser window
   }
@@ -99,6 +99,7 @@ $gray: rgba(0,0,0,.06);
 
   .mainbutton {
     margin-left: 20px;
+    margin-bottom: 10px;
   }
 
   .splash-left {
@@ -170,7 +171,7 @@ $gray: rgba(0,0,0,.06);
 }
 
 .nav-bar .signup {
-  margin-left: 45px;
+  margin-left: 15px;
 }
 
 .splash .signup {
@@ -178,6 +179,6 @@ $gray: rgba(0,0,0,.06);
 }
 
 .demo {
-  margin-left: 45px;
+  margin-left: 15px;
   border: 2px solid black;
 }
