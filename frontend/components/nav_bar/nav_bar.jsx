@@ -4,19 +4,28 @@ import { Link } from 'react-router-dom';
 class NavBar extends React.Component {
   constructor(props) {
     super(props);
+    // this.state = {
+    //   email: "",
+    //   password: ""
+    // };
+    // this.demoSignin = this.demoSignin.bind(this);
   }
 
   demoSignin() {
     return e => {
       e.preventDefault();
       const login = this.props.login;
-      const demoUser = {
+      const demoUser = Object.assign({
         email: "guest@crossoff.com",
-        password: "password"
-      };
+        password: "password",
+      });
       login(demoUser);
-    };
-  }
+      // this.setState({
+      //   email: "",
+      //   password: ""
+      // });
+  };
+}
 
   render() {
     return (
