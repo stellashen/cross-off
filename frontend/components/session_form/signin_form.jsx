@@ -5,7 +5,7 @@ import fontawesome from '@fortawesome/fontawesome';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import solids from '@fortawesome/fontawesome-free-solid';
 
-class SessionForm extends React.Component {
+class SigninForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -95,7 +95,7 @@ class SessionForm extends React.Component {
             </div>
 
             <div className="link-text">
-              <Link to="/">back to homepage</Link>
+              <Link to="/">Back to Homepage</Link>
             </div>
 
           </form>
@@ -105,4 +105,4 @@ class SessionForm extends React.Component {
   }
 }
 
-export default withRouter(SessionForm);
+export default withRouter(SigninForm);

@@ -5,7 +5,7 @@ import fontawesome from '@fortawesome/fontawesome';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import solids from '@fortawesome/fontawesome-free-solid';
 
-class SessionForm extends React.Component {
+class SignupForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -65,7 +65,7 @@ class SessionForm extends React.Component {
                   value={this.state.username}
                   onChange={this.update('username')}
                   className="session-input"
-                  placeholder="Nickname(optional)"
+                  placeholder="Nickname (optional)"
                 />
               </div>
 
@@ -108,12 +108,12 @@ class SessionForm extends React.Component {
             <div className="alt-session-link">
               <p>Have an account already?</p>&nbsp;&nbsp;
               <div className="link-text">
-                <Link to="/signin">Sign in</Link>
+                <Link to="/signin">Sign In</Link>
               </div>
             </div>
 
             <div className="link-text">
-              <Link to="/">back to homepage</Link>
+              <Link to="/">Back to Homepage</Link>
             </div>
 
           </form>
@@ -123,4 +123,4 @@ class SessionForm extends React.Component {
   }
 }
 
-export default withRouter(SessionForm);
+export default withRouter(SignupForm);
