@@ -106,4 +106,4 @@ class SigninForm extends React.Component {
   }
 }
 
-export default withRouter(SigninForm);
+export default SigninForm;

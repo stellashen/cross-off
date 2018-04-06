@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 export default () => {
   return (
-    <aside className="user-profile">
+    <aside className="sidebar">
       <UserProfileContainer />
 
       <Link to="/lists/new">
