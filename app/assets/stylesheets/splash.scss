@@ -8,9 +8,11 @@ $gray: rgba(0,0,0,.06);
 //  + splash
 //  + footer
 
-#root {
+#app {
   position: relative;
   font-family: 'Open Sans', sans-serif;
+  width: 100%;
+  min-height: 100%
 }
 
 .nav-bar {
@@ -45,12 +47,13 @@ $gray: rgba(0,0,0,.06);
 
 .splash {
   padding: 20px 45px;
-
-  width: 100%;
+  height: 100%;
 
   .first-page{
     display: flex;
     justify-content: space-between;
+    height: 100vh;
+    // match the viewport height of the browser window
   }
 
   overflow: scroll;
