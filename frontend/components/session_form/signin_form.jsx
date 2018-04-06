@@ -69,8 +69,8 @@ class SessionForm extends React.Component {
                     <FontAwesomeIcon icon='lock'/>
                   </div>
                 </label>
-                <input type="password-signin"
-                  id="password"
+                <input type="password"
+                  id="password-signin"
                   value={this.state.password}
                   onChange={this.update('password')}
                   className="session-input"
