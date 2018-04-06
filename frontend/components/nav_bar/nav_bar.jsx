@@ -1,34 +1,54 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default () => {
-  return (
-    <header className="nav-bar">
+class NavBar extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
-      <section className="logo">
-      </section>
+  demoSignin() {
+    return (e) => {
+      e.preventDefault();
+      const login = this.props.login;
+      const demoUser = {
+        email: "guest@crossoff.com",
+        password: "password"
+      };
+      login(demoUser);
+    };
+  }
 
-      <section className="nav-links">
+  render() {
+    return (
+      <header className="nav-bar">
 
-        <ul>
-          <li>
-            <Link to="/signin">
-              <button type="button" className="signin button">Sign In</button>
-            </Link>
-          </li>
+        <section className="logo">
+        </section>
 
-          <li>
-            <Link to="/signup">
-              <button type="button" className="signup button">Create Account</button>
-            </Link>
-          </li>
+        <section className="nav-links">
 
-          <li>
-            <button type="button" className="demo button">Demo</button>
-          </li>
-        </ul>
+          <ul>
+            <li>
+              <Link to="/signin">
+                <button type="button" className="signin button">Sign In</button>
+              </Link>
+            </li>
 
-      </section>
-    </header>
-  );
-};
+            <li>
+              <Link to="/signup">
+                <button type="button" className="signup button">Create Account</button>
+              </Link>
+            </li>
+
+            <li>
+              <button type="button" onClick={this.demoSignin()} className="demo button">Demo</button>
+            </li>
+          </ul>
+
+        </section>
+      </header>
+    );
+  }
+}
+
+export default NavBar;
