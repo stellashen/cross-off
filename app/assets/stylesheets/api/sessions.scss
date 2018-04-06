@@ -63,7 +63,7 @@
   border-bottom: 1px solid $gray;
 }
 
-.row:hover {
+.row:focus-within {
   border-bottom: 1px solid $blue;
 }
 
@@ -81,13 +81,16 @@
 
 .alt-session-link {
   margin-top: 20px;
+  margin-bottom: 20px;
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
 }
 
 .link-text {
   color: $blue;
+}
+
+.center-text {
   text-align: center;
 }
 

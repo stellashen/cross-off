@@ -82,6 +82,7 @@ class SigninForm extends React.Component {
                   placeholder="Password"
                 />
               </div>
+
               <br/>
               <input className="signup button" type="submit" value= "Sign In" />
             </div>
@@ -94,7 +95,7 @@ class SigninForm extends React.Component {
               </div>
             </div>
 
-            <div className="link-text">
+            <div className="link-text center-text">
               <Link to="/">Back to Homepage</Link>
             </div>
 

@@ -112,7 +112,7 @@ class SignupForm extends React.Component {
               </div>
             </div>
 
-            <div className="link-text">
+            <div className="link-text center-text">
               <Link to="/">Back to Homepage</Link>
             </div>
 
