@@ -51,7 +51,7 @@ class SessionForm extends React.Component {
           <form onSubmit={this.handleSubmit} className="session-form-box">
             <div className="session-form">
               <div className="row">
-                <label for="username-signup">
+                <label htmlFor="username-signup">
                   <div className="session-icon">
                     <FontAwesomeIcon icon='user'/>
                   </div>
@@ -67,7 +67,7 @@ class SessionForm extends React.Component {
 
               <br/>
               <div className="row">
-                <label for="email-signup">
+                <label htmlFor="email-signup">
                   <div className="session-icon">
                     <FontAwesomeIcon icon='envelope'/>
                   </div>
@@ -83,7 +83,7 @@ class SessionForm extends React.Component {
 
               <br/>
               <div className="row">
-                <label for="password-signup">
+                <label htmlFor="password-signup">
                   <div className="session-icon">
                     <FontAwesomeIcon icon='lock'/>
                   </div>

@@ -7,7 +7,7 @@ class NavBar extends React.Component {
   }
 
   demoSignin() {
-    return (e) => {
+    return e => {
       e.preventDefault();
       const login = this.props.login;
       const demoUser = {
