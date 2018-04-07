@@ -12,9 +12,17 @@
 }
 
 .user {
-  margin-right: 10px;
-  margin-bottom: 10px;
+  margin: 10px;
   padding-top: 10px;
+}
+
+.avatar-container {
+  background-image: url("white_circle.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 36px;
+  height: 36px;
+  padding: 10px;
 }
 
 .avatar {
