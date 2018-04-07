@@ -23,6 +23,18 @@
   width: 36px;
   height: 36px;
   padding: 10px;
+  position: relative;
+}
+
+.tiny-logo {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  right: -2px;
+  top: -2px;
+  background-image: url("icon_transparent_background");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .avatar {
