@@ -2,7 +2,18 @@
 
 .sidebar {
   position: fixed;
-  width: 260px;
+  width: 270px;
   height: 100%;
   background-color: $themeblue;
+  color: white;
+}
+
+.add-new-list-button {
+  width: 230px;
+  outline: 1px solid white;
+  padding: 20px;
+}
+
+.add-new-list-button:hover {
+  background-color: $darkblue;
 }

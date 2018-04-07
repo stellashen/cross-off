@@ -50,7 +50,11 @@ class SignupForm extends React.Component {
       <div className="session-page">
         <div className="session-form-container">
           <div className="big-crossoff-logo">
-            <img src="assets/icon_transparent_background.png" className="big-crossoff-icon" />
+            <Link to="/">
+              <img
+                src="assets/icon_transparent_background.png" 
+                className="big-crossoff-icon" />
+            </Link>
           </div>
           <form onSubmit={this.handleSubmit} className="session-form-box">
             <div className="session-form">

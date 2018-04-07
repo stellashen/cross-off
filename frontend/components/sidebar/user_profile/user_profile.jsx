@@ -15,7 +15,7 @@ class UserProfile extends React.Component {
   render() {
     return (
       <div className="user-profile">
-        <p className="username">{this.displayUserInfo()}</p>
+        <p className="user">{this.displayUserInfo()}</p>
         <button
           className="signout button"
           onClick={this.props.logout}>Log Out</button>

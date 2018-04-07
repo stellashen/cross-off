@@ -13,11 +13,13 @@
  *= require_self
  */
 
-@import url("https://fonts.googleapis.com/css?family=Architects+Daughter|Open+Sans");
+@import url("https://fonts.googleapis.com/css?family=Architects+Daughter|Open+Sans|Nunito|Roboto|Montserrat");
 @import "reset.scss";
 @import "colors.scss";
 @import "fonts.scss";
+@import "app.scss";
 @import "splash.scss";
 @import "api/sessions.scss";
 @import "api/sidebar.scss";
-@import "api/users.scss";
+@import "api/user_profile.scss";
+@import "main.scss";

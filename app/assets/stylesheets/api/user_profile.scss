@@ -6,18 +6,24 @@
 
 .user-profile {
   display: flex;
-  align-items: stretch;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 8px 20px;
+}
+
+.user {
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding-top: 10px;
 }
 
 .signout {
-  padding: 3px 20px;
+  padding: 0px 10px;
   background-color: $lightblue;
-  border: 2px solid $lightblue;
   color: white;
 }
 
 .signout:hover {
   background-color: white;
-  border: 2px solid $lightblue;
   color: $lightblue;
 }
