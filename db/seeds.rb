@@ -8,7 +8,7 @@
 
 User.destroy_all
 
-demo_user = User.create!(
+guest = User.create!(
   username: "guest",
   email: "guest@crossoff.com",
   password: "password",
