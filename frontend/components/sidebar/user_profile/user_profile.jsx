@@ -17,7 +17,6 @@ class UserProfile extends React.Component {
       <div className="user-profile">
         <span className="avatar-container">
           <img className="avatar" src={this.props.currentUser.img_url}/>
-          <img className="tiny-logo" src="assets/icon_transparent_background"/>
         </span>
         <p className="user">{this.displayUserInfo()}</p>
         <button
