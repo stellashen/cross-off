@@ -12,5 +12,5 @@ demo_user = User.create!(
   username: "guest",
   email: "guest@crossoff.com",
   password: "password",
-  img_url: "https://github.com/stellashen/cross-off/blob/master/app/assets/images/brainstorm.png"
+  img_url: "assets/defaultAvatar.png"
 )

@@ -6,7 +6,7 @@
 
 .user-profile {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
   padding: 8px 20px;
 }
@@ -17,8 +17,14 @@
   padding-top: 10px;
 }
 
+.avatar {
+  width: 36px;
+  height: 36px;
+}
+
 .signout {
-  padding: 0px 10px;
+  padding: 2px 10px;
+  margin: 10px 0;
   background-color: $lightblue;
   color: white;
 }

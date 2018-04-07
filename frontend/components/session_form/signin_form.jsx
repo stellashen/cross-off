@@ -1,5 +1,4 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import fontawesome from '@fortawesome/fontawesome';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
@@ -49,7 +48,7 @@ class SigninForm extends React.Component {
         <div className="session-form-container">
           <div className="big-crossoff-logo">
             <Link to="/">
-              <img 
+              <img
                 src="assets/icon_transparent_background.png"
                 className="big-crossoff-icon" />
             </Link>

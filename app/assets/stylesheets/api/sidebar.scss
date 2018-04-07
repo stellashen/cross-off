@@ -12,6 +12,11 @@
   width: 230px;
   outline: 1px solid white;
   padding: 20px;
+  display: flex;
+  align-items: center;
+  p {
+    margin-left: 10px;
+  }
 }
 
 .add-new-list-button:hover {

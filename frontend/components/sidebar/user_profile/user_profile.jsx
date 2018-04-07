@@ -15,6 +15,7 @@ class UserProfile extends React.Component {
   render() {
     return (
       <div className="user-profile">
+        <img className="avatar" src={this.props.currentUser.img_url}/>
         <p className="user">{this.displayUserInfo()}</p>
         <button
           className="signout button"

@@ -1,5 +1,4 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import fontawesome from '@fortawesome/fontawesome';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
@@ -12,7 +11,7 @@ class SignupForm extends React.Component {
       username: '',
       email: '',
       password: '',
-      img_url: ''
+      img_url: 'assets/defaultAvatar.png'
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -52,7 +51,7 @@ class SignupForm extends React.Component {
           <div className="big-crossoff-logo">
             <Link to="/">
               <img
-                src="assets/icon_transparent_background.png" 
+                src="assets/icon_transparent_background.png"
                 className="big-crossoff-icon" />
             </Link>
           </div>
