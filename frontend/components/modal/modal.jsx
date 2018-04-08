@@ -3,7 +3,7 @@ import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import ListFormContainer from '../list_form/list_form_container';
 
-function Modal({modal, closeModal}) {
+function Modal({modal}) {
   if (!modal) {
     return null;
   }

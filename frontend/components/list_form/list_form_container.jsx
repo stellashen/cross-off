@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import React from 'react';
 import { addNewList, clearErrors } from '../../actions/list_actions';
-import { openModal, closeModal } from '../../actions/modal_actions';
+import { closeModal } from '../../actions/modal_actions';
 import ListForm from './list_form';
 
 const mapStateToProps = ({ session, errors }) => {
