@@ -1,0 +1,22 @@
+import { connect } from 'react-redux';
+import React from 'react';
+import { addNewList, clearErrors } from '../../actions/list_actions';
+import { openModal, closeModal } from '../../actions/modal_actions';
+import ListForm from './list_form';
+
+const mapStateToProps = ({ session, errors }) => {
+  return {
+    currentUser: session.currentUser,
+    errors: errors.lists,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    processForm: (list) => dispatch(addNewList(list)),
+    closeModal: () => dispatch(closeModal()),
+    clearErrors: (errors) => dispatch(clearErrors(errors))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ListForm);

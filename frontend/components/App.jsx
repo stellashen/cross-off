@@ -9,6 +9,7 @@ import SignInFormContainer from './session_form/signin_form_container';
 import Sidebar from './sidebar/sidebar';
 import ListFormContainer from './list_form/list_form_container';
 import Main from './main/main';
+import Modal from './modal/modal';
 
 const App = () => (
   <div id="app">
@@ -21,7 +22,7 @@ const App = () => (
 
     <ProtectedRoute path="/lists" component={Sidebar} />
     <ProtectedRoute path="/lists" component={Main} />
-    <ProtectedRoute path="/lists/new" component={ListFormContainer} />
+    <Modal />
   </div>
 );
 

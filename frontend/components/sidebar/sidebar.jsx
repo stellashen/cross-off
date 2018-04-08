@@ -5,13 +5,14 @@ import fontawesome from '@fortawesome/fontawesome';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import solids from '@fortawesome/fontawesome-free-solid';
 
-export default () => {
+export default ({openModal}) => {
   return (
     <aside className="sidebar">
       <UserProfileContainer />
 
       <Link to="/lists/new">
-        <button className="add-new-list-button">
+        <button onClick={() => openModal('listForm')}
+                className="add-new-list-button">
           <FontAwesomeIcon icon="plus" />
           <p>Add New List</p>
         </button>
