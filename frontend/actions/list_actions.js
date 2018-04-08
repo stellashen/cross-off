@@ -8,7 +8,7 @@ export const receiveList = list => ({
   list
 });
 
-export const receiveErrors = errors => ({
+export const receiveListErrors = errors => ({
   type: RECEIVE_LIST_ERRORS,
   errors
 });
@@ -17,10 +17,10 @@ export const addNewList = list => dispatch => (
   APIUtil.addList(list).then(formList => (
     dispatch(receiveList(formList))
   ), err => (
-    dispatch(receiveErrors(err.responseJSON))
+    dispatch(receiveListErrors(err.responseJSON))
   ))
 );
 
 export const clearErrors = () => dispatch => (
-  dispatch(receiveErrors([]))
+  dispatch(receiveListErrors([]))
 );

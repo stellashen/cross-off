@@ -10,7 +10,7 @@ class ListForm extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  
+
   componentWillUnmount() {
     this.props.clearErrors();
   }
@@ -57,7 +57,7 @@ class ListForm extends React.Component {
             <div className="errors">{this.renderErrors()}</div>
 
             <br/>
-            <span class="list-form-buttons">
+            <span className="list-form-buttons">
               <button onClick={this.props.closeModal}
                 className="list-cancel button">Cancel</button>
               <input className="list-save button" type="submit" value= "Save" />
