@@ -1,7 +1,13 @@
 import * as APIUtil from '../util/list_api_util';
 
+export const RECEIVE_LISTS = 'RECEIVE_LISTS';
 export const RECEIVE_LIST = 'RECEIVE_LIST';
 export const RECEIVE_LIST_ERRORS = 'RECEIVE_LIST_ERRORS';
+
+export const receiveLists = lists => ({
+  type: RECEIVE_LISTS,
+  lists
+});
 
 export const receiveList = list => ({
   type: RECEIVE_LIST,
