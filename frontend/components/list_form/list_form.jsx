@@ -1,5 +1,8 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import fontawesome from '@fortawesome/fontawesome';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import solids from '@fortawesome/fontawesome-free-solid';
 
 class ListForm extends React.Component {
   constructor(props) {
@@ -42,10 +45,14 @@ class ListForm extends React.Component {
   render() {
     return (
       <div className="list-form-container">
+        <div className = "list-form-header">
+          <div onClick={this.props.closeModal} className="close-x">
+            <FontAwesomeIcon icon='times'/>
+          </div>
+          <p>Add New List</p>
+        </div>
         <form onSubmit={this.handleSubmit} className="list-form-box">
-          <div onClick={this.props.closeModal} className="close-x">X</div>
-          <h3>Add List</h3>
-          <div className="list-form">
+          <div className="list-form-body">
             <br/>
             <input type="text"
               value={this.state.name}
@@ -55,14 +62,14 @@ class ListForm extends React.Component {
             />
             <br/>
             <div className="errors">{this.renderErrors()}</div>
-
-            <br/>
-            <span className="list-form-buttons">
-              <button onClick={this.props.closeModal}
-                className="list-cancel button">Cancel</button>
-              <input className="list-save button" type="submit" value= "Save" />
-            </span>
           </div>
+
+          <br/>
+          <span className="list-form-footer">
+            <button onClick={this.props.closeModal}
+              className="list-cancel button">Cancel</button>
+            <input className="list-save button" type="submit" value= "Save" />
+          </span>
         </form>
       </div>
     );

@@ -3,5 +3,72 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .list-form-container {
-  background-color: $backgroundgray;
+  position:relative;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 20px;
+}
+
+.list-form-header {
+  position: relative;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.close-x {
+  color: $darkgray;
+  position: absolute;
+  right: 0;
+}
+
+.list-form-body {
+  margin-bottom: 10px;
+}
+
+.list-form-footer {
+  margin-top: 20px;
+  float: right;
+}
+
+.list-cancel {
+  background-color: $gray;
+  border: 1px solid $darkgray;
+  border-radius: 2px;
+  font-weight: normal;
+  padding: 7px 13px;
+  width: 80px;
+  font-size: 14px;
+}
+
+.list-cancel:hover {
+  background-color: $darkgray;
+}
+
+.list-save {
+  background-color: $blue;
+  border: 1px solid $blue;
+  border-radius: 2px;
+  margin-left: 15px;
+  color: white;
+  font-weight: normal;
+  padding: 7px 13px;
+  width: 80px;
+  font-size: 14px;
+}
+
+.list-save:hover {
+  background-color: $darkblue;
+  border: 1px solid $darkblue;
+}
+
+.list-form-input {
+  border: 1px solid $darkgray;
+  width: 96%;
+  padding: 5px;
+}
+
+.list-form-input:focus {
+  border: 1px solid $lightblue;
 }

@@ -6,7 +6,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.session-page, .user-profile {
+.session-page, .user-profile, .modal-child {
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -25,4 +25,8 @@ h2 {
   font-size: 45px;
   font-family: 'Architects Daughter';
   display:inline-block;
+}
+
+h3 {
+  font-weight: bold;
 }
