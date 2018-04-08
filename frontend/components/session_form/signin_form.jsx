@@ -49,7 +49,7 @@ class SigninForm extends React.Component {
           <div className="big-crossoff-logo">
             <Link to="/">
               <img
-                src="assets/icon_transparent_background.png"
+                src="http://res.cloudinary.com/devleg/image/upload/v1523170585/icon_transparent_background.png"
                 className="big-crossoff-icon" />
             </Link>
           </div>
