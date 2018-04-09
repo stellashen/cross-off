@@ -7,16 +7,11 @@ import solids from '@fortawesome/fontawesome-free-solid';
 export default class List extends React.Component {
   constructor(props) {
     super(props);
-    this.handleDelete = this.handleDelete.bind(this);
     this.handleOpenModal = this.handleOpenModal.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchLists();
-  }
-
-  handleDelete(listId) {
-    this.props.deleteList(listId);
   }
 
   handleOpenModal(modalName, listId) {
@@ -29,7 +24,7 @@ export default class List extends React.Component {
       <li key={`${idx}${list.name}`} className="list">
         <span>{list.name}</span>
         <span className="list-delete"
-              onClick={() => this.handleDelete(list.id)}>
+              onClick={() => this.handleOpenModal('deleteList', list.id)}>
           <FontAwesomeIcon icon='trash-alt'/>
         </span>
         <span className="list-edit"

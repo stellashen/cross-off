@@ -3,6 +3,7 @@ import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import AddListFormContainer from '../list_form/add_list_form_container';
 import EditListFormContainer from '../list_form/edit_list_form_container';
+import DeleteListContainer from '../lists/delete_list_container';
 
 function Modal({modal}) {
   if (!modal) {
@@ -15,6 +16,9 @@ function Modal({modal}) {
       break;
     case 'editListForm':
       component = <EditListFormContainer listId={modal.listId}/>;
+      break;
+    case 'deleteList':
+      component = <DeleteListContainer listId={modal.listId}/>;
       break;
     default:
       return null;
