@@ -3,6 +3,7 @@ import * as APIUtil from '../util/list_api_util';
 export const RECEIVE_LISTS = 'RECEIVE_LISTS';
 export const RECEIVE_LIST = 'RECEIVE_LIST';
 export const RECEIVE_LIST_ERRORS = 'RECEIVE_LIST_ERRORS';
+export const REMOVE_LIST = "REMOVE_LIST";
 
 export const receiveLists = lists => ({
   type: RECEIVE_LISTS,
@@ -17,6 +18,11 @@ export const receiveList = list => ({
 export const receiveListErrors = errors => ({
   type: RECEIVE_LIST_ERRORS,
   errors
+});
+
+export const removeList = list => ({
+  type: REMOVE_LIST,
+  list
 });
 
 export const addNewList = list => dispatch => (
