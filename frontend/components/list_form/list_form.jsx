@@ -7,9 +7,7 @@ import solids from '@fortawesome/fontawesome-free-solid';
 class ListForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      name: ''
-    };
+    this.state = this.props.list;
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -48,7 +46,7 @@ class ListForm extends React.Component {
           <div onClick={this.props.closeModal} className="close-x">
             <FontAwesomeIcon icon='times'/>
           </div>
-          <p>Add New List</p>
+          <p>{this.props.formType}</p>
         </div>
         <form onSubmit={this.handleSubmit} className="list-form-box">
           <div className="list-form-body">

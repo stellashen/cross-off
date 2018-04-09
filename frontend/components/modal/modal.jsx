@@ -1,7 +1,8 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
-import ListFormContainer from '../list_form/list_form_container';
+import AddListFormContainer from '../list_form/add_list_form_container';
+import EditListFormContainer from '../list_form/edit_list_form_container';
 
 function Modal({modal}) {
   if (!modal) {
@@ -9,8 +10,11 @@ function Modal({modal}) {
   }
   let component;
   switch (modal) {
-    case 'listForm':
-      component = <ListFormContainer />;
+    case 'addListForm':
+      component = <AddListFormContainer />;
+      break;
+    case 'editListForm':
+      component = <EditListFormContainer />;
       break;
     default:
       return null;

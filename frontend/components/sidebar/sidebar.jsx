@@ -20,7 +20,7 @@ export default class Sidebar extends React.Component {
       <aside className="sidebar">
         <UserProfileContainer />
 
-        <button onClick={() => this.handleOpenModal('listForm')}
+        <button onClick={() => this.handleOpenModal('addListForm')}
                 className="add-new-list-button">
           <FontAwesomeIcon icon="plus" />
           <p>Add New List</p>

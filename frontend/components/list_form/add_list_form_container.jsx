@@ -4,10 +4,12 @@ import { addNewList, clearErrors } from '../../actions/list_actions';
 import { closeModal } from '../../actions/modal_actions';
 import ListForm from './list_form';
 
-const mapStateToProps = ({ entities, session, errors }) => {
+const mapStateToProps = (state) => {
   return {
-    currentUser: session.currentUser,
-    errors: errors.lists,
+    currentUser: state.session.currentUser,
+    errors: state.errors.lists,
+    formType: 'Add New List',
+    list: { name: '' }
   };
 };
 

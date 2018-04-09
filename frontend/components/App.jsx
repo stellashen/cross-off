@@ -7,7 +7,6 @@ import Footer from './footer/footer';
 import SignUpFormContainer from './session_form/signup_form_container';
 import SignInFormContainer from './session_form/signin_form_container';
 import SidebarContainer from './sidebar/sidebar_container';
-import ListFormContainer from './list_form/list_form_container';
 import Main from './main/main';
 import Modal from './modal/modal';
 

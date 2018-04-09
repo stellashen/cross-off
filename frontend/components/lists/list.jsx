@@ -8,6 +8,7 @@ export default class List extends React.Component {
   constructor(props) {
     super(props);
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleOpenModal = this.handleOpenModal.bind(this);
   }
 
   componentDidMount() {
@@ -24,6 +25,10 @@ export default class List extends React.Component {
     }
   }
 
+  handleOpenModal(modalName) {
+    this.props.openModal(modalName);
+  }
+
   renderLists() {
     const lists = Object.values(this.props.lists);
     return lists.map((list, idx) => (
@@ -33,7 +38,10 @@ export default class List extends React.Component {
               onClick={() => this.handleDelete(list.id)}>
           <FontAwesomeIcon icon='trash-alt'/>
         </span>
-        <span className="list-edit"><FontAwesomeIcon icon='edit'/></span>
+        <span className="list-edit"
+              onClick={() => this.handleOpenModal('editListForm')}>
+          <FontAwesomeIcon icon='edit'/>
+        </span>
       </li>
     ));
   }
