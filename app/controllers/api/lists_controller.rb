@@ -16,7 +16,7 @@ class Api::ListsController < ApplicationController
     @list.user_id = current_user.id
 
     if @list.save
-      render "api/lists/index"
+      render "api/lists/show"
     else
       render json: @list.errors.full_messages, status: 422
     end
