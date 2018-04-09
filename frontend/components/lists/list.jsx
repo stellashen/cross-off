@@ -9,11 +9,15 @@ export default class List extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    this.props.fetchLists();
+  }
+
   renderLists() {
     const lists = Object.values(this.props.lists);
     return lists.map((list, idx) => (
       <li key={`${idx}${list.name}`} className="list">
-        <span>{list.name}</span>    
+        <span>{list.name}</span>
         <span className="list-delete"><FontAwesomeIcon icon='trash-alt'/></span>
         <span className="list-edit"><FontAwesomeIcon icon='edit'/></span>
       </li>

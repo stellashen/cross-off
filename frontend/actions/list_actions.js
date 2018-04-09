@@ -37,7 +37,7 @@ export const clearErrors = () => dispatch => (
   dispatch(receiveListErrors([]))
 );
 
-export const fetchSpots = () => dispatch => (
+export const fetchLists = () => dispatch => (
   APIUtil.fetchLists().then(lists => (
     dispatch(receiveLists(lists))
   ), err => (
@@ -45,7 +45,7 @@ export const fetchSpots = () => dispatch => (
   ))
 );
 
-export const fetchSpot = (id) => dispatch => (
+export const fetchList = (id) => dispatch => (
   APIUtil.fetchList(id).then(list => (
     dispatch(receiveLists(list))
   ), err => (
