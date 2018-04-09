@@ -14,9 +14,14 @@ export default class List extends React.Component {
     this.props.fetchLists();
   }
 
-  handleDelete(id) {
-    this.props.deleteList(id);
-    this.setState({ lists: this.props.fetchLists() });
+  handleDelete(listId) {
+    this.props.deleteList(listId);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.lists !== this.props.lists) {
+      this.props.fetchLists();
+    }
   }
 
   renderLists() {
