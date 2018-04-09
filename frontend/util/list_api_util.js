@@ -9,7 +9,7 @@ export const addList = list => (
 export const deleteList = id => (
   $.ajax({
     method: 'DELETE',
-    url: `/api/lists/${id}`,
+    url: `/api/lists/${id}`
   })
 );
 

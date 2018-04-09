@@ -3,7 +3,7 @@ class Api::ListsController < ApplicationController
 
   def index
     @lists = current_user.lists
-    render "api/lists/index"
+    render :index
   end
 
   def show

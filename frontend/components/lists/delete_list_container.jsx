@@ -6,11 +6,13 @@ import DeleteList from './delete_list';
 import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state, ownProps) => {
-  const list = state.entities.lists[ownProps.listId];
+  const lists = state.entities.lists;
+  const list = lists[ownProps.listId];
+  const listName = list.name;
   return {
     errors: state.errors.lists,
-    listId: list.id,
-    listName: list.name,
+    list: list,
+    listName: listName,
   };
 };
 
@@ -18,7 +20,7 @@ const mapDispatchToProps = dispatch => {
   return {
     deleteList: (id) => dispatch(deleteList(id)),
     closeModal: () => dispatch(closeModal()),
-    clearErrors: (errors) => dispatch(clearErrors(errors))
+    clearErrors: (errors) => dispatch(clearErrors(errors)),
   };
 };
 

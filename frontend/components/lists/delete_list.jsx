@@ -6,6 +6,7 @@ import solids from '@fortawesome/fontawesome-free-solid';
 class DeleteList extends React.Component {
   constructor(props) {
     super(props);
+    this.state = this.props.lists;
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -15,7 +16,8 @@ class DeleteList extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.deleteList(this.props.listId).then(this.props.closeModal);
+    this.props.closeModal();
+    this.props.deleteList(this.props.list.id);
   }
 
   renderErrors() {
