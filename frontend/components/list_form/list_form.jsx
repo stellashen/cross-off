@@ -62,7 +62,7 @@ class ListForm extends React.Component {
 
           <br/>
           <span className="list-form-footer">
-            <button onClick={this.props.closeModal}
+            <button onSubmit={this.props.closeModal}
               className="list-cancel button">Cancel</button>
             <input className="list-save button" type="submit" value= "Save" />
           </span>
