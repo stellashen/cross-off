@@ -1,5 +1,4 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
 import fontawesome from '@fortawesome/fontawesome';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import solids from '@fortawesome/fontawesome-free-solid';
@@ -25,6 +24,7 @@ class ListForm extends React.Component {
     e.preventDefault();
     const formList = Object.assign({}, this.state);
     this.props.processForm(formList).then(this.props.closeModal);
+    this.props.history.push(`/lists`);
   }
 
   renderErrors() {
@@ -73,4 +73,4 @@ class ListForm extends React.Component {
   }
 }
 
-export default withRouter(ListForm);
+export default ListForm;

@@ -19,14 +19,9 @@ export default class List extends React.Component {
     this.props.deleteList(listId);
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.lists !== this.props.lists) {
-      this.props.fetchLists();
-    }
-  }
-
-  handleOpenModal(modalName) {
-    this.props.openModal(modalName);
+  handleOpenModal(modalName, listId) {
+    this.props.openModal(modalName, listId);
+    // this.props.history.push(`/lists/${listId}`);
   }
 
   renderLists() {
@@ -39,7 +34,7 @@ export default class List extends React.Component {
           <FontAwesomeIcon icon='trash-alt'/>
         </span>
         <span className="list-edit"
-              onClick={() => this.handleOpenModal('editListForm')}>
+              onClick={() => this.handleOpenModal('editListForm', list.id)}>
           <FontAwesomeIcon icon='edit'/>
         </span>
       </li>

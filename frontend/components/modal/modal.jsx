@@ -9,12 +9,12 @@ function Modal({modal}) {
     return null;
   }
   let component;
-  switch (modal) {
+  switch (modal.name) {
     case 'addListForm':
       component = <AddListFormContainer />;
       break;
     case 'editListForm':
-      component = <EditListFormContainer />;
+      component = <EditListFormContainer listId={modal.listId}/>;
       break;
     default:
       return null;
