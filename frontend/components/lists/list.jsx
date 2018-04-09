@@ -8,9 +8,9 @@ export default class List extends React.Component {
 
   renderLists() {
     const lists = Object.values(this.props.lists);
-
+    debugger;
     return lists.map((list, idx) => (
-      <li key={`${idx}${list.name}`} className="list-nav">list.name</li>
+      <li key={`${idx}${list.name}`} className="list-nav">{list.name}</li>
     ));
   }
 

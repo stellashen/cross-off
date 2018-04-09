@@ -4,7 +4,7 @@ import { addNewList, clearErrors } from '../../actions/list_actions';
 import { closeModal } from '../../actions/modal_actions';
 import ListForm from './list_form';
 
-const mapStateToProps = ({ session, errors }) => {
+const mapStateToProps = ({ entities, session, errors }) => {
   return {
     currentUser: session.currentUser,
     errors: errors.lists,
@@ -13,7 +13,7 @@ const mapStateToProps = ({ session, errors }) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    processForm: (list) => dispatch(addNewList(list)),
+    processForm: (formList) => dispatch(addNewList(formList)),
     closeModal: () => dispatch(closeModal()),
     clearErrors: (errors) => dispatch(clearErrors(errors))
   };

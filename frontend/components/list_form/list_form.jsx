@@ -8,8 +8,7 @@ class ListForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      user_id: this.props.currentUser.id
+      name: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -26,8 +25,8 @@ class ListForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const list = Object.assign({}, this.state);
-    this.props.processForm(list).then(this.props.closeModal);
+    const formList = Object.assign({}, this.state);
+    this.props.processForm(formList).then(this.props.closeModal);
   }
 
   renderErrors() {

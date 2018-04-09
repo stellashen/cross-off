@@ -25,9 +25,9 @@ export const removeList = list => ({
   list
 });
 
-export const addNewList = list => dispatch => (
-  APIUtil.addList(list).then(formList => (
-    dispatch(receiveList(formList))
+export const addNewList = formList => dispatch => (
+  APIUtil.addList(formList).then(list => (
+    dispatch(receiveList(list))
   ), err => (
     dispatch(receiveListErrors(err.responseJSON))
   ))
