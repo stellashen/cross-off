@@ -7,10 +7,16 @@ import solids from '@fortawesome/fontawesome-free-solid';
 export default class List extends React.Component {
   constructor(props) {
     super(props);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchLists();
+  }
+
+  handleDelete(id) {
+    this.props.deleteList(id);
+    this.setState({ lists: this.props.fetchLists() });
   }
 
   renderLists() {
@@ -18,7 +24,10 @@ export default class List extends React.Component {
     return lists.map((list, idx) => (
       <li key={`${idx}${list.name}`} className="list">
         <span>{list.name}</span>
-        <span className="list-delete"><FontAwesomeIcon icon='trash-alt'/></span>
+        <span className="list-delete"
+              onClick={() => this.handleDelete(list.id)}>
+          <FontAwesomeIcon icon='trash-alt'/>
+        </span>
         <span className="list-edit"><FontAwesomeIcon icon='edit'/></span>
       </li>
     ));

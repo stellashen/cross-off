@@ -13,6 +13,14 @@ export const deleteList = id => (
   })
 );
 
+export const updateList = list => (
+  $.ajax({
+    method: 'PATCH',
+    url: `/api/lists/${list.id}`,
+    data: { list }
+  })
+);
+
 export const fetchLists = () => (
   $.ajax({
     method: 'GET',

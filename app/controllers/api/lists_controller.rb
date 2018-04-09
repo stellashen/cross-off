@@ -8,7 +8,7 @@ class Api::ListsController < ApplicationController
 
   def show
     @list = current_user.lists.find(params[:id])
-    render "api/lists/show"
+    render :show
   end
 
   def create
@@ -16,7 +16,7 @@ class Api::ListsController < ApplicationController
     @list.user_id = current_user.id
 
     if @list.save
-      render "api/lists/show"
+      render :show
     else
       render json: @list.errors.full_messages, status: 422
     end
@@ -24,17 +24,22 @@ class Api::ListsController < ApplicationController
 
   def update
     @list = current_user.lists.find(params[:id])
+
     if @list.update(list_params)
-      render "api/lists/show"
+      render :show
     else
       render json: @list.errors.full_messages, status: 422
     end
   end
 
   def destroy
-    list = current_user.lists.find(params[:id])
-    list.destroy
-    render "api/lists/index"
+    @list = current_user.lists.find(params[:id])
+
+    if @list.destroy
+      render :show
+    else
+      render json: @list.errors.full_messages, status: 422
+    end
   end
 
   private
