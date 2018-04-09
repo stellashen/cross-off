@@ -30,3 +30,19 @@ export const addNewList = list => dispatch => (
 export const clearErrors = () => dispatch => (
   dispatch(receiveListErrors([]))
 );
+
+export const fetchSpots = () => dispatch => (
+  APIUtil.fetchLists().then(lists => (
+    dispatch(receiveLists(lists))
+  ), err => (
+    dispatch(receiveListErrors(err.responseJSON))
+  ))
+);
+
+export const fetchSpot = (id) => dispatch => (
+  APIUtil.fetchList(id).then(list => (
+    dispatch(receiveLists(list))
+  ), err => (
+    dispatch(receiveListErrors(err.responseJSON))
+  ))
+);

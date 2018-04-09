@@ -5,3 +5,17 @@ export const addList = list => (
     data: { list }
   })
 );
+
+export const fetchLists = () => (
+  $.ajax({
+    method: 'GET',
+    url: '/api/lists',
+  })
+);
+
+export const fetchList = id => (
+  $.ajax({
+    method: 'GET',
+    url: `/api/lists/${id}`,
+  })
+);
