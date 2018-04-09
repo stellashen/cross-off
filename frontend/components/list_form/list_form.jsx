@@ -24,7 +24,6 @@ class ListForm extends React.Component {
     e.preventDefault();
     const formList = Object.assign({}, this.state);
     this.props.processForm(formList).then(this.props.closeModal);
-    this.props.history.push(`/lists`);
   }
 
   renderErrors() {
@@ -51,7 +50,7 @@ class ListForm extends React.Component {
         <form onSubmit={this.handleSubmit} className="list-form-box">
           <div className="list-form-body">
             <br/>
-            <input type="text"
+            <input autoFocus type="text"
               value={this.state.name}
               onChange={this.update('name')}
               className="list-form-input"

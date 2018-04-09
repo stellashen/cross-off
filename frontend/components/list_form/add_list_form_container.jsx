@@ -6,7 +6,6 @@ import ListForm from './list_form';
 
 const mapStateToProps = (state) => {
   return {
-    currentUser: state.session.currentUser,
     errors: state.errors.lists,
     formType: 'Add New List',
     list: { name: '' }

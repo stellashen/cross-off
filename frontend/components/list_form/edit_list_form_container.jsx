@@ -6,17 +6,9 @@ import ListForm from './list_form';
 import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state, ownProps) => {
-  // const defaultList = { name: '' };
-  // const list = state.entities.lists[ownProps.match.params.listId]
-  //             || defaultList;
   const list = state.entities.lists[ownProps.listId];
-  console.log(list);
-  console.log(ownProps.listId);
-  // console.log(ownProps.match.params.listId);
-  console.log(state.entities.lists);
   const formType = 'Edit List';
   return {
-    currentUser: state.session.currentUser,
     errors: state.errors.lists,
     formType: formType,
     list: list
@@ -31,4 +23,6 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ListForm));
+export default withRouter(connect(
+  mapStateToProps, mapDispatchToProps
+)(ListForm));
