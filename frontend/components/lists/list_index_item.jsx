@@ -13,6 +13,7 @@ export default class ListIndexItem extends React.Component {
 
   componentDidMount() {
     this.props.fetchTasks();
+    this.props.fetchList();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -23,11 +24,12 @@ export default class ListIndexItem extends React.Component {
     }
   }
 
-  renderTasks(tasks) {
-    if (!tasks) return null;
-    const tasksArray = Object.values(tasks);
+  renderTasks(tasksIds) {
+    if (!tasksIds) return null;
+    const taskIdsArray = tasksIds.map(idHash => idHash["id"]);
+    const tasks = taskIdsArray.map(taskId => this.props.tasks[taskId]);
 
-    return tasksArray.map((task, idx) => (
+    return tasks.map((task, idx) => (
       <li key={`${task.id}${task.title}`} className="task">
         <span>{task.title}</span>
         <span className="list-delete">
@@ -50,7 +52,7 @@ export default class ListIndexItem extends React.Component {
 
         <div className="tasks">
           <ul>
-            {this.renderTasks(list.tasks)}
+            {this.renderTasks(list.tasksIds)}
           </ul>
         </div>
       </div>
