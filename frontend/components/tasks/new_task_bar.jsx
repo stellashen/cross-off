@@ -23,8 +23,7 @@ class NewTaskBar extends React.Component {
   }
 
   emptyInput(field) {
-    console.log("I am trying to empty input for you");
-    return e => this.setState((state) => ({
+    return this.setState((state) => ({
       [field]: ''
     }));
   }
