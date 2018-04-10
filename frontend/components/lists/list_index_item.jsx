@@ -27,6 +27,14 @@ export default class ListIndexItem extends React.Component {
     }
   }
 
+  handleCheckBox(e) {
+    if (e.target.checked) {
+      console.log("checked!great");
+    } else {
+      console.log("unchecked!also good");
+    }
+  }
+
   renderTasks(tasksIds) {
     if (!tasksIds) return null;
     const taskIdsArray = tasksIds.map(idHash => idHash["id"]);
@@ -34,14 +42,21 @@ export default class ListIndexItem extends React.Component {
 
     if (!tasks) return null;
 
-    return tasks.map((task, idx) => (
-      <li key={`${task.id}${task.title}`} className="task">
-        <span>{task.title}</span>
-        <span className="list-delete">
-          <FontAwesomeIcon icon='trash-alt'/>
-        </span>
-      </li>
-    ));
+    return tasks.map((task, idx) => {
+      return (
+        <li key={`${task.id}${task.title}`} className="task">
+          <input id={`taskCheckBox${task.id}`} type="checkbox"
+                 onChange={this.handleCheckBox} />
+          <label htmlFor={`taskCheckBox${task.id}`}>
+            <span>{task.title}</span>
+          </label>
+
+          <span className="list-delete">
+            <FontAwesomeIcon icon='trash-alt'/>
+          </span>
+        </li>
+      );
+    });
   }
 
   render() {
