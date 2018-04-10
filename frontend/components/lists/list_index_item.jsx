@@ -11,9 +11,9 @@ export default class ListIndexItem extends React.Component {
     this.state = this.props.list;
   }
 
-  // componentDidMount() {
-  //   this.props.fetchTasks();
-  // }
+  componentDidMount() {
+    this.props.fetchTasks();
+  }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.match.params.listId !== nextProps.match.params.listId) {

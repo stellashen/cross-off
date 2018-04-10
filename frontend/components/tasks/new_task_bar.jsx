@@ -30,8 +30,8 @@ class NewTaskBar extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const formList = Object.assign({}, this.state);
-    this.props.processForm(formList);
+    const formTask = Object.assign({}, this.state);
+    this.props.processForm(formTask);
     this.emptyInput('title');
   }
 
