@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import React from 'react';
-import { fetchTasks, clearErrors } from '../../actions/task_actions';
+import { fetchTasks, clearErrors, deleteTask } from '../../actions/task_actions';
 import { fetchList } from '../../actions/list_actions';
 import ListIndexItem from './list_index_item';
 import { withRouter } from 'react-router-dom';
@@ -20,7 +20,8 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchList: (id) => dispatch(fetchList(id)),
     fetchTasks: () => dispatch(fetchTasks()),
-    clearErrors: (errors) => dispatch(clearErrors(errors))
+    clearErrors: (errors) => dispatch(clearErrors(errors)),
+    deleteTask: (id) => dispatch(deleteTask(id)),
   };
 };
 

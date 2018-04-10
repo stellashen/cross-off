@@ -41,6 +41,12 @@ export default class ListIndexItem extends React.Component {
     };
   }
 
+  handleTrash(task) {
+    return e => {
+      this.props.deleteTask(task.id);
+    };
+  }
+
   renderTasks(tasksIds) {
     if (!tasksIds) return null;
     const taskIdsArray = tasksIds.map(idHash => idHash["id"]);
@@ -59,7 +65,7 @@ export default class ListIndexItem extends React.Component {
             <span>{task.title}</span>
           </label>
 
-          <span className="list-delete">
+          <span className="list-delete" onClick={this.handleTrash(task)}>
             <FontAwesomeIcon icon='trash-alt'/>
           </span>
         </li>
