@@ -43,7 +43,7 @@ class NewTaskBar extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (this.props.match.params.listId !== nextProps.match.params.listId) {
-      this.setState({["list_id"]: this.props.list.id});
+      this.setState((state) => ({["list_id"]: nextProps.match.params.listId}));
     }
   }
 
