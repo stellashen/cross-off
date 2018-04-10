@@ -9,15 +9,15 @@ export default class ListIndexItem extends React.Component {
     super(props);
   }
 
-  // componentDidMount() {
-  //   this.props.fetchList(this.props.match.params.listId);
-  // }
-  //
-  // componentWillReceiveProps(nextProps) {
-  //   if (this.props.match.params.listId !== nextProps.match.params.listId) {
-  //     this.props.fetchList(nextProps.match.params.listId);
-  //   }
-  // }
+  componentDidMount() {
+    this.props.fetchList(this.props.match.params.listId);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.match.params.listId !== nextProps.match.params.listId) {
+      this.props.fetchList(nextProps.match.params.listId);
+    }
+  }
 
   renderTasks() {
     const { list } = this.props;
