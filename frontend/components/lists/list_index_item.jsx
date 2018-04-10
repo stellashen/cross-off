@@ -13,7 +13,7 @@ export default class ListIndexItem extends React.Component {
 
   componentDidMount() {
     this.props.fetchTasks();
-    this.props.fetchList();
+    this.props.fetchList(this.props.match.params.listId);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -22,12 +22,17 @@ export default class ListIndexItem extends React.Component {
         ["id"]: nextProps.match.params.listId
       }));
     }
+    else if (nextProps.tasks !== this.props.tasks) {
+      //
+    }
   }
 
   renderTasks(tasksIds) {
     if (!tasksIds) return null;
     const taskIdsArray = tasksIds.map(idHash => idHash["id"]);
     const tasks = taskIdsArray.map(taskId => this.props.tasks[taskId]);
+
+    if (!tasks) return null;
 
     return tasks.map((task, idx) => (
       <li key={`${task.id}${task.title}`} className="task">
