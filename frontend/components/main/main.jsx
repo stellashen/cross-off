@@ -1,12 +1,20 @@
 import React from 'react';
-import NewTaskBarContainer from '../tasks/new_task_bar_container';
-import ListIndexContainer from '../lists/List_index_container';
 
 export default () => {
   return (
     <div className="main">
-      <NewTaskBarContainer />
-      <Route path="/lists/:listId" component={ListIndexContainer} />
+      <h1>Add a new list:</h1>
+      <br/>
+      <h4>Click <p className="strong">"Add New List"</p> on the left side.</h4>
+      <br/>
+      <h1>Add/View your tasks:</h1>
+      <br/>
+      <h4>Click the <p className="strong">list name</p> on the left side, to </h4>
+      <br/>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h4>- add tasks to that list, </h4>
+      <br/>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h4>- or view tasks under that list.</h4>
+
     </div>
   );
 };
