@@ -6,7 +6,7 @@ import solids from '@fortawesome/fontawesome-free-solid';
 class NewTaskBar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.list;
+    this.state = this.props.task;
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -40,8 +40,8 @@ class NewTaskBar extends React.Component {
 
   render() {
     return (
-      <div className="list-form-container">
-        <form onSubmit={this.handleSubmit} className="list-form-box">
+      <div className="list-form-container new-task-bar-container">
+        <form onSubmit={this.handleSubmit} className="list-form-box new-task-bar">
           <div className="list-form-body">
             <input type="text"
               value={this.state.title}
