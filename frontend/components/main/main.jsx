@@ -7,7 +7,7 @@ export default () => {
       <br/>
       <h4>Click <p className="strong">"Add New List"</p> on the left side.</h4>
       <br/>
-      <h1>Add/View your tasks:</h1>
+      <h1>(doesn't work yet) Add/View your tasks:</h1>
       <br/>
       <h4>Click the <p className="strong">list name</p> on the left side, to </h4>
       <br/>
