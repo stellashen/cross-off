@@ -27,12 +27,16 @@ export default class ListIndexItem extends React.Component {
     }
   }
 
-  handleCheckBox(e) {
-    if (e.target.checked) {
-      console.log("checked!great");
-    } else {
-      console.log("unchecked!also good");
-    }
+  handleCheckBox(task) {
+    return e => {
+      if (e.target.checked) {
+        task.completed = true;
+        console.log("checked!great");
+      } else {
+        task.completed = false;
+        console.log("unchecked!also good");
+      }
+    };
   }
 
   renderTasks(tasksIds) {
@@ -43,11 +47,14 @@ export default class ListIndexItem extends React.Component {
     if (!tasks) return null;
 
     return tasks.map((task, idx) => {
+      let labelStyle={
+        'textDecoration': task.completed? 'line-through':''
+      };
       return (
         <li key={`${task.id}${task.title}`} className="task">
           <input id={`taskCheckBox${task.id}`} type="checkbox"
-                 onChange={this.handleCheckBox} />
-          <label htmlFor={`taskCheckBox${task.id}`}>
+                 onChange={this.handleCheckBox(task)} />
+               <label htmlFor={`taskCheckBox${task.id}`} style={labelStyle}>
             <span>{task.title}</span>
           </label>
 
