@@ -2,19 +2,19 @@ class Api::TasksController < ApplicationController
   before_action :require_logged_in
 
   def index
-    @tasks = current_list.tasks
+    @tasks = current_user.tasks
     render :index
   end
 
   def show
-    @task = current_list.tasks.find(params[:id])
+    @task = current_user.tasks.find(params[:id])
     render :show
   end
 
   def create
     @task = Task.new(task_params)
-    @task.user_id = current_user.id
-    @task.list_id = current_list.id
+    @task.completed = false
+    @task.trash = false
 
     if @task.save
       render :show
@@ -24,7 +24,7 @@ class Api::TasksController < ApplicationController
   end
 
   def update
-    @task = current_list.tasks.find(params[:id])
+    @task = current_user.tasks.find(params[:id])
 
     if @task.update(task_params)
       render :show
@@ -34,7 +34,7 @@ class Api::TasksController < ApplicationController
   end
 
   def destroy
-    @task = current_list.tasks.find(params[:id])
+    @task = current_user.tasks.find(params[:id])
 
     if @task.destroy
       render :show
@@ -45,12 +45,8 @@ class Api::TasksController < ApplicationController
 
   private
 
-  def current_list
-    current_user.lists.find(params[:list_id])
-  end
-
   def task_params
-    params.permit(:task)
-    .permit(:title, :description, :completed, :trash, :due_date)
+    params.require(:task).permit(:title, :description, :completed,
+                                :trash, :due_date, :list_id, :user_id)
   end
 end

@@ -8,6 +8,7 @@ export default class List extends React.Component {
   constructor(props) {
     super(props);
     this.handleOpenModal = this.handleOpenModal.bind(this);
+    // this.handleShowList = this.handleShowList.bind(this);
   }
 
   componentDidMount() {
@@ -18,15 +19,23 @@ export default class List extends React.Component {
     this.props.openModal(modalName, listId);
   }
 
+  // handleShowList(listId) {
+  //
+  // }
+
   renderLists() {
     const lists = Object.values(this.props.lists);
     return lists.map((list, idx) => (
       <li key={`${idx}${list.name}`} className="list">
-        <span>{list.name}</span>
+        <Link to={`/lists/${list.id}`}>
+          <span>{list.name}</span>
+        </Link>
+
         <span className="list-delete"
               onClick={() => this.handleOpenModal('deleteList', list.id)}>
           <FontAwesomeIcon icon='trash-alt'/>
         </span>
+        
         <span className="list-edit"
               onClick={() => this.handleOpenModal('editListForm', list.id)}>
           <FontAwesomeIcon icon='edit'/>
