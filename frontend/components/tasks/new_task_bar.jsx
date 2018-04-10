@@ -25,12 +25,24 @@ class NewTaskBar extends React.Component {
     e.preventDefault();
     const formList = Object.assign({}, this.state);
     this.props.processForm(formList);
-    this.state = this.props.task;
+    this.state = {
+      title: '',
+      description: '',
+      due_date: '',
+      list_id: this.props.list.id,
+      user_id: this.props.currentUser.id
+    };
   }
 
   handleKeyPress(e) {
     if(e.key == 'Enter'){
       this.handleSubmit(e);
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.match.params.listId !== nextProps.match.params.listId) {
+      this.state = this.props.task;
     }
   }
 

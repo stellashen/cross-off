@@ -7,6 +7,7 @@ import { withRouter } from 'react-router-dom';
 const mapStateToProps = (state, ownProps) => {
   const list = state.entities.lists[ownProps.match.params.listId];
   return {
+    currentUser: state.session.currentUser,
     errors: state.errors.tasks,
     list: list,
     task: {
