@@ -65,9 +65,10 @@ export default class ListIndexItem extends React.Component {
     if (!list) return null;
     return (
       <div className="list-index-item">
-
-        <div className="list-form-container">
-          <form onSubmit={this.handleSubmit} className="list-form-box">
+        <h1>{list.name}</h1>
+        
+        <div className="list-form-container new-task-bar-container">
+          <form onSubmit={this.handleSubmit} className="list-form-box new-task-bar">
             <div className="list-form-body">
               <input type="text"
                 value={this.state.title}
@@ -82,8 +83,6 @@ export default class ListIndexItem extends React.Component {
 
         <br/>
         <div className="tasks">
-          <h1>{list.name}</h1>
-          <br/>
           <ul>
             {this.renderTasks()}
           </ul>
