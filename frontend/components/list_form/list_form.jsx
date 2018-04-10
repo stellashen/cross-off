@@ -8,6 +8,7 @@ class ListForm extends React.Component {
     super(props);
     this.state = this.props.list;
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   componentWillUnmount() {
@@ -24,6 +25,12 @@ class ListForm extends React.Component {
     e.preventDefault();
     const formList = Object.assign({}, this.state);
     this.props.processForm(formList).then(this.props.closeModal);
+  }
+
+  handleKeyPress(e) {
+    if(e.key == 'Enter'){
+      this.handleSubmit(e);
+    }
   }
 
   renderErrors() {
@@ -55,6 +62,7 @@ class ListForm extends React.Component {
               onChange={this.update('name')}
               className="list-form-input"
               placeholder="Name"
+              onKeyPress={this.handleKeyPress}
             />
             <br/>
             <div className="errors">{this.renderErrors()}</div>
