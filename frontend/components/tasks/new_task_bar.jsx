@@ -8,6 +8,7 @@ class NewTaskBar extends React.Component {
     super(props);
     this.state = this.props.task;
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   componentWillUnmount() {
@@ -23,7 +24,14 @@ class NewTaskBar extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const formList = Object.assign({}, this.state);
-    this.props.processForm(formList).then(this.props.closeModal);
+    this.props.processForm(formList);
+    this.state = this.props.task;
+  }
+
+  handleKeyPress(e) {
+    if(e.key == 'Enter'){
+      this.handleSubmit(e);
+    }
   }
 
   renderErrors() {
@@ -48,6 +56,7 @@ class NewTaskBar extends React.Component {
               onChange={this.update('title')}
               className="list-form-input"
               placeholder="Add Task: press Enter to save"
+              onKeyPress={this.handleKeyPress}
             />
             <div className="errors">{this.renderErrors()}</div>
           </div>

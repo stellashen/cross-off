@@ -6,8 +6,10 @@ import ListIndexItem from './list_index_item';
 import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state, ownProps) => {
-  const list = state.entities.lists[ownProps.match.params.listId];
+  const lists = state.entities.lists;
+  const list = lists[ownProps.match.params.listId];
   return {
+    lists: lists,
     errors: state.errors.tasks,
     list: list,
     tasks: state.tasks
