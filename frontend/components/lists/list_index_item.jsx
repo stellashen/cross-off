@@ -31,10 +31,12 @@ export default class ListIndexItem extends React.Component {
     return e => {
       if (e.target.checked) {
         task.completed = true;
-        console.log("checked!great");
+        e.target.setAttribute('checked', true);
+        e.target.parentNode.style.textDecoration = "line-through";
       } else {
         task.completed = false;
-        console.log("unchecked!also good");
+        e.target.removeAttribute('checked');
+        e.target.parentNode.style.textDecoration = "";
       }
     };
   }
@@ -47,14 +49,11 @@ export default class ListIndexItem extends React.Component {
     if (!tasks) return null;
 
     return tasks.map((task, idx) => {
-      let labelStyle={
-        'textDecoration': task.completed? 'line-through':''
-      };
       return (
         <li key={`${task.id}${task.title}`} className="task">
           <input id={`taskCheckBox${task.id}`} type="checkbox"
-                 onChange={this.handleCheckBox(task)} />
-               <label htmlFor={`taskCheckBox${task.id}`} style={labelStyle}>
+                 onChange={this.handleCheckBox(task)} />&nbsp;&nbsp;
+               <label htmlFor={`taskCheckBox${task.id}`}>
             <span>{task.title}</span>
           </label>
 
