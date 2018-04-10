@@ -12,7 +12,7 @@ const mapStateToProps = (state, ownProps) => {
     lists: lists,
     errors: state.errors.tasks,
     list: list,
-    tasks: state.tasks
+    tasks: state.entities.tasks,
   };
 };
 

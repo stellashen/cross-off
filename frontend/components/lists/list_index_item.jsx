@@ -8,6 +8,7 @@ import NewTaskBarContainer from '../tasks/new_task_bar_container';
 export default class ListIndexItem extends React.Component {
   constructor(props) {
     super(props);
+    this.state = this.props.tasks;
   }
 
   componentDidMount() {
@@ -20,16 +21,11 @@ export default class ListIndexItem extends React.Component {
   //   }
   // }
 
-  renderTasks() {
+  renderTasks(tasks) {
+    if (!tasks) return null;
+    const tasksArray = Object.values(this.props.tasks);
 
-    // const tasks = list.tasks;
-    // if (!tasks) return null;
-
-    if (!this.props.tasks) return null;
-
-    const tasks = Object.values(this.props.tasks);
-
-    return tasks.map((task, idx) => (
+    return tasksArray.map((task, idx) => (
       <li key={`${task.id}${task.title}`} className="task">
         <span>{task.title}</span>
         <span className="list-delete">
@@ -42,17 +38,17 @@ export default class ListIndexItem extends React.Component {
   render() {
     const { list } = this.props;
     if (!list) return null;
+
     return (
       <div className="list-index-item">
-        <h1>{list.name}</h1>
+        <h1 className="list-name">{list.name}</h1>
         <br/>
 
         <NewTaskBarContainer />
-
-        <br/>
+        
         <div className="tasks">
           <ul>
-            {this.renderTasks()}
+            {this.renderTasks(list.tasks)}
           </ul>
         </div>
       </div>
