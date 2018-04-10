@@ -9,6 +9,7 @@ class NewTaskBar extends React.Component {
     this.state = this.props.task;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.emptyInput = this.emptyInput.bind(this);
   }
 
   componentWillUnmount() {
@@ -21,17 +22,18 @@ class NewTaskBar extends React.Component {
     });
   }
 
+  emptyInput(field) {
+    console.log("I am trying to empty input for you");
+    return e => this.setState((state) => ({
+      [field]: ''
+    }));
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     const formList = Object.assign({}, this.state);
     this.props.processForm(formList);
-    this.state = {
-      title: '',
-      description: '',
-      due_date: '',
-      list_id: this.props.list.id,
-      user_id: this.props.currentUser.id
-    };
+    this.emptyInput('title');
   }
 
   handleKeyPress(e) {
@@ -42,7 +44,7 @@ class NewTaskBar extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (this.props.match.params.listId !== nextProps.match.params.listId) {
-      this.state = this.props.task;
+      this.setState({["list_id"]: this.props.list.id});
     }
   }
 
