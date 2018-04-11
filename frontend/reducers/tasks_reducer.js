@@ -13,15 +13,20 @@ const tasksReducer = (state = {}, action) => {
     case RECEIVE_TASKS:
       return action.tasks;
     case RECEIVE_TASK:
-      const newTask = {[action.task.id]: action.task};
-      return merge({}, state, newTask);
+      let afterState = merge({}, state);
+      if (action.task.trash) {
+        delete afterState[action.task.id];
+      } else {
+        const newTask = {[action.task.id]: action.task};
+        afterState = merge({}, state, newTask);
+      }
+      return afterState;
     case REMOVE_TASK:
       const nextState = merge({}, state);
       delete nextState[action.task.id];
       return nextState;
     case RECEIVE_LIST:
       const tasksState = action.listInfo.tasks;
-      // return merge({}, state, tasksState);
       return tasksState;
     default:
       return state;

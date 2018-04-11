@@ -8,7 +8,6 @@ import NewTaskBarContainer from '../tasks/new_task_bar_container';
 export default class ListIndexItem extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.currentList;
   }
 
   componentDidMount() {
@@ -18,9 +17,6 @@ export default class ListIndexItem extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.match.params.listId !== nextProps.match.params.listId) {
       this.props.fetchList(nextProps.match.params.listId);
-      this.setState((state) => ({
-        ["id"]: nextProps.match.params.listId
-      }));
     }
   }
 
@@ -45,27 +41,28 @@ export default class ListIndexItem extends React.Component {
     };
   }
 
-  renderTasks(tasks) {
-    return <div>Tasks</div>;
-    // if (!tasks) return null;
-    // return tasks.map((task, idx) => {
-    //   if (!task || task.completed === true) {
-    //     return null;
-    //   }
-    //   return (
-    //     <li key={`${task.id}${task.title}`} className="task">
-    //       <input id={`taskCheckBox${task.id}`} type="checkbox"
-    //              onChange={this.handleCheckBox(task)} />&nbsp;&nbsp;
-    //            <label htmlFor={`taskCheckBox${task.id}`}>
-    //         <span>{task.title}</span>
-    //       </label>
-    //
-    //       <span className="list-delete" onClick={this.handleTrash(task)}>
-    //         <FontAwesomeIcon icon='trash-alt'/>
-    //       </span>
-    //     </li>
-    //   );
-    // });
+  renderTasks(tasksHash) {
+    const tasks = Object.values(tasksHash);
+
+    if (!tasks) return null;
+    return tasks.map((task, idx) => {
+      if (!task || task.completed === true) {
+        return null;
+      }
+      return (
+        <li key={`${task.id}${task.title}`} className="task">
+          <input id={`taskCheckBox${task.id}`} type="checkbox"
+                 onChange={this.handleCheckBox(task)} />&nbsp;&nbsp;
+               <label htmlFor={`taskCheckBox${task.id}`}>
+            <span>{task.title}</span>
+          </label>
+
+          <span className="list-delete" onClick={this.handleTrash(task)}>
+            <FontAwesomeIcon icon='trash-alt'/>
+          </span>
+        </li>
+      );
+    });
   }
 
   render() {
