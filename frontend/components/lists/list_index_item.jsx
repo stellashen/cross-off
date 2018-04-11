@@ -46,18 +46,11 @@ export default class ListIndexItem extends React.Component {
 
   renderTasks(tasksIds) {
     if (!tasksIds) return null;
-    const taskIdsArray = tasksIds.map(idHash => idHash["id"]);
-
-    if (!taskIdsArray) return null;
-
-    if (Object.keys(this.props.tasks).length === 0) return null;
-
-    const tasks = taskIdsArray.map(taskId => this.props.tasks[taskId]);
-
+    const tasks = tasksIds.map(taskId => this.props.tasks[taskId]);
     if (Object.keys(tasks).length === 0) return null;
 
     return tasks.map((task, idx) => {
-      if (task.completed === true) {
+      if (!task || task.completed === true) {
         return null;
       }
       return (
