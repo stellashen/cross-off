@@ -8,6 +8,7 @@ class Api::ListsController < ApplicationController
 
   def show
     @list = current_user.lists.find(params[:id])
+    @tasks = @list.tasks
     render :show
   end
 

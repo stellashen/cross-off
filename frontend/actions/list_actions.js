@@ -6,8 +6,8 @@ export const RECEIVE_LIST_ERRORS = 'RECEIVE_LIST_ERRORS';
 export const REMOVE_LIST = "REMOVE_LIST";
 
 export const addNewList = formList => dispatch => (
-  APIUtil.addList(formList).then(list => (
-    dispatch(receiveList(list))
+  APIUtil.addList(formList).then(listInfo => (
+    dispatch(receiveList(listInfo))
   ), err => (
     dispatch(receiveListErrors(err.responseJSON))
   ))
@@ -26,8 +26,8 @@ export const fetchLists = () => dispatch => (
 );
 
 export const fetchList = (id) => dispatch => (
-  APIUtil.fetchList(id).then(list => (
-    dispatch(receiveList(list))
+  APIUtil.fetchList(id).then(listInfo => (
+    dispatch(receiveList(listInfo))
   ), err => (
     dispatch(receiveListErrors(err.responseJSON))
   ))
@@ -42,8 +42,8 @@ export const deleteList = (listId) => dispatch => (
 );
 
 export const editList = (list) => dispatch => (
-  APIUtil.updateList(list).then(updatedList => (
-    dispatch(receiveList(updatedList))
+  APIUtil.updateList(list).then(updatedListInfo => (
+    dispatch(receiveList(updatedListInfo))
   ), err => (
     dispatch(receiveListErrors(err.responseJSON))
   ))
@@ -54,9 +54,9 @@ export const receiveLists = lists => ({
   lists
 });
 
-export const receiveList = list => ({
+export const receiveList = listInfo => ({
   type: RECEIVE_LIST,
-  list
+  listInfo
 });
 
 export const receiveListErrors = errors => ({

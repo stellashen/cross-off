@@ -7,13 +7,12 @@ import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state, ownProps) => {
   const lists = state.entities.lists;
-  const list = lists[ownProps.match.params.listId];
+  const currentList = lists[ownProps.match.params.listId];
   // let [completed, incomplete] = selector(state)
   return {
-    lists: lists,
+    lists,
+    currentList,
     errors: state.errors.tasks,
-    list: list,
-    tasks: state.entities.tasks,
   };
 };
 

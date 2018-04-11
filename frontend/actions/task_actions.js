@@ -68,8 +68,3 @@ export const removeTask = task => ({
   type: REMOVE_TASK,
   task
 });
-
-export const moveTaskToTrash = task => ({
-  type: TRASH_TASK,
-  task
-});
