@@ -8,16 +8,16 @@ import NewTaskBarContainer from '../tasks/new_task_bar_container';
 export default class ListIndexItem extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.list;
+    this.state = this.props.currentList;
   }
 
   componentDidMount() {
-    this.props.fetchTasks(false);
     this.props.fetchList(this.props.match.params.listId);
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.match.params.listId !== nextProps.match.params.listId) {
+      this.props.fetchList(nextProps.match.params.listId);
       this.setState((state) => ({
         ["id"]: nextProps.match.params.listId
       }));
@@ -45,45 +45,43 @@ export default class ListIndexItem extends React.Component {
     };
   }
 
-  renderTasks(tasksIds) {
-    if (!tasksIds) return null;
-    const tasks = tasksIds.map(taskId => this.props.tasks[taskId]);
-    if (Object.keys(tasks).length === 0) return null;
-
-    return tasks.map((task, idx) => {
-      if (!task || task.completed === true) {
-        return null;
-      }
-      return (
-        <li key={`${task.id}${task.title}`} className="task">
-          <input id={`taskCheckBox${task.id}`} type="checkbox"
-                 onChange={this.handleCheckBox(task)} />&nbsp;&nbsp;
-               <label htmlFor={`taskCheckBox${task.id}`}>
-            <span>{task.title}</span>
-          </label>
-
-          <span className="list-delete" onClick={this.handleTrash(task)}>
-            <FontAwesomeIcon icon='trash-alt'/>
-          </span>
-        </li>
-      );
-    });
+  renderTasks(tasks) {
+    return <div>Tasks</div>;
+    // if (!tasks) return null;
+    // return tasks.map((task, idx) => {
+    //   if (!task || task.completed === true) {
+    //     return null;
+    //   }
+    //   return (
+    //     <li key={`${task.id}${task.title}`} className="task">
+    //       <input id={`taskCheckBox${task.id}`} type="checkbox"
+    //              onChange={this.handleCheckBox(task)} />&nbsp;&nbsp;
+    //            <label htmlFor={`taskCheckBox${task.id}`}>
+    //         <span>{task.title}</span>
+    //       </label>
+    //
+    //       <span className="list-delete" onClick={this.handleTrash(task)}>
+    //         <FontAwesomeIcon icon='trash-alt'/>
+    //       </span>
+    //     </li>
+    //   );
+    // });
   }
 
   render() {
-    const { list } = this.props;
-    if (!list) return null;
+    const { currentList, tasks } = this.props;
+    if (!currentList) return null;
 
     return (
       <div className="list-index-item">
-        <h1 className="list-name">{list.name}</h1>
+        <h1 className="list-name">{currentList.name}</h1>
         <br/>
 
         <NewTaskBarContainer />
 
         <div className="tasks">
           <ul>
-            {this.renderTasks(list.tasksIds)}
+            {this.renderTasks(tasks)}
           </ul>
         </div>
       </div>

@@ -13,8 +13,7 @@ const listsReducer = (state = {}, action) => {
       return action.lists;
     case RECEIVE_LIST:
       const newList = {[action.listInfo.list.id]: action.listInfo.list};
-      const tasksState = action.listInfo.tasks;
-      return merge({}, state, newList, tasksState);
+      return merge({}, state, newList);
     case REMOVE_LIST:
       const nextState = merge({}, state);
       delete nextState[action.listId];
