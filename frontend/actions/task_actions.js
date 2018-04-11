@@ -35,7 +35,7 @@ export const fetchTask = (id) => dispatch => (
 
 export const deleteTask = (taskId) => dispatch => (
   APIUtil.deleteTask(taskId).then((task) => (
-    dispatch(removeTask(task.id))
+    dispatch(removeTask(task))
   ), err => (
     dispatch(receiveTaskErrors(err.responseJSON))
   ))
@@ -64,7 +64,7 @@ export const receiveTaskErrors = errors => ({
   errors
 });
 
-export const removeTask = taskId => ({
+export const removeTask = task => ({
   type: REMOVE_TASK,
-  taskId
+  task
 });
