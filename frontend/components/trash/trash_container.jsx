@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import React from 'react';
-import { fetchTasks, clearErrors, editTask } from '../../actions/task_actions';
+import { fetchTasks, clearErrors, deleteTask } from '../../actions/task_actions';
 import { fetchList } from '../../actions/list_actions';
-import ListIndexItem from './list_index_item';
+import Trash from './trash';
 import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state, ownProps) => {
@@ -22,10 +22,10 @@ const mapDispatchToProps = dispatch => {
     fetchList: (id) => dispatch(fetchList(id)),
     fetchTasks: (flag) => dispatch(fetchTasks(flag)),
     clearErrors: (errors) => dispatch(clearErrors(errors)),
-    editTask: (task) => dispatch(editTask(task)),
+    deleteTask: (id) => dispatch(deleteTask(id)),
   };
 };
 
 export default withRouter(connect(
   mapStateToProps, mapDispatchToProps
-)(ListIndexItem));
+)(Trash));

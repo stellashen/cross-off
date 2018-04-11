@@ -2,7 +2,13 @@ class Api::TasksController < ApplicationController
   before_action :require_logged_in
 
   def index
-    @tasks = current_user.tasks
+    trash = params[:isTrashed]
+    all_tasks = current_user.tasks
+    if trash == "false"
+      @tasks = all_tasks.where("trash = 'false'")
+    else
+      @tasks = all_tasks.where("trash = 'true'")
+    end
     render :index
   end
 

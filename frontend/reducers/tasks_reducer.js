@@ -2,7 +2,8 @@ import merge from 'lodash/merge';
 import {
   RECEIVE_TASKS,
   RECEIVE_TASK,
-  REMOVE_TASK
+  REMOVE_TASK,
+  TRASH_TASK
 } from '../actions/task_actions';
 
 const tasksReducer = (state = {}, action) => {

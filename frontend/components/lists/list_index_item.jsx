@@ -12,7 +12,7 @@ export default class ListIndexItem extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchTasks();
+    this.props.fetchTasks(false);
     this.props.fetchList(this.props.match.params.listId);
   }
 
@@ -40,7 +40,8 @@ export default class ListIndexItem extends React.Component {
 
   handleTrash(task) {
     return e => {
-      this.props.deleteTask(task.id);
+      task.trash = true;
+      this.props.editTask(task);
     };
   }
 

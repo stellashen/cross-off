@@ -17,8 +17,8 @@ export const clearErrors = () => dispatch => (
   dispatch(receiveTaskErrors([]))
 );
 
-export const fetchTasks = () => dispatch => (
-  APIUtil.fetchTasks().then(tasks => (
+export const fetchTasks = (isTrashed) => dispatch => (
+  APIUtil.fetchTasks(isTrashed).then(tasks => (
     dispatch(receiveTasks(tasks))
   ), err => (
     dispatch(receiveTaskErrors(err.responseJSON))
@@ -66,5 +66,10 @@ export const receiveTaskErrors = errors => ({
 
 export const removeTask = task => ({
   type: REMOVE_TASK,
+  task
+});
+
+export const moveTaskToTrash = task => ({
+  type: TRASH_TASK,
   task
 });

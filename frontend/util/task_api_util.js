@@ -21,10 +21,11 @@ export const updateTask = task => (
   })
 );
 
-export const fetchTasks = () => (
+export const fetchTasks = (isTrashed) => (
   $.ajax({
     method: 'GET',
     url: '/api/tasks',
+    data: { isTrashed: isTrashed }
   })
 );
 
