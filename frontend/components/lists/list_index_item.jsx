@@ -56,9 +56,10 @@ export default class ListIndexItem extends React.Component {
 
     if (Object.keys(tasks).length === 0) return null;
 
-    const incompleteTasks = tasks.filter(task => task.completed === false);
-
-    return incompleteTasks.map((task, idx) => {
+    return tasks.map((task, idx) => {
+      if (task.completed === true) {
+        return null;
+      }
       return (
         <li key={`${task.id}${task.title}`} className="task">
           <input id={`taskCheckBox${task.id}`} type="checkbox"
