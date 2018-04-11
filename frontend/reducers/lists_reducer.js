@@ -4,6 +4,7 @@ import {
   RECEIVE_LIST,
   REMOVE_LIST
 } from '../actions/list_actions';
+import {RECEIVE_TASK} from '../actions/task_actions';
 
 const listsReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -17,6 +18,11 @@ const listsReducer = (state = {}, action) => {
       const nextState = merge({}, state);
       delete nextState[action.listId];
       return nextState;
+    case RECEIVE_TASK:
+      const listId = action.task.list_id;
+      const newState = merge({}, state);
+      newState[listId]["tasksIds"].push({id: action.task.id});
+      return newState;
     default:
       return state;
   }

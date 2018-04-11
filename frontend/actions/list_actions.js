@@ -27,7 +27,7 @@ export const fetchLists = () => dispatch => (
 
 export const fetchList = (id) => dispatch => (
   APIUtil.fetchList(id).then(list => (
-    dispatch(receiveLists(list))
+    dispatch(receiveList(list))
   ), err => (
     dispatch(receiveListErrors(err.responseJSON))
   ))

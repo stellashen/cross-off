@@ -22,9 +22,6 @@ export default class ListIndexItem extends React.Component {
         ["id"]: nextProps.match.params.listId
       }));
     }
-    else if (nextProps.tasks !== this.props.tasks) {
-      //
-    }
   }
 
   handleCheckBox(task) {
@@ -50,9 +47,14 @@ export default class ListIndexItem extends React.Component {
   renderTasks(tasksIds) {
     if (!tasksIds) return null;
     const taskIdsArray = tasksIds.map(idHash => idHash["id"]);
+
+    if (!taskIdsArray) return null;
+
+    if (Object.keys(this.props.tasks).length === 0) return null;
+
     const tasks = taskIdsArray.map(taskId => this.props.tasks[taskId]);
 
-    if (!tasks) return null;
+    if (Object.keys(tasks).length === 0) return null;
 
     const incompleteTasks = tasks.filter(task => task.completed === false);
 
