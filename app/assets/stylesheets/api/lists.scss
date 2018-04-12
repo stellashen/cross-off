@@ -131,6 +131,16 @@
   margin-top: 10px;
 }
 
-.trash {
-  margin-top: 80px;
+.trash-todos {
+  margin-top: 140px;
+}
+
+.trash-warning {
+  position: absolute;
+  left: 300px;
+  top: 80px;
+
+  p {
+    display: inline;
+  }
 }

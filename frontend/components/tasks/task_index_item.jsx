@@ -25,8 +25,12 @@ export default class TaxIndexItem extends React.Component {
 
   handleTrash(task) {
     return e => {
-      task.trash = true;
-      this.props.editTask(task);
+      if (this.props.taskType === 'trash') {
+        this.props.deleteTask(task.id);
+      } else {
+        task.trash = true;
+        this.props.editTask(task);
+      }
     };
   }
 

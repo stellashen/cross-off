@@ -17,7 +17,7 @@ export default class Trash extends React.Component {
   renderTodos(todos) {
     if (!todos) return null;
     return (
-      <div className="todos trash">
+      <div className="todos trash-todos">
         <h4 className="todos-heading">Todos:</h4>
         <TaskIndexContainer tasks={todos} taskType='trash'/>
       </div>
@@ -42,6 +42,11 @@ export default class Trash extends React.Component {
     return (
       <div className="list-index-item">
         <h1 className="list-name">Trash</h1>
+        <span className="trash-warning">
+          <p>Click</p>&nbsp;&nbsp;
+          <FontAwesomeIcon icon='trash-alt'/>&nbsp;&nbsp;
+          <p>on this page to permanently remove task.</p>
+          </span>
         {this.renderTodos(tasks.todos)}
         {this.renderCompleted(tasks.completed)}
       </div>
