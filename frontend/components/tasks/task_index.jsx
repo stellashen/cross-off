@@ -10,7 +10,7 @@ export default class TaskIndex extends React.Component {
   renderTasks(tasks) {
     return tasks.map((task, idx) => {
       return (
-        <li key={`${task.id}${task.title}`} className="task">
+        <li key={`${idx}${task.id}${task.title}`} className="task">
           <TaskIndexItemContainer task={task} taskType={this.props.taskType} />
         </li>
       );
@@ -19,7 +19,7 @@ export default class TaskIndex extends React.Component {
 
   render() {
     const tasks = Object.values(this.props.tasks);
-    if (!tasks) return null;
+    if (Object.keys(tasks).length === 0) return null;
     return (
       <div className="tasks">
         <ul>

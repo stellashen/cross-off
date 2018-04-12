@@ -42,8 +42,10 @@ export default class TaskIndexItem extends React.Component {
 
     return (
       <div>
-        <input id={`taskCheckBox${task.id}`} type="checkbox"
-               onChange={this.handleCheckBox(task)} />&nbsp;&nbsp;
+        <input
+          id={`taskCheckBox${task.id}`}
+          type="checkbox"
+          onChange={this.handleCheckBox(task)} />&nbsp;&nbsp;
              <label htmlFor={`taskCheckBox${task.id}`}>
           <span>{task.title}</span>
         </label>

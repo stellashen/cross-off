@@ -17,17 +17,15 @@ const tasksReducer = (state = {}, action) => {
         if (action.task.trash) {
           delete afterState["completed"][action.task.id];
         } else {
-          const newTask = {[action.task.id]: action.task};
-          const completedState = merge(afterState["completed"], newTask);
-          afterState["completed"] = merge({}, state, completedState);
+          delete afterState["todos"][action.task.id];
+          afterState["completed"][action.task.id] = action.task;
         }
       } else {
         if (action.task.trash) {
           delete afterState["todos"][action.task.id];
         } else {
-          const newTask = {[action.task.id]: action.task};
-          const completedState = {};
-          afterState["todos"] = merge(afterState["todos"], newTask);
+          delete afterState["completed"][action.task.id];
+          afterState["todos"][action.task.id] = action.task;
         }
       }
       return afterState;
