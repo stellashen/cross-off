@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import React from 'react';
 import TaskIndex from './task_index';
 import { withRouter } from 'react-router-dom';
+import { fetchList } from '../../actions/list_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -10,6 +11,12 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchList: (id) => dispatch(fetchList(id)),
+  };
+};
+
 export default withRouter(connect(
-  mapStateToProps, null
+  mapStateToProps, mapDispatchToProps
 )(TaskIndex));
