@@ -48,28 +48,41 @@ export default class Trash extends React.Component {
     );
   }
 
-  render() {
-    const tasks = this.props.tasks;
-
-    if (Object.keys(tasks).length === 0) return null;
-
+  renderEmptyList() {
     return (
       <div className="list-index-item">
         <div className="trash-header">
           <h1 className="list-name">Trash</h1>
-          <span className="trash-warning">
-            <p>Click</p>&nbsp;&nbsp;
-            <FontAwesomeIcon icon='trash-alt'/>&nbsp;&nbsp;
-            <p>on this page to permanently remove a task, or:</p>&nbsp;&nbsp;&nbsp;&nbsp;
-            <button onClick={() => this.emptyTrash(tasks)}
-                    className="signup button empty-trash">
-              Delete Everything In My Trash
-            </button>
-          </span>
+          <p className="empty-warning">Your trash can is empty.</p>
         </div>
-        {this.renderTodos(tasks.todos)}
-        {this.renderCompleted(tasks.completed)}
       </div>
     );
+  }
+
+  render() {
+    const tasks = this.props.tasks;
+
+    if (Object.keys(tasks).length === 0) {
+      return this.renderEmptyList();
+    } else {
+      return (
+        <div className="list-index-item">
+          <div className="trash-header">
+            <h1 className="list-name">Trash</h1>
+            <span className="trash-warning">
+              <p>Click</p>&nbsp;&nbsp;
+              <FontAwesomeIcon icon='trash-alt'/>&nbsp;&nbsp;
+              <p>on this page to permanently remove a task, or:</p>&nbsp;&nbsp;&nbsp;&nbsp;
+              <button onClick={() => this.emptyTrash(tasks)}
+                      className="signup button empty-trash">
+                Delete Everything In My Trash
+              </button>
+            </span>
+          </div>
+          {this.renderTodos(tasks.todos)}
+          {this.renderCompleted(tasks.completed)}
+        </div>
+      );
+    }
   }
 }
