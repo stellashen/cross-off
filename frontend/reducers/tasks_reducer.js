@@ -13,18 +13,24 @@ const tasksReducer = (state = {}, action) => {
       return action.tasks;
     case RECEIVE_TASK:
       let afterState = merge({}, state);
-      afterState["completed"] = merge({}, afterState["completed"]);
-      afterState["todos"] = merge({}, afterState["todos"]);
       if (action.task.completed) {
+        afterState["completed"] = merge({}, afterState["completed"]);
         if (action.task.trash) {
           delete afterState["completed"][action.task.id];
+          if (Object.keys(afterState["completed"]).length === 0) {
+            delete afterState["completed"];
+          }
         } else {
           delete afterState["todos"][action.task.id];
           afterState["completed"][action.task.id] = action.task;
         }
       } else {
+        afterState["todos"] = merge({}, afterState["todos"]);
         if (action.task.trash) {
           delete afterState["todos"][action.task.id];
+          if (Object.keys(afterState["todos"]).length === 0) {
+            delete afterState["todos"];
+          }
         } else {
           delete afterState["completed"][action.task.id];
           afterState["todos"][action.task.id] = action.task;
