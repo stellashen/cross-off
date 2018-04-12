@@ -18,7 +18,7 @@ export default class TaskIndexItem extends React.Component {
         this.props.editTask(task);
       } else {
         task.completed = false;
-        e.target.removeAttribute('checked');
+        e.target.setAttribute('checked', false);
         e.target.parentNode.style.textDecoration = "";
         this.props.editTask(task);
       }
@@ -41,8 +41,9 @@ export default class TaskIndexItem extends React.Component {
     if (!task) return null;
 
     return (
-      <div>
+      <div style={this.props.divStyle}>
         <input
+          checked={this.props.task.completed? true : false}
           id={`taskCheckBox${task.id}`}
           type="checkbox"
           onChange={this.handleCheckBox(task)} />&nbsp;&nbsp;

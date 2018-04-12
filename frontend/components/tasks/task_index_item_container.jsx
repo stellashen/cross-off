@@ -8,9 +8,13 @@ import TaskIndexItem from './task_index_item';
 import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state, ownProps) => {
-  // let [completed, incomplete] = selector(state)
+  const style = {textDecoration: 'line-through', color: 'gray'};
+  const nullStyle = {textDecoration: 'none', color: 'black'};
+  const task = ownProps.task;
+  const divStyle = task.completed? style : nullStyle;
   return {
-    task: ownProps.task,
+    task,
+    divStyle,
     taskType: ownProps.taskType,
   };
 };
