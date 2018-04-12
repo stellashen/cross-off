@@ -13,13 +13,9 @@ export default class TaskIndexItem extends React.Component {
     return e => {
       if (e.target.checked) {
         task.completed = true;
-        e.target.setAttribute('checked', true);
-        e.target.parentNode.style.textDecoration = "line-through";
         this.props.editTask(task);
       } else {
         task.completed = false;
-        e.target.setAttribute('checked', false);
-        e.target.parentNode.style.textDecoration = "";
         this.props.editTask(task);
       }
     };
