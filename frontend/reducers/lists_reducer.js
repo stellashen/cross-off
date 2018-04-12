@@ -4,7 +4,6 @@ import {
   RECEIVE_LIST,
   REMOVE_LIST
 } from '../actions/list_actions';
-import { RECEIVE_TASK, REMOVE_TASK } from '../actions/task_actions';
 
 const listsReducer = (state = {}, action) => {
   Object.freeze(state);

@@ -4,7 +4,6 @@ import TaskIndex from './task_index';
 import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state, ownProps) => {
-  // let [completed, incomplete] = selector(state)
   return {
     tasks: ownProps.tasks,
     taskType: ownProps.taskType,
