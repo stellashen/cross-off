@@ -5,10 +5,12 @@ class Api::TasksController < ApplicationController
     trash = params[:isTrashed]
     all_tasks = current_user.tasks
     if trash == "false"
-      @tasks = all_tasks.where("trash = 'false'")
+      tasks = all_tasks.where("trash = 'false'")
     else
-      @tasks = all_tasks.where("trash = 'true'")
+      tasks = all_tasks.where("trash = 'true'")
     end
+    @completed = tasks.where("completed = 'true'")
+    @todos = tasks.where("completed = 'false'")
     render :index
   end
 

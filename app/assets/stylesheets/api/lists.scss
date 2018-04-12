@@ -111,6 +111,26 @@
 
 .list-name {
   position: absolute;
-  left: 300px;
+  left: 296px;
   top: 20px;
+}
+
+.list-index-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.todos-heading, .completed-heading {
+  position: relative;
+  left: 250px;
+  margin-top: 0;
+}
+
+.completed-heading {
+  margin-top: 10px;
+}
+
+.trash {
+  margin-top: 80px;
 }

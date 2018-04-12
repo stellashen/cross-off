@@ -4,14 +4,11 @@ import { clearErrors, editTask } from '../../actions/task_actions';
 import { fetchList } from '../../actions/list_actions';
 import ListIndexItem from './list_index_item';
 import { withRouter } from 'react-router-dom';
-import { selectCompleteTasks } from '../../util/selectors';
 
 const mapStateToProps = (state, ownProps) => {
   const lists = state.entities.lists;
   const currentList = lists[ownProps.match.params.listId];
   const tasks = state.entities.tasks;
-  debugger;
-  const [completed, incomplete] = selectCompleteTasks(tasks);
   return {
     currentList,
     tasks,

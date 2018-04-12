@@ -14,6 +14,26 @@ export default class Trash extends React.Component {
     this.props.fetchTasks(true);
   }
 
+  renderTodos(todos) {
+    if (!todos) return null;
+    return (
+      <div className="todos trash">
+        <h4 className="todos-heading">Todos:</h4>
+        <TaskIndexContainer tasks={todos} taskType='trash'/>
+      </div>
+    );
+  }
+
+  renderCompleted(completed) {
+    if (!completed) return null;
+    return (
+      <div className="completed">
+        <h4 className="completed-heading">Completed:</h4>
+        <TaskIndexContainer tasks={completed} taskType='trash'/>
+      </div>
+    );
+  }
+
   render() {
     const tasks = this.props.tasks;
 
@@ -22,7 +42,8 @@ export default class Trash extends React.Component {
     return (
       <div className="list-index-item">
         <h1 className="list-name">Trash</h1>
-        <TaskIndexContainer tasks={tasks} taskType='trash' />
+        {this.renderTodos(tasks.todos)}
+        {this.renderCompleted(tasks.completed)}
       </div>
     );
   }

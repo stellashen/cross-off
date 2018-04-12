@@ -21,18 +21,37 @@ export default class ListIndexItem extends React.Component {
     }
   }
 
+  renderTodos(todos) {
+    if (!todos) return null;
+    return (
+      <div className="todos">
+        <h4 className="todos-heading">Todos:</h4>
+        <TaskIndexContainer tasks={todos} taskType='list'/>
+      </div>
+    );
+  }
+
+  renderCompleted(completed) {
+    if (!completed) return null;
+    return (
+      <div className="completed">
+        <h4 className="completed-heading">Completed:</h4>
+        <TaskIndexContainer tasks={completed} taskType='list'/>
+      </div>
+    );
+  }
+
   render() {
     const { currentList, tasks } = this.props;
     if (!currentList) return null;
-
+    if (Object.keys(tasks).length === 0) return null;
     return (
       <div className="list-index-item">
         <h1 className="list-name">{currentList.name}</h1>
         <br/>
-
         <NewTaskBarContainer />
-
-        <TaskIndexContainer tasks={tasks} taskType='list'/>
+        {this.renderTodos(tasks.todos)}
+        {this.renderCompleted(tasks.completed)}
       </div>
     );
   }

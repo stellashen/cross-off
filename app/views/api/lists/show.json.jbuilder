@@ -3,9 +3,19 @@ json.list do
 end
 
 json.tasks do
-  @tasks.each do |task|
-    json.set! task.id do
-      json.partial! 'api/tasks/task', task: task
+  json.todos do
+    @todos.each do |task|
+      json.set! task.id do
+        json.partial! 'api/tasks/task', task: task
+      end
+    end
+  end
+
+  json.completed do
+    @completed.each do |task|
+      json.set! task.id do
+        json.partial! 'api/tasks/task', task: task
+      end
     end
   end
 end
