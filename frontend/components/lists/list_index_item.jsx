@@ -4,6 +4,7 @@ import fontawesome from '@fortawesome/fontawesome';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import solids from '@fortawesome/fontawesome-free-solid';
 import NewTaskBarContainer from '../tasks/new_task_bar_container';
+import TaskIndexContainer from '../tasks/task_index_container';
 
 export default class ListIndexItem extends React.Component {
   constructor(props) {
@@ -20,51 +21,6 @@ export default class ListIndexItem extends React.Component {
     }
   }
 
-  handleCheckBox(task) {
-    return e => {
-      if (e.target.checked) {
-        task.completed = true;
-        e.target.setAttribute('checked', true);
-        e.target.parentNode.style.textDecoration = "line-through";
-      } else {
-        task.completed = false;
-        e.target.removeAttribute('checked');
-        e.target.parentNode.style.textDecoration = "";
-      }
-    };
-  }
-
-  handleTrash(task) {
-    return e => {
-      task.trash = true;
-      this.props.editTask(task);
-    };
-  }
-
-  renderTasks(tasksHash) {
-    const tasks = Object.values(tasksHash);
-
-    if (!tasks) return null;
-    return tasks.map((task, idx) => {
-      if (!task || task.completed === true) {
-        return null;
-      }
-      return (
-        <li key={`${task.id}${task.title}`} className="task">
-          <input id={`taskCheckBox${task.id}`} type="checkbox"
-                 onChange={this.handleCheckBox(task)} />&nbsp;&nbsp;
-               <label htmlFor={`taskCheckBox${task.id}`}>
-            <span>{task.title}</span>
-          </label>
-
-          <span className="list-delete" onClick={this.handleTrash(task)}>
-            <FontAwesomeIcon icon='trash-alt'/>
-          </span>
-        </li>
-      );
-    });
-  }
-
   render() {
     const { currentList, tasks } = this.props;
     if (!currentList) return null;
@@ -76,11 +32,7 @@ export default class ListIndexItem extends React.Component {
 
         <NewTaskBarContainer />
 
-        <div className="tasks">
-          <ul>
-            {this.renderTasks(tasks)}
-          </ul>
-        </div>
+        <TaskIndexContainer tasks={tasks} taskType='list'/>
       </div>
     );
   }
