@@ -44,7 +44,13 @@ export default class ListIndexItem extends React.Component {
   render() {
     const { currentList, tasks } = this.props;
     if (!currentList) return null;
-    if (Object.keys(tasks).length === 0) return null;
+    if (Object.keys(tasks).length === 0) return (
+      <div className="list-index-item">
+        <h1 className="list-name">{currentList.name}</h1>
+        <br/>
+        <NewTaskBarContainer />
+      </div>
+    );
     return (
       <div className="list-index-item">
         <h1 className="list-name">{currentList.name}</h1>
