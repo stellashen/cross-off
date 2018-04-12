@@ -55,16 +55,18 @@ export default class Trash extends React.Component {
 
     return (
       <div className="list-index-item">
-        <h1 className="list-name">Trash</h1>
-        <span className="trash-warning">
-          <p>Click</p>&nbsp;&nbsp;
-          <FontAwesomeIcon icon='trash-alt'/>&nbsp;&nbsp;
-          <p>on this page to permanently remove a task, or:</p>&nbsp;&nbsp;&nbsp;&nbsp;
-          <button onClick={() => this.emptyTrash(tasks)}
-                  className="signup button empty-trash">
-            Delete Everything In My Trash
-          </button>
-        </span>
+        <div className="trash-header">
+          <h1 className="list-name">Trash</h1>
+          <span className="trash-warning">
+            <p>Click</p>&nbsp;&nbsp;
+            <FontAwesomeIcon icon='trash-alt'/>&nbsp;&nbsp;
+            <p>on this page to permanently remove a task, or:</p>&nbsp;&nbsp;&nbsp;&nbsp;
+            <button onClick={() => this.emptyTrash(tasks)}
+                    className="signup button empty-trash">
+              Delete Everything In My Trash
+            </button>
+          </span>
+        </div>
         {this.renderTodos(tasks.todos)}
         {this.renderCompleted(tasks.completed)}
       </div>
