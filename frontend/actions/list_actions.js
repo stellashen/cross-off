@@ -34,8 +34,8 @@ export const fetchList = (id) => dispatch => (
 );
 
 export const deleteList = (listId) => dispatch => (
-  APIUtil.deleteList(listId).then((list) => (
-    dispatch(removeList(list.id))
+  APIUtil.deleteList(listId).then(() => (
+    dispatch(removeList(listId))
   ), err => (
     dispatch(receiveListErrors(err.responseJSON))
   ))

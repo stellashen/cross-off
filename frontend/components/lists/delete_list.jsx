@@ -17,7 +17,7 @@ class DeleteList extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.closeModal();
-    this.props.deleteList(this.props.list.id);
+    this.props.deleteList(this.props.listId);
   }
 
   renderErrors() {

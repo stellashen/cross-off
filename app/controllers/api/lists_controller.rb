@@ -32,6 +32,9 @@ class Api::ListsController < ApplicationController
     @list = current_user.lists.find(params[:id])
 
     if @list.update(list_params)
+      tasks = @list.tasks.where("trash = 'false'")
+      @completed = tasks.where("completed = 'true'")
+      @todos = tasks.where("completed = 'false'")
       render :show
     else
       render json: @list.errors.full_messages, status: 422
@@ -42,6 +45,9 @@ class Api::ListsController < ApplicationController
     @list = current_user.lists.find(params[:id])
 
     if @list.destroy
+      tasks = @list.tasks.where("trash = 'false'")
+      @completed = tasks.where("completed = 'true'")
+      @todos = tasks.where("completed = 'false'")
       render :show
     else
       render json: @list.errors.full_messages, status: 422
