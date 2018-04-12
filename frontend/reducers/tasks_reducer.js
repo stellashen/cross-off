@@ -46,7 +46,7 @@ const tasksReducer = (state = {}, action) => {
         }
       return nextState;
     case RECEIVE_LIST:
-      const tasksState = action.listInfo.tasks;
+      const tasksState = action.listInfo.tasks || state;
       return tasksState;
     default:
       return state;

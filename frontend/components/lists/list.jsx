@@ -8,7 +8,6 @@ export default class List extends React.Component {
   constructor(props) {
     super(props);
     this.handleOpenModal = this.handleOpenModal.bind(this);
-    // this.handleShowList = this.handleShowList.bind(this);
   }
 
   componentDidMount() {
@@ -18,10 +17,6 @@ export default class List extends React.Component {
   handleOpenModal(modalName, listId) {
     this.props.openModal(modalName, listId);
   }
-
-  // handleShowList(listId) {
-  //
-  // }
 
   renderLists() {
     const lists = Object.values(this.props.lists);

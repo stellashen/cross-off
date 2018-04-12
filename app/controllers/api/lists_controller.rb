@@ -19,6 +19,9 @@ class Api::ListsController < ApplicationController
     @list.user_id = current_user.id
 
     if @list.save
+      tasks = @list.tasks.where("trash = 'false'")
+      @completed = tasks.where("completed = 'true'")
+      @todos = tasks.where("completed = 'false'")
       render :show
     else
       render json: @list.errors.full_messages, status: 422
