@@ -8,10 +8,24 @@ import TaskIndexContainer from '../tasks/task_index_container';
 export default class Trash extends React.Component {
   constructor(props) {
     super(props);
+    this.emptyTrash = this.emptyTrash.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchTasks(true);
+  }
+
+  emptyTrash(tasks) {
+    if (tasks.todos) {
+      this.handleDelete(tasks.todos);
+    }
+    if (tasks.completed) {
+      this.handleDelete(tasks.completed);
+    }
+  }
+
+  handleDelete(tasks) {
+    Object.keys(tasks).forEach(id => this.props.deleteTask(id));
   }
 
   renderTodos(todos) {
@@ -37,7 +51,7 @@ export default class Trash extends React.Component {
   render() {
     const tasks = this.props.tasks;
 
-    if (!tasks) return null;
+    if (Object.keys(tasks).length === 0) return null;
 
     return (
       <div className="list-index-item">
@@ -45,8 +59,12 @@ export default class Trash extends React.Component {
         <span className="trash-warning">
           <p>Click</p>&nbsp;&nbsp;
           <FontAwesomeIcon icon='trash-alt'/>&nbsp;&nbsp;
-          <p>on this page to permanently remove task.</p>
-          </span>
+          <p>on this page to permanently remove a task, or:</p>&nbsp;&nbsp;&nbsp;&nbsp;
+          <button onClick={() => this.emptyTrash(tasks)}
+                  className="signup button empty-trash">
+            Delete Everything In My Trash
+          </button>
+        </span>
         {this.renderTodos(tasks.todos)}
         {this.renderCompleted(tasks.completed)}
       </div>
