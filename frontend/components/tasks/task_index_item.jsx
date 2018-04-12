@@ -4,7 +4,7 @@ import fontawesome from '@fortawesome/fontawesome';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import solids from '@fortawesome/fontawesome-free-solid';
 
-export default class TaxIndexItem extends React.Component {
+export default class TaskIndexItem extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -15,10 +15,12 @@ export default class TaxIndexItem extends React.Component {
         task.completed = true;
         e.target.setAttribute('checked', true);
         e.target.parentNode.style.textDecoration = "line-through";
+        this.props.editTask(task);
       } else {
         task.completed = false;
         e.target.removeAttribute('checked');
         e.target.parentNode.style.textDecoration = "";
+        this.props.editTask(task);
       }
     };
   }

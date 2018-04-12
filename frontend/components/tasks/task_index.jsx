@@ -9,9 +9,6 @@ export default class TaskIndex extends React.Component {
 
   renderTasks(tasks) {
     return tasks.map((task, idx) => {
-      if (!task || task.completed === true) {
-        return null;
-      }
       return (
         <li key={`${task.id}${task.title}`} className="task">
           <TaskIndexItemContainer task={task} taskType={this.props.taskType} />
