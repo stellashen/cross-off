@@ -2,7 +2,8 @@ import merge from 'lodash/merge';
 import {
   RECEIVE_TASKS,
   RECEIVE_TASK,
-  REMOVE_TASK
+  REMOVE_TASK,
+  CLEAR_TASKS
 } from '../actions/task_actions';
 import { RECEIVE_LIST } from '../actions/list_actions';
 
@@ -46,7 +47,7 @@ const tasksReducer = (state = {}, action) => {
         }
       return nextState;
     case RECEIVE_LIST:
-      const tasksState = action.listInfo.tasks || state;
+      const tasksState = action.listInfo.tasks || {};
       return tasksState;
     default:
       return state;

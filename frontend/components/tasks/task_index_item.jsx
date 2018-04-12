@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import fontawesome from '@fortawesome/fontawesome';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import solids from '@fortawesome/fontawesome-free-solid';
-import TaskDetail from './task_detail';
 
 export default class TaskIndexItem extends React.Component {
   constructor(props) {
@@ -49,7 +48,7 @@ export default class TaskIndexItem extends React.Component {
         <Link to={`/lists/${task.list_id}/${task.id}`}>
           <span>{task.title}</span>
         </Link>
-        
+
         <span className="list-delete" onClick={this.handleTrash(task)}>
           <FontAwesomeIcon icon='trash-alt'/>
         </span>

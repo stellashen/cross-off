@@ -9,6 +9,16 @@ export default class TaskDetail extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    this.props.fetchTask(this.props.match.params.taskId);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.match.params.taskId !== nextProps.match.params.taskId) {
+      this.props.fetchTask(nextProps.match.params.taskId);
+    }
+  }
+
   render() {
     const task = this.props.task;
     if (!task) return null;
