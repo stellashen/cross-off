@@ -1,6 +1,10 @@
 import { connect } from 'react-redux';
 import React from 'react';
-import { clearErrors, editTask, clearTasks } from '../../actions/task_actions';
+import {
+  clearErrors,
+  editTask,
+  clearTasks,
+} from '../../actions/task_actions';
 import { fetchList } from '../../actions/list_actions';
 import ListIndexItem from './list_index_item';
 import { withRouter } from 'react-router-dom';

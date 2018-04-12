@@ -13,7 +13,7 @@ export default class TaskIndexItem extends React.Component {
     return e => {
       if (e.target.checked) {
         task.completed = true;
-        this.props.editTask(task);
+        this.props.moveToCompleted(task);
       } else {
         task.completed = false;
         this.props.editTask(task);

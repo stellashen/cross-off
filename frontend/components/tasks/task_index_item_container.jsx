@@ -3,6 +3,7 @@ import React from 'react';
 import {
   editTask,
   deleteTask,
+  moveToCompleted,
 } from '../../actions/task_actions';
 import TaskIndexItem from './task_index_item';
 import { withRouter } from 'react-router-dom';
@@ -22,7 +23,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return {
     editTask: (task) => dispatch(editTask(task)),
-    deleteTask: (id) => dispatch(deleteTask(id))
+    deleteTask: (id) => dispatch(deleteTask(id)),
+    moveToCompleted: (task) => dispatch(moveToCompleted(task)),
   };
 };
 
