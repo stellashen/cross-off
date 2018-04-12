@@ -18,23 +18,6 @@ const listsReducer = (state = {}, action) => {
       const nextState = merge({}, state);
       delete nextState[action.listId];
       return nextState;
-    case RECEIVE_TASK:
-      const listId = action.task.list_id;
-      const newState = merge({}, state);
-      newState[listId]["tasksIds"].push(action.task.id);
-      return newState;
-    case REMOVE_TASK:
-      const currentList = action.task.list_id;
-      const changedState = merge({}, state);
-      const idsArr = changedState[currentList]["tasksIds"];
-      let idxToDelete = -1;
-      idxToDelete = idsArr.indexOf(action.task.list_id);
-      if (idxToDelete > -1) {
-        console.log(changedState[currentList]["tasksIds"]);
-        idsArr.splice(idxToDelete, 1);
-        console.log(changedState[currentList]["tasksIds"]);
-      }
-      return changedState;
     default:
       return state;
   }
