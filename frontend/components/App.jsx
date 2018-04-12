@@ -25,8 +25,9 @@ const App = () => (
     <ProtectedRoute exact path="/lists" component={Main} />
     <Modal />
 
+    <ProtectedRoute exact path="/lists/trash" component={TrashContainer} />
     <ProtectedRoute path="/lists/:listId" component={ListIndexItemContainer} />
-    <ProtectedRoute path="/lists/trash" component={TrashContainer} />
+
   </div>
 );
 

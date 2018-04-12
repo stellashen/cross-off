@@ -29,7 +29,7 @@ export default class Sidebar extends React.Component {
 
         <ListContainer />
 
-        <Link to={`/lists/trash`}>
+        <Link to="/lists/trash">
             <span className="add-new-list-button trash-nav">
               <FontAwesomeIcon icon="trash-alt" />
               <p>Trash</p>

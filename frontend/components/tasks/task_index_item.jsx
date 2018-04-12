@@ -35,7 +35,7 @@ export default class TaskIndexItem extends React.Component {
   render() {
     const task = this.props.task;
     if (!task) return null;
-
+    
     return (
       <div style={this.props.divStyle}>
         <input
