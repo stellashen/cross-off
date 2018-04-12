@@ -16,7 +16,7 @@ const mapDispatchToProps = dispatch => {
   return {
     processForm: (formList) => dispatch(addNewList(formList)),
     closeModal: () => dispatch(closeModal()),
-    clearErrors: (errors) => dispatch(clearErrors(errors))
+    clearErrors: () => dispatch(clearErrors())
   };
 };
 

@@ -4,6 +4,7 @@ export const RECEIVE_TASKS = 'RECEIVE_TASKS';
 export const RECEIVE_TASK = 'RECEIVE_TASK';
 export const RECEIVE_TASK_ERRORS = 'RECEIVE_TASK_ERRORS';
 export const REMOVE_TASK = "REMOVE_TASK";
+export const CLEAR_TASKS = "CLEAR_TASKS";
 
 export const addNewTask = formTask => dispatch => (
   APIUtil.addTask(formTask).then(task => (
@@ -15,6 +16,10 @@ export const addNewTask = formTask => dispatch => (
 
 export const clearErrors = () => dispatch => (
   dispatch(receiveTaskErrors([]))
+);
+
+export const clearTasks = () => dispatch => (
+  dispatch(receiveTasks({}))
 );
 
 export const fetchTasks = (isTrashed) => dispatch => (

@@ -20,7 +20,7 @@ const mapDispatchToProps = dispatch => {
   return {
     deleteList: (id) => dispatch(deleteList(id)),
     closeModal: () => dispatch(closeModal()),
-    clearErrors: (errors) => dispatch(clearErrors(errors)),
+    clearErrors: () => dispatch(clearErrors()),
   };
 };
 

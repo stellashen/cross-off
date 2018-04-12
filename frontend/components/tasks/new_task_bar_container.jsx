@@ -23,7 +23,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return {
     processForm: (formTask) => dispatch(addNewTask(formTask)),
-    clearErrors: (errors) => dispatch(clearErrors(errors))
+    clearErrors: () => dispatch(clearErrors())
   };
 };
 

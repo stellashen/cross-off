@@ -16,7 +16,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchTasks: (flag) => dispatch(fetchTasks(flag)),
-    clearErrors: (errors) => dispatch(clearErrors(errors)),
+    clearErrors: () => dispatch(clearErrors()),
     deleteTask: (id) => dispatch(deleteTask(id)),
   };
 };
