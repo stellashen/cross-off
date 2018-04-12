@@ -7,16 +7,22 @@ import solids from '@fortawesome/fontawesome-free-solid';
 export default class Trash extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.list;
+  }
+
+  componentDidMount() {
+    this.props.fetchTasks(true);
   }
 
   render() {
+    const tasks = this.props.tasks;
+
     return (
       <div className="list-index-item">
         <h1 className="list-name">Trash</h1>
         <br/>
         <div className="tasks">
           <ul>
+            
           </ul>
         </div>
       </div>

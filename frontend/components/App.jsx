@@ -10,6 +10,7 @@ import SidebarContainer from './sidebar/sidebar_container';
 import Main from './main/main';
 import Modal from './modal/modal';
 import ListIndexItemContainer from './lists/list_index_item_container';
+import TrashContainer from './trash/trash_container';
 
 const App = () => (
   <div id="app">
@@ -24,7 +25,8 @@ const App = () => (
     <ProtectedRoute exact path="/lists" component={Main} />
     <Modal />
 
-    <Route path="/lists/:listId" component={ListIndexItemContainer} />
+    <ProtectedRoute path="/lists/:listId" component={ListIndexItemContainer} />
+    <ProtectedRoute path="/lists/trash" component={TrashContainer} />
   </div>
 );
 

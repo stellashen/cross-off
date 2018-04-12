@@ -4,6 +4,7 @@ import fontawesome from '@fortawesome/fontawesome';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import solids from '@fortawesome/fontawesome-free-solid';
 import ListContainer from '../lists/list_container';
+import { Link } from 'react-router-dom';
 
 export default class Sidebar extends React.Component {
   constructor(props) {
@@ -27,6 +28,11 @@ export default class Sidebar extends React.Component {
         </button>
 
         <ListContainer />
+
+        <Link to={`/lists/trash`}>
+            <span>Trash</span>
+        </Link>
+
       </aside>
     );
   }

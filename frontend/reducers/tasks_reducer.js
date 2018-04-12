@@ -2,8 +2,7 @@ import merge from 'lodash/merge';
 import {
   RECEIVE_TASKS,
   RECEIVE_TASK,
-  REMOVE_TASK,
-  TRASH_TASK
+  REMOVE_TASK
 } from '../actions/task_actions';
 import { RECEIVE_LIST } from '../actions/list_actions';
 
