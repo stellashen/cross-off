@@ -7,27 +7,21 @@ import solids from '@fortawesome/fontawesome-free-solid';
 export default class TaskDetail extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      title:'',
-      description:'',
-      due_date:'',
-    };
+    this.state = this.props.emptyTask;
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.updateState = this.updateState.bind(this);
   }
 
-  componentWillMount() {
-
+  componentDidMount() {
+    const id = this.props.match.params.taskId;
+    this.props.requestSingleTask(id);
   }
 
   componentWillReceiveProps(nextProps) {
     const id = nextProps.match.params.taskId;
     if (this.props.match.params.taskId !== id) {
       this.props.clearErrors();
-      this.setState({
-        title:'',
-        description:'',
-        due_date:'',
-      });
+      this.props.requestSingleTask(id);
     }
   }
 
@@ -39,6 +33,11 @@ export default class TaskDetail extends React.Component {
     e.preventDefault();
     const updatedTask = Object.assign({}, this.state);
     this.props.editTask(updatedTask);
+  }
+
+  updateState(task) {
+    return e => this.setState(task);
+    debugger;
   }
 
   update(field) {
@@ -60,23 +59,12 @@ export default class TaskDetail extends React.Component {
   }
 
   render() {
-    const id = this.props.match.params.taskId;
-    const todosHash = this.props.tasks.todos;
-    const completedHash = this.props.tasks.completed;
-    let tasksHash = {};
-    if (todosHash && todosHash[id]) {
-      tasksHash = todosHash;
-    } else if (completedHash && completedHash[id]) {
-      tasksHash = completedHash;
+    const task = this.props.currentTask;
+    if (Object.keys(task).length === 0) {
+      return null;
+    } else {
+      this.updateState(task);
     }
-    if (tasksHash === {} || !tasksHash) return null;
-    const task = tasksHash[id];
-    if (task === {} || !task) return null;
-
-    if (this.state.title.length === 0) {
-      this.setState(task);
-    }
-
     return (
       <div className="task-detail">
         <div className="antiscroll">

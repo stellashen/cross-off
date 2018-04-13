@@ -8,6 +8,7 @@ export const CLEAR_TASKS = "CLEAR_TASKS";
 export const MOVE_TASK_TO_COMPLETED = "MOVE_TASK_TO_COMPLETED";
 export const MOVE_TASK_TO_TODOS = "MOVE_TASK_TO_TODOS";
 export const MOVE_TASK_TO_TRASH = "MOVE_TASK_TO_TRASH";
+export const REQUEST_TASK = "REQUEST_TASK";
 
 export const addNewTask = formTask => dispatch => (
   APIUtil.addTask(formTask).then(task => (
@@ -36,6 +37,14 @@ export const fetchTasks = (isTrashed) => dispatch => (
 export const fetchTask = (id) => dispatch => (
   APIUtil.fetchTask(id).then(task => (
     dispatch(receiveTask(task))
+  ), err => (
+    dispatch(receiveTaskErrors(err.responseJSON))
+  ))
+);
+
+export const requestSingleTask = (id) => dispatch => (
+  APIUtil.fetchTask(id).then(task => (
+    dispatch(requestTask(task))
   ), err => (
     dispatch(receiveTaskErrors(err.responseJSON))
   ))
@@ -88,6 +97,11 @@ export const receiveTasks = tasks => ({
 
 export const receiveTask = task => ({
   type: RECEIVE_TASK,
+  task
+});
+
+export const requestTask = task => ({
+  type: REQUEST_TASK,
   task
 });
 
