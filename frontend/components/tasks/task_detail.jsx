@@ -70,6 +70,10 @@ export default class TaskDetail extends React.Component {
     const task = tasksHash[id];
     if (task === {} || !task) return null;
 
+    if (this.state.title.length === 0) {
+      this.setState(task);
+    }
+
     return (
       <div className="task-detail">
         <div className="antiscroll">
@@ -85,7 +89,7 @@ export default class TaskDetail extends React.Component {
               <span className="strong">Title</span>
               <textarea
                 cols="30" rows="3"
-                value={task.title}
+                value={this.state.title}
                 onChange={this.update('title')}
                 className="task-form-input task-detail-title-input"
                 placeholder="Title"
@@ -94,14 +98,14 @@ export default class TaskDetail extends React.Component {
               <span className="strong">Due Date (optional)</span>
               <input
                 type="date"
-                value={task.due_date}
+                value={this.state.due_date}
                 onChange={this.update('due_date')}
                 className="task-form-input"
               />
               <span className="strong">Description (optional)</span>
               <textarea
                 cols="30" rows="10"
-                value={task.description}
+                value={this.state.description}
                 onChange={this.update('description')}
                 className="task-form-input"
                 placeholder="Description" />
