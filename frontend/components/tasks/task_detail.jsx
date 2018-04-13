@@ -86,6 +86,7 @@ export default class TaskDetail extends React.Component {
             <div className="task-form-body">
               <div className="errors">{this.renderErrors()}</div>
               <br/>
+              <span className="strong">Title</span>
               <textarea
                 cols="30" rows="3"
                 value={this.state.title}
@@ -94,6 +95,14 @@ export default class TaskDetail extends React.Component {
                 placeholder="Title"
               />
               <br/>
+              <span className="strong">Due Date (optional)</span>
+              <input
+                value={this.state.due_date}
+                onChange={this.update('due_date')}
+                className="task-form-input"
+                placeholder="Due Date"
+              />
+              <span className="strong">Description (optional)</span>
               <textarea
                 cols="30" rows="10"
                 value={this.state.description}
