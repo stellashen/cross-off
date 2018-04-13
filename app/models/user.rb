@@ -3,11 +3,12 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates :password, length: { minimum: 6 }, allow_nil: true
 
-  has_many :lists
-  has_many :tasks
+  has_many :lists, dependent: :destroy
+  has_many :tasks, dependent: :destroy
   has_many :add_tags,
            through: :tasks,
-           source: :add_tags
+           source: :add_tags,
+           dependent: :destroy
   has_many :tags,
            through: :add_tags,
            source: :tag

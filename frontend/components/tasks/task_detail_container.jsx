@@ -7,10 +7,31 @@ import TaskDetail from './task_detail';
 import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state, ownProps) => {
+  const id = ownProps.match.params.taskId;
+  let task = {};
+  if (ownProps.tasks !== undefined) {
+    const todosHash = ownProps.tasks.todos;
+    const completedHash = ownProps.tasks.completed;
+
+    let tasksHash = {};
+    if (todosHash && todosHash[id]) {
+      tasksHash = todosHash;
+    } else if (completedHash && completedHash[id]) {
+      tasksHash = completedHash;
+    }
+
+    if (Object.keys(tasksHash).length !== 0 && tasksHash) {
+      task = tasksHash[id];
+    }
+  }
+
   return {
     tasks: state.entities.tasks,
     errors: state.errors.tasks,
-    taskId: ownProps.match.params.taskId,
+    taskId: id,
+    tags: state.entities.tags,
+    taggings: state.entities.taggings,
+    task: task,
   };
 };
 
@@ -19,7 +40,7 @@ const mapDispatchToProps = dispatch => {
     editTask: (task) => dispatch(editTask(task)),
     addNewTag: (tag) => dispatch(addNewTag(tag)),
     addNewTagging: (tagging) => dispatch(addNewTagging(tagging)),
-    fetchTags: () => dispatch(editTask()),
+    fetchTags: () => dispatch(fetchTags()),
     clearErrors: () => dispatch(clearErrors()),
   };
 };
