@@ -120,7 +120,7 @@ export default class TaskDetail extends React.Component {
 
   render() {
     const task = this.props.task;
-    if (Object.keys(task).length === 0 || !task) return null;
+
     return (
       <div className="task-detail">
         <div className="antiscroll">
@@ -150,7 +150,7 @@ export default class TaskDetail extends React.Component {
               <span className="strong">Title</span>
               <textarea
                 cols="30" rows="3"
-                value={task.title}
+                value={this.state.task.title}
                 onChange={this.update('title')}
                 className="task-form-input task-detail-title-input"
                 placeholder="Title"
@@ -159,14 +159,14 @@ export default class TaskDetail extends React.Component {
               <span className="strong">Due Date (optional)</span>
               <input
                 type="date"
-                value={task.due_date}
+                value={this.state.task.due_date}
                 onChange={this.update('due_date')}
                 className="task-form-input"
               />
               <span className="strong">Description (optional)</span>
               <textarea
                 cols="30" rows="10"
-                value={task.description}
+                value={this.state.task.description}
                 onChange={this.update('description')}
                 className="task-form-input"
                 placeholder="Description" />
