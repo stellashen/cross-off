@@ -10,7 +10,6 @@ export default class TaskDetailReminder extends React.Component {
             <li> - edit title</li>
             <li> - add due date</li>
             <li> - add description</li>
-            <li> - add tags</li>
           </ul>
         </div>
       </div>
