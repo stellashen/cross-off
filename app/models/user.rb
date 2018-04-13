@@ -5,6 +5,12 @@ class User < ApplicationRecord
 
   has_many :lists
   has_many :tasks
+  has_many :add_tags,
+           through: :tasks,
+           source: :add_tags
+  has_many :tags,
+           through: :add_tags,
+           source: :tag
 
   attr_reader :password
 
