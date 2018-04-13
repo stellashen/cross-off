@@ -47,7 +47,6 @@
   },
   "homepage": "https://github.com/stellashen/cross-off#readme",
   "devDependencies": {
-    "redux-logger": "^3.0.6",
-    "url-loader": "^1.0.1",
+    "redux-logger": "^3.0.6"
   }
 }
