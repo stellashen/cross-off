@@ -8,11 +8,13 @@ export default class TaskDetail extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      newtagname: '',
       title:'',
       description:'',
       due_date:'',
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -20,6 +22,7 @@ export default class TaskDetail extends React.Component {
     if (this.props.match.params.taskId !== id) {
       this.props.clearErrors();
       this.setState({
+        newtagname: '',
         title:'',
         description:'',
         due_date:'',
@@ -34,6 +37,7 @@ export default class TaskDetail extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const updatedTask = Object.assign({}, this.state);
+    delete updatedTask["newtagname"];
     this.props.editTask(updatedTask);
   }
 
@@ -47,12 +51,47 @@ export default class TaskDetail extends React.Component {
     return(
       <ul>
         {this.props.errors.map((error, i) => (
-          <li key={`error-${i}`}>
+          <li key={`taskdetailerror-${i}`}>
             {error}
           </li>
         ))}
       </ul>
     );
+  }
+
+  handleKeyPress(e) {
+    if(e.key === 'Enter'){
+      const tagname = this.state.newtagname;
+      const tags = this.props.fetchTags();
+      let existingTagId = -1;
+      if (!tags || Object.keys(tags).length !== 0) {
+        existingTagId = this.isTagNew(tags, tagname);
+      }
+
+      const newTagging = {
+        task_id: this.props.taskId,
+        tag_id: null,
+      };
+
+      if (existingTagId === -1) {
+        const newtag = Object.assign({}, {name: tagname});
+        const tag = this.props.addNewTag(newtag);
+        newTagging.tag_id = tag.id;
+      } else {
+        newTagging.tag_id = existingTagId;
+      }
+
+      this.props.addTagging(newTagging);
+    }
+  }
+
+  findTag(tags, tagname) {
+    Object.keys(tags).forEach(tagId => {
+      if (tags[tagId]["name"] === tagname) {
+        return tagId;
+      }
+    });
+    return -1;
   }
 
   render() {
@@ -79,9 +118,22 @@ export default class TaskDetail extends React.Component {
         <div className="antiscroll">
           <form onSubmit={this.handleSubmit} className="task-detail-form">
             <div className="task-form-header">
-              <button className="list-save button task-detail-save" type="submit">
+              <button
+                className="list-save button task-detail-save"
+                type="submit">
                 Save Change
               </button>
+
+              <label className="add-new-tag">Add tag (optional):
+                <input
+                  type="text"
+                  value={this.state.newtagname}
+                  onChange={this.update('newtagname')}
+                  className="task-form-input"
+                  placeholder="Add tag..."
+                  onKeyPress={this.handleKeyPress}
+                />
+              </label>
             </div>
             <div className="task-form-body">
               <div className="errors">{this.renderErrors()}</div>

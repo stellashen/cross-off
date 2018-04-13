@@ -37,7 +37,7 @@ class ListForm extends React.Component {
     return(
       <ul>
         {this.props.errors.map((error, i) => (
-          <li key={`error-${i}`}>
+          <li key={`listformerror-${i}`}>
             {error}
           </li>
         ))}
