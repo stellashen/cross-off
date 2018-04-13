@@ -23,8 +23,9 @@ const tasksReducer = (state = {}, action) => {
       }
       return afterState;
     case MOVE_TASK_TO_COMPLETED:
-      const completedTask = {[action.task.id]: action.task};
-      const cState = merge(state, {"completed": completedTask});
+      const cTask = action.task;
+      const completedTask = {[cTask.id]: cTask};
+      const cState = merge({}, state, {"completed": completedTask});
       delete cState["todos"][action.task.id];
       return cState;
     case REMOVE_TASK:
