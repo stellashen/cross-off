@@ -14,15 +14,36 @@ export default class TaskDetail extends React.Component {
   componentWillReceiveProps(nextProps) {
     const id = nextProps.match.params.taskId;
     if (this.props.match.params.taskId !== id) {
-      const tasksHash = nextProps.tasks.todos || nextProps.tasks.completed;
-      const currentTask = tasksHash[id];
+      this.props.clearErrors();
     }
+  }
+
+  componentWillUnmount() {
+    this.props.clearErrors();
   }
 
   handleSubmit(e) {
     e.preventDefault();
     const updatedTask = Object.assign({}, this.state);
     this.props.editTask(updatedTask);
+  }
+
+  update(field) {
+    return e => this.setState({
+      [field]: e.currentTarget.value
+    });
+  }
+
+  renderErrors() {
+    return(
+      <ul>
+        {this.props.errors.map((error, i) => (
+          <li key={`error-${i}`}>
+            {error}
+          </li>
+        ))}
+      </ul>
+    );
   }
 
   render() {
@@ -41,7 +62,32 @@ export default class TaskDetail extends React.Component {
 
     return (
       <div className="task-detail">
-        {task.title}
+        <div className="antiscroll">
+          <form onSubmit={this.handleSubmit} className="task-detail-form">
+            <div className="task-form-header">
+              <button className="list-save button task-detail-save" type="submit">
+                Save Change
+              </button>
+            </div>
+            <div className="task-form-body">
+              <div className="errors">{this.renderErrors()}</div>
+              <br/>
+              <input type="text"
+                value={this.state.title}
+                onChange={this.update('title')}
+                className="task-form-input task-detail-title-input"
+                placeholder="Title"
+              />
+              <br/>
+              <input type="text"
+                value={this.state.description}
+                onChange={this.update('description')}
+                className="task-form-input"
+                placeholder="Description"
+              />
+            </div>
+          </form>
+        </div>
       </div>
     );
   }

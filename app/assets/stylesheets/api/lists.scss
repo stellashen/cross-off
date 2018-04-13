@@ -10,6 +10,7 @@
   flex-direction: column;
   justify-content: space-between;
   padding-bottom: 20px;
+  overflow: scroll;
 }
 
 .delete-list {
@@ -125,6 +126,8 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  background-color: white;
+  min-width: 780px;
 }
 
 .todos-heading, .completed-heading {
@@ -159,10 +162,6 @@
 .empty-trash:hover {
   background-color: red;
   border: 1px solid red;
-}
-
-.list-index-item {
-  min-width: 570px;
 }
 
 .trash-completed {

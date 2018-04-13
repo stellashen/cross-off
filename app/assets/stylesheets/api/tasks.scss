@@ -4,7 +4,7 @@
 
 .new-task-bar-container {
   margin-left: 300px;
-  margin-right: 60px;
+  margin-right: 20px;
 }
 
 .new-task-bar {
@@ -19,9 +19,65 @@
   margin-bottom: 20px;
   padding-bottom: 10px;
   border-bottom: 1px solid $darkgray;
-  margin-right: 80px;
+  margin-right: 20px;
 }
 
 .task-detail {
-  margin-left: 600px;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: $backgroundgray;
+}
+
+.antiscroll {
+  position: static;
+  height: 100%;
+  overflow: hidden;
+}
+
+.task-detail-form {
+  width: 100%;
+  height: 100%;
+  font-size: 14px;
+  overflow: auto;
+}
+
+.task-form-header {
+  position: sticky;
+  top: 0;
+  height: 80px;
+  width: 100%;
+  border-bottom: 1px solid $gray;
+  background-color: $navgray;
+  vertical-align: middle;
+}
+
+.task-detail-save {
+  position: absolute;
+  margin-top: 25px;
+  margin-left: 20px;
+  padding: 10px 20px;
+  width: 100px;
+}
+
+.task-detail-save:hover {
+  background-color: green;
+  border: 1px solid green;
+}
+
+.task-form-body {
+  position: static;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.task-form-input {
+  padding: 20px;
+  width: 100%;
+}
+
+.task-detail-title-input {
+  padding-top: 0;
+  border-bottom: 1px solid $gray;
 }

@@ -28,7 +28,7 @@ class ListForm extends React.Component {
   }
 
   handleKeyPress(e) {
-    if(e.key == 'Enter'){
+    if(e.key === 'Enter'){
       this.handleSubmit(e);
     }
   }
