@@ -6,6 +6,7 @@ export const RECEIVE_TASK_ERRORS = 'RECEIVE_TASK_ERRORS';
 export const REMOVE_TASK = "REMOVE_TASK";
 export const CLEAR_TASKS = "CLEAR_TASKS";
 export const MOVE_TASK_TO_COMPLETED = "MOVE_TASK_TO_COMPLETED";
+export const MOVE_TASK_TO_TODOS = "MOVE_TASK_TO_TODOS";
 
 export const addNewTask = formTask => dispatch => (
   APIUtil.addTask(formTask).then(task => (
@@ -63,6 +64,14 @@ export const moveToCompleted = (task) => dispatch => (
   ))
 );
 
+export const moveToTodos = (task) => dispatch => (
+  APIUtil.updateTask(task).then(t => (
+    dispatch(moveTaskToTodos(t))
+  ), err => (
+    dispatch(receiveTaskErrors(err.responseJSON))
+  ))
+);
+
 export const receiveTasks = tasks => ({
   type: RECEIVE_TASKS,
   tasks
@@ -75,6 +84,11 @@ export const receiveTask = task => ({
 
 export const moveTaskToCompleted = task => ({
   type: MOVE_TASK_TO_COMPLETED,
+  task
+});
+
+export const moveTaskToTodos = task => ({
+  type: MOVE_TASK_TO_TODOS,
   task
 });
 

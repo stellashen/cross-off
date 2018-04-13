@@ -4,7 +4,8 @@ import {
   RECEIVE_TASK,
   REMOVE_TASK,
   CLEAR_TASKS,
-  MOVE_TASK_TO_COMPLETED
+  MOVE_TASK_TO_COMPLETED,
+  MOVE_TASK_TO_TODOS
 } from '../actions/task_actions';
 import { RECEIVE_LIST } from '../actions/list_actions';
 
@@ -28,6 +29,12 @@ const tasksReducer = (state = {}, action) => {
       const cState = merge({}, state, {"completed": completedTask});
       delete cState["todos"][action.task.id];
       return cState;
+    case MOVE_TASK_TO_TODOS:
+      const todoTask = action.task;
+      const inCompletedTask = {[todoTask.id]: todoTask};
+      const tState = merge({}, state, {"todos": inCompletedTask});
+      delete tState["completed"][action.task.id];
+      return tState;
     case REMOVE_TASK:
       const nextState = merge({}, state);
         if (action.task.completed) {

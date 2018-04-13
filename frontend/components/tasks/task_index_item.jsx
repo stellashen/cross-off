@@ -16,7 +16,7 @@ export default class TaskIndexItem extends React.Component {
         this.props.moveToCompleted(task);
       } else {
         task.completed = false;
-        this.props.editTask(task);
+        this.props.moveToTodos(task);
       }
     };
   }
