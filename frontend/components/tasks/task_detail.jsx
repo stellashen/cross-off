@@ -7,14 +7,27 @@ import solids from '@fortawesome/fontawesome-free-solid';
 export default class TaskDetail extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      title:'',
+      description:'',
+      due_date:'',
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentWillMount() {
+
   }
 
   componentWillReceiveProps(nextProps) {
     const id = nextProps.match.params.taskId;
     if (this.props.match.params.taskId !== id) {
       this.props.clearErrors();
+      this.setState({
+        title:'',
+        description:'',
+        due_date:'',
+      });
     }
   }
 
@@ -60,6 +73,10 @@ export default class TaskDetail extends React.Component {
     const task = tasksHash[id];
     if (task === {} || !task) return null;
 
+    if (this.state.title.length === 0) {
+      this.setState(task);
+    }
+
     return (
       <div className="task-detail">
         <div className="antiscroll">
@@ -72,19 +89,20 @@ export default class TaskDetail extends React.Component {
             <div className="task-form-body">
               <div className="errors">{this.renderErrors()}</div>
               <br/>
-              <input type="text"
+              <textarea
+                cols="30" rows="3"
                 value={this.state.title}
                 onChange={this.update('title')}
                 className="task-form-input task-detail-title-input"
                 placeholder="Title"
               />
               <br/>
-              <input type="text"
+              <textarea
+                cols="30" rows="10"
                 value={this.state.description}
                 onChange={this.update('description')}
                 className="task-form-input"
-                placeholder="Description"
-              />
+                placeholder="Description" />
             </div>
           </form>
         </div>
