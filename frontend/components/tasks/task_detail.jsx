@@ -7,21 +7,21 @@ import solids from '@fortawesome/fontawesome-free-solid';
 export default class TaskDetail extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.emptyTask;
+    this.state = this.props.task;
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.updateState = this.updateState.bind(this);
   }
 
-  componentDidMount() {
-    const id = this.props.match.params.taskId;
-    this.props.requestSingleTask(id);
+  componentWillMount() {
+    this.props.fetchList(this.props.match.params.listId);
+    debugger;
   }
 
   componentWillReceiveProps(nextProps) {
     const id = nextProps.match.params.taskId;
     if (this.props.match.params.taskId !== id) {
       this.props.clearErrors();
-      this.props.requestSingleTask(id);
+      this.props.fetchList(nextProps.match.params.listId);
+      debugger;
     }
   }
 
@@ -33,11 +33,6 @@ export default class TaskDetail extends React.Component {
     e.preventDefault();
     const updatedTask = Object.assign({}, this.state);
     this.props.editTask(updatedTask);
-  }
-
-  updateState(task) {
-    return e => this.setState(task);
-    debugger;
   }
 
   update(field) {
@@ -59,12 +54,11 @@ export default class TaskDetail extends React.Component {
   }
 
   render() {
-    const task = this.props.currentTask;
+    const task = this.props.task;
     if (Object.keys(task).length === 0) {
       return null;
-    } else {
-      this.updateState(task);
     }
+    debugger;
     return (
       <div className="task-detail">
         <div className="antiscroll">
