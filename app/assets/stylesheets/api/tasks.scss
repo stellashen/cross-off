@@ -29,6 +29,14 @@
   background-color: $backgroundgray;
 }
 
+.task-detail-null-reminder {
+  margin: 20px;
+  margin-top: 28px;
+    li {
+      padding: 10px;
+    }
+}
+
 .antiscroll {
   position: static;
   height: 100%;

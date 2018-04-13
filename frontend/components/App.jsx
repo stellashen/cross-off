@@ -12,6 +12,7 @@ import Modal from './modal/modal';
 import ListIndexItemContainer from './lists/list_index_item_container';
 import TrashContainer from './trash/trash_container';
 import TaskDetailContainer from './tasks/task_detail_container';
+import TaskDetailReminder from './tasks/task_detail_reminder';
 
 const App = () => (
   <div id="app">
@@ -28,7 +29,10 @@ const App = () => (
 
     <ProtectedRoute exact path="/lists/trash" component={TrashContainer} />
     <ProtectedRoute path="/lists/:listId" component={ListIndexItemContainer} />
-    <ProtectedRoute path="/lists/:listId/:taskId" component={TaskDetailContainer} />
+    <switch>
+      <ProtectedRoute path="/lists/:listId/:taskId" component={TaskDetailContainer} />
+      <ProtectedRoute path="/lists/:listId" component={TaskDetailReminder} />
+    </switch>
 
   </div>
 );
