@@ -27,7 +27,7 @@ export default class TaskIndexItem extends React.Component {
         this.props.deleteTask(task.id);
       } else {
         task.trash = true;
-        this.props.editTask(task);
+        this.props.moveToTrash(task);
       }
     };
   }

@@ -5,6 +5,7 @@ import {
   deleteTask,
   moveToCompleted,
   moveToTodos,
+  moveToTrash,
 } from '../../actions/task_actions';
 import TaskIndexItem from './task_index_item';
 import { withRouter } from 'react-router-dom';
@@ -27,6 +28,7 @@ const mapDispatchToProps = dispatch => {
     deleteTask: (id) => dispatch(deleteTask(id)),
     moveToCompleted: (task) => dispatch(moveToCompleted(task)),
     moveToTodos: (task) => dispatch(moveToTodos(task)),
+    moveToTrash: (task) => dispatch(moveToTrash(task)),
   };
 };
 

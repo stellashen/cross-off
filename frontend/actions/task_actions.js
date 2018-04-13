@@ -7,6 +7,7 @@ export const REMOVE_TASK = "REMOVE_TASK";
 export const CLEAR_TASKS = "CLEAR_TASKS";
 export const MOVE_TASK_TO_COMPLETED = "MOVE_TASK_TO_COMPLETED";
 export const MOVE_TASK_TO_TODOS = "MOVE_TASK_TO_TODOS";
+export const MOVE_TASK_TO_TRASH = "MOVE_TASK_TO_TRASH";
 
 export const addNewTask = formTask => dispatch => (
   APIUtil.addTask(formTask).then(task => (
@@ -72,6 +73,14 @@ export const moveToTodos = (task) => dispatch => (
   ))
 );
 
+export const moveToTrash = (task) => dispatch => (
+  APIUtil.updateTask(task).then(t => (
+    dispatch(moveTaskToTrash(t))
+  ), err => (
+    dispatch(receiveTaskErrors(err.responseJSON))
+  ))
+);
+
 export const receiveTasks = tasks => ({
   type: RECEIVE_TASKS,
   tasks
@@ -89,6 +98,11 @@ export const moveTaskToCompleted = task => ({
 
 export const moveTaskToTodos = task => ({
   type: MOVE_TASK_TO_TODOS,
+  task
+});
+
+export const moveTaskToTrash = task => ({
+  type: MOVE_TASK_TO_TRASH,
   task
 });
 
