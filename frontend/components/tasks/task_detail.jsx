@@ -7,17 +7,15 @@ import solids from '@fortawesome/fontawesome-free-solid';
 export default class TaskDetail extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.task;
+    this.state = {};
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentDidMount() {
-    this.props.fetchTask(this.props.match.params.taskId);
-  }
-
   componentWillReceiveProps(nextProps) {
-    if (this.props.match.params.taskId !== nextProps.match.params.taskId) {
-      this.props.fetchTask(nextProps.match.params.taskId);
+    const id = nextProps.match.params.taskId;
+    if (this.props.match.params.taskId !== id) {
+      const tasksHash = nextProps.tasks.todos || nextProps.tasks.completed;
+      const currentTask = tasksHash[id];
     }
   }
 
@@ -28,8 +26,18 @@ export default class TaskDetail extends React.Component {
   }
 
   render() {
-    const task = this.props.task;
-    if (!task) return null;
+    const id = this.props.match.params.taskId;
+    const todosHash = this.props.tasks.todos;
+    const completedHash = this.props.tasks.completed;
+    let tasksHash = {};
+    if (todosHash && todosHash[id]) {
+      tasksHash = todosHash;
+    } else if (completedHash && completedHash[id]) {
+      tasksHash = completedHash;
+    }
+    if (tasksHash === {} || !tasksHash) return null;
+    const task = tasksHash[id];
+    if (task === {} || !task) return null;
 
     return (
       <div className="task-detail">
