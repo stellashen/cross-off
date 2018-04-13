@@ -11,7 +11,7 @@ import Main from './main/main';
 import Modal from './modal/modal';
 import ListIndexItemContainer from './lists/list_index_item_container';
 import TrashContainer from './trash/trash_container';
-import TaskDetail from './tasks/task_detail';
+import TaskDetailContainer from './tasks/task_detail_container';
 
 const App = () => (
   <div id="app">
@@ -28,7 +28,7 @@ const App = () => (
 
     <ProtectedRoute exact path="/lists/trash" component={TrashContainer} />
     <ProtectedRoute path="/lists/:listId" component={ListIndexItemContainer} />
-    <ProtectedRoute path="/lists/:listId/:taskId" component={TaskDetail} />
+    <ProtectedRoute path="/lists/:listId/:taskId" component={TaskDetailContainer} />
 
   </div>
 );

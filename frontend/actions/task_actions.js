@@ -35,7 +35,7 @@ export const fetchTasks = (isTrashed) => dispatch => (
 
 export const fetchTask = (id) => dispatch => (
   APIUtil.fetchTask(id).then(task => (
-    dispatch(receiveTasks(task))
+    dispatch(receiveTask(task))
   ), err => (
     dispatch(receiveTaskErrors(err.responseJSON))
   ))
