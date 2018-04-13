@@ -7,6 +7,10 @@ Tech Stack: Ruby on Rails, PostgreSQL, JavaScript/React/Redux.
 
 [Design Documents - CrossOff wiki](https://github.com/stellashen/cross-off/wiki)
 
+![dashboard](https://github.com/stellashen/cross-off/blob/master/wiki/screenshots/1.png)
+![dashboard](https://github.com/stellashen/cross-off/blob/master/wiki/screenshots/2.png)
+![dashboard](https://github.com/stellashen/cross-off/blob/master/wiki/screenshots/3.png)
+
 ## Features
 #### User authentication:
 + encrypt the password using BCrypt
