@@ -1,5 +1,5 @@
 class Task < ApplicationRecord
-  validates :title, :list_id, :user_id, presence: true
+  validates :list_id, :user_id, presence: true
   belongs_to :list
   belongs_to :user
   has_many :add_tags, dependent: :destroy
