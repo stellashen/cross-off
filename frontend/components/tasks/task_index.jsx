@@ -6,18 +6,6 @@ export default class TaskIndex extends React.Component {
   constructor(props) {
     super(props);
   }
-  // 
-  // componentDidMount() {
-  //   debugger;
-  //   this.props.fetchList(this.props.match.params.listId);
-  // }
-  //
-  // componentWillReceiveProps(nextProps) {
-  //   debugger;
-  //   if (this.props.match.params.listId !== nextProps.match.params.listId) {
-  //     this.props.fetchList(nextProps.match.params.listId);
-  //   }
-  // }
 
   renderTasks(tasks) {
     return tasks.map((task, idx) => {
