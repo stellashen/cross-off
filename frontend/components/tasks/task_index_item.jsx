@@ -37,26 +37,26 @@ export default class TaskIndexItem extends React.Component {
     if (!task) return null;
 
     return (
-      <div style={this.props.divStyle} className="task-item">
-        <input
-          checked={this.props.task.completed? true : false}
-          id={`taskCheckBox${task.id}`}
-          type="checkbox"
-          onChange={this.handleCheckBox(task)}
-        />
-        &nbsp;&nbsp;
-        <Link to={`/lists/${task.list_id}/${task.id}`}>
-          <span>
-            {task.title}
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <p className="due">{task.due_date? `due: ${task.due_date}` : ''}</p>
-          </span>
-        </Link>
+     <div style={this.props.divStyle} className="task-item">
+       <input
+         checked={this.props.task.completed? true : false}
+         id={`taskCheckBox${task.id}`}
+         type="checkbox"
+         onChange={this.handleCheckBox(task)}
+       />
+       &nbsp;&nbsp;
+       <Link to={this.props.taskType === "trash"? "/lists/trash" : `/lists/${task.list_id}/${task.id}`}>
+         <span>
+           {task.title}
+           &nbsp;&nbsp;&nbsp;&nbsp;
+           <p className="due">{task.due_date? `due: ${task.due_date}` : ''}</p>
+         </span>
+       </Link>
 
-        <span className="list-delete" onClick={this.handleTrash(task)}>
-          <FontAwesomeIcon icon='trash-alt'/>
-        </span>
-      </div>
+       <span className="list-delete" onClick={this.handleTrash(task)}>
+         <FontAwesomeIcon icon='trash-alt'/>
+       </span>
+     </div>
     );
   }
 }

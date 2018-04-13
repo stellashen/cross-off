@@ -11,6 +11,7 @@ import TrashContainer from './trash/trash_container';
 import TaskDetailContainer from './tasks/task_detail_container';
 import TaskDetailReminder from './tasks/task_detail_reminder';
 import BeforeLogin from './before_login';
+import TrashHasNoDetailWarning from './tasks/trash_has_no_detail_warning';
 
 const App = () => (
   <div id="app">
@@ -27,8 +28,15 @@ const App = () => (
     <ProtectedRoute path="/lists/:listId" component={ListIndexItemContainer} />
 
     <Switch>
-      <ProtectedRoute path="/lists/:listId/:taskId" component={TaskDetailContainer} />
-      <ProtectedRoute path="/lists/:listId" component={TaskDetailReminder} />
+      <ProtectedRoute
+        path="/lists/trash"
+        component={TrashHasNoDetailWarning} />
+      <ProtectedRoute
+        path="/lists/:listId/:taskId"
+        component={TaskDetailContainer} />
+      <ProtectedRoute
+        path="/lists/:listId"
+        component={TaskDetailReminder} />
     </Switch>
 
   </div>
