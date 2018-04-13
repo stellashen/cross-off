@@ -32,9 +32,19 @@ export default class TaskIndexItem extends React.Component {
     };
   }
 
+  getFormatDate(str) {
+    const d = new Date(str);
+    const date = d.getDate();
+    const month = d.getMonth();
+    const year = d.getFullYear();
+    return `${month + 1}/${date + 1}/${year}`;
+  }
+
   render() {
     const task = this.props.task;
-    if (!task) return null;
+    if (task === undefined || !task || Object.keys(task).length === 0) return null;
+
+    const formatDate = this.getFormatDate(task.due_date);
 
     return (
      <div style={this.props.divStyle} className="task-item">
@@ -49,7 +59,7 @@ export default class TaskIndexItem extends React.Component {
          <span>
            {task.title}
            &nbsp;&nbsp;&nbsp;&nbsp;
-           <p className="due">{task.due_date? `due: ${task.due_date}` : ''}</p>
+           <p className="due">{task.due_date? `due: ${formatDate}` : ''}</p>
          </span>
        </Link>
 

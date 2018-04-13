@@ -97,10 +97,10 @@ export default class TaskDetail extends React.Component {
               <br/>
               <span className="strong">Due Date (optional)</span>
               <input
+                type="date"
                 value={this.state.due_date}
                 onChange={this.update('due_date')}
                 className="task-form-input"
-                placeholder="Due Date"
               />
               <span className="strong">Description (optional)</span>
               <textarea
