@@ -7,21 +7,23 @@ import solids from '@fortawesome/fontawesome-free-solid';
 export default class TaskDetail extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.task;
+    this.state = {
+      title:'',
+      description:'',
+      due_date:'',
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  componentWillMount() {
-    this.props.fetchList(this.props.match.params.listId);
-    debugger;
   }
 
   componentWillReceiveProps(nextProps) {
     const id = nextProps.match.params.taskId;
     if (this.props.match.params.taskId !== id) {
       this.props.clearErrors();
-      this.props.fetchList(nextProps.match.params.listId);
-      debugger;
+      this.setState({
+        title:'',
+        description:'',
+        due_date:'',
+      });
     }
   }
 
@@ -54,11 +56,24 @@ export default class TaskDetail extends React.Component {
   }
 
   render() {
-    const task = this.props.task;
-    if (Object.keys(task).length === 0) {
-      return null;
+    const id = this.props.match.params.taskId;
+    if (this.props.tasks === undefined) return null;
+    const todosHash = this.props.tasks.todos;
+    const completedHash = this.props.tasks.completed;
+    let tasksHash = {};
+    if (todosHash && todosHash[id]) {
+      tasksHash = todosHash;
+    } else if (completedHash && completedHash[id]) {
+      tasksHash = completedHash;
     }
-    debugger;
+    if (tasksHash === {} || !tasksHash) return null;
+    const task = tasksHash[id];
+    if (task === {} || !task) return null;
+
+    if (this.state.title.length === 0) {
+      this.setState(task);
+    }
+
     return (
       <div className="task-detail">
         <div className="antiscroll">
