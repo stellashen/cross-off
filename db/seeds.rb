@@ -20,13 +20,16 @@ guest = User.create!(
 login(guest)
 
 homework = List.create!(
-  name: "Homework"
+  name: "Homework",
+  user_id: guest.id
 )
 shopping = List.create!(
-  name: "Shopping"
+  name: "Shopping",
+  user_id: guest.id
 )
 places = List.create!(
-  name: "Places"
+  name: "Places",
+  user_id: guest.id
 )
 
 task1 = Task.create!(
