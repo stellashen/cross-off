@@ -11,8 +11,8 @@ Tech Stack:
 
 [Design Documents - CrossOff wiki](https://github.com/stellashen/cross-off/wiki)
 
-![dashboard](https://github.com/stellashen/cross-off/blob/master/wiki/screenshots/splash.png | width=800)
-![dashboard](https://github.com/stellashen/cross-off/blob/master/wiki/screenshots/main.png | width=800)
+![before login](https://github.com/stellashen/cross-off/blob/master/wiki/screenshots/splash.png)
+![after login](https://github.com/stellashen/cross-off/blob/master/wiki/screenshots/main.png)
 
 ## Features
 #### User authentication:
@@ -57,9 +57,9 @@ Because it is always on the page, I can use it whenever I need to, without think
 
 I used the same modal component for three forms: add list form, edit list form, and delete list form.
 
-![dashboard](https://github.com/stellashen/cross-off/blob/master/wiki/screenshots/modal-add-list.png | width=800)
-![dashboard](https://github.com/stellashen/cross-off/blob/master/wiki/screenshots/modal-edit-list.png | width=500)
-![dashboard](https://github.com/stellashen/cross-off/blob/master/wiki/screenshots/modal-delete-list.png | width=500)
+![add list](https://github.com/stellashen/cross-off/blob/master/wiki/screenshots/modal-add-list.png)
+![edit list](https://github.com/stellashen/cross-off/blob/master/wiki/screenshots/modal-edit-list.png)
+![delete list](https://github.com/stellashen/cross-off/blob/master/wiki/screenshots/modal-delete-list.png)
 
 To do that, I just need to pass in the form type to the modal component as props. And then, in the modal, we find the right component by `switch...case...` conditional statements:
 
@@ -88,10 +88,10 @@ switch (modal.name) {
 
 ## Other Pages
 #### Signup form
-![dashboard](https://github.com/stellashen/cross-off/blob/master/wiki/screenshots/signup.png | width=400)
+![signup form](https://github.com/stellashen/cross-off/blob/master/wiki/screenshots/signup.png)
 
 #### Trash
-![dashboard](https://github.com/stellashen/cross-off/blob/master/wiki/screenshots/trash.png | width=800)
+![trash page](https://github.com/stellashen/cross-off/blob/master/wiki/screenshots/trash.png)
 
 ## Future Directions
 Will add the following features:
