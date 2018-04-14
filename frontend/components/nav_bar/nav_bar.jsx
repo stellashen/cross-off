@@ -23,6 +23,7 @@ class NavBar extends React.Component {
       <header className="nav-bar">
 
         <section className="logo">
+          <img src="http://res.cloudinary.com/devleg/image/upload/v1523169757/d56jnahd7z8vsv5mzjzs.png" />
         </section>
 
         <section className="nav-links">

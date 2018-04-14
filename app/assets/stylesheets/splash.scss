@@ -7,10 +7,9 @@
 .nav-bar {
   position: sticky;
   top: 0;
-  padding-top: 20px;
-  padding-left: 45px;
-  padding-right: 45px;
+  padding: 20px 45px;
   width: 100%;
+  min-width: 750px;
   border-bottom: 1px solid $gray;
   background-color: $darkbackgroundgray;
 
@@ -20,16 +19,17 @@
   box-sizing: border-box;
 
   .logo {
-    padding: 10px;
-    background-image: url("http://res.cloudinary.com/devleg/image/upload/v1523169757/d56jnahd7z8vsv5mzjzs.png");
-    width: 200px;
-    height: 60px;
-    background-size: 100%;
-    background-repeat: no-repeat;
+    width: 240px;
+    img {
+      width: 100%;
+    }
   }
 
-  .nav-links ul{
-    display: flex;
+  .nav-links {
+    margin-top: 15px;
+    ul {
+      display: flex;
+    }
   }
 }
 
