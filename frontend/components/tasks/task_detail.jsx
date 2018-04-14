@@ -31,6 +31,18 @@ export default class TaskDetail extends React.Component {
     this.props.clearErrors();
   }
 
+  renderErrors() {
+    return(
+      <ul>
+        {this.props.errors.map((error, i) => (
+          <li key={`taskdetailformerror-${error.id}`}>
+            {error}
+          </li>
+        ))}
+      </ul>
+    );
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     const updatedTask = Object.assign({}, this.state);
@@ -41,18 +53,6 @@ export default class TaskDetail extends React.Component {
     return e => this.setState({
       [field]: e.currentTarget.value
     });
-  }
-
-  renderErrors() {
-    return(
-      <ul>
-        {this.props.errors.map((error, i) => (
-          <li key={`error-${i}`}>
-            {error}
-          </li>
-        ))}
-      </ul>
-    );
   }
 
   render() {

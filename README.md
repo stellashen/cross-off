@@ -3,7 +3,9 @@
 
 CrossOff is a full-stack web application that helps users create to-do lists and manage their tasks, inspired by TickTick.
 
-Tech Stack: Ruby on Rails, PostgreSQL, JavaScript/React/Redux.
+Tech Stack:
+- backend: Ruby on Rails, PostgreSQL
+- frontend: JavaScript/React/Redux, HTML, JSX, SCSS
 
 [Design Documents - CrossOff wiki](https://github.com/stellashen/cross-off/wiki)
 
@@ -41,5 +43,5 @@ More features:
 - search tasks by keyword
 
 For readability & accessibility:
-- responsive Design
-- language switch
+- responsive design
+- language options
