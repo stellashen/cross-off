@@ -98,7 +98,7 @@ export default class TaskDetail extends React.Component {
               <span className="strong">Due Date (optional)</span>
               <input
                 type="date"
-                value={this.state.due_date}
+                value={this.state.due_date.slice(0,10)}
                 onChange={this.update('due_date')}
                 className="task-form-input"
               />
