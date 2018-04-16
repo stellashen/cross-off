@@ -83,6 +83,9 @@
   height: 100%;
   overflow: hidden;
   padding: 20px;
+  span {
+    display: block;
+  }
 }
 
 .task-form-input {

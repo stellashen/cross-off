@@ -15,6 +15,13 @@ export default class TaskDetail extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    const task = this.getCurrentTask();
+    if (task && this.state.title.length === 0) {
+      this.setState(task);
+    }
+  }
+
   componentWillReceiveProps(nextProps) {
     const id = nextProps.match.params.taskId;
     if (this.props.match.params.taskId !== id) {
@@ -24,6 +31,13 @@ export default class TaskDetail extends React.Component {
         description:'',
         due_date:'',
       });
+    }
+    const task = this.getCurrentTask();
+    if (task && this.state.title.length === 0) {
+      this.setState(task);
+    }
+    if (task && this.state.title.length !== 0 && task.completed !== this.state.completed) {
+      this.setState(task);
     }
   }
 
@@ -55,7 +69,7 @@ export default class TaskDetail extends React.Component {
     });
   }
 
-  render() {
+  getCurrentTask() {
     const id = this.props.match.params.taskId;
     if (this.props.tasks === undefined) return null;
     const todosHash = this.props.tasks.todos;
@@ -69,11 +83,10 @@ export default class TaskDetail extends React.Component {
     if (tasksHash === {} || !tasksHash) return null;
     const task = tasksHash[id];
     if (task === {} || !task) return null;
+    return task;
+  }
 
-    if (this.state.title.length === 0) {
-      this.setState(task);
-    }
-
+  render() {
     return (
       <div className="task-detail">
         <div className="antiscroll">
@@ -87,6 +100,8 @@ export default class TaskDetail extends React.Component {
               <div className="errors">{this.renderErrors()}</div>
               <br/>
               <span className="strong">Title</span>
+              <span> Title cannot be empty.</span>
+              <span>Enter the new title before deleting the old title.</span>
               <textarea
                 cols="30" rows="3"
                 value={this.state.title}
@@ -98,7 +113,7 @@ export default class TaskDetail extends React.Component {
               <span className="strong">Due Date (optional)</span>
               <input
                 type="date"
-                value={this.state.due_date.slice(0,10)}
+                value={this.state.due_date? this.state.due_date.slice(0,10) : ''}
                 onChange={this.update('due_date')}
                 className="task-form-input"
               />
