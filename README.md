@@ -1,4 +1,4 @@
-# CrossOff - Your Task Management Assistant
+# CrossOff - Todo List & Task Manager Tool
 [CrossOff Live Site](https://cross-off-app.herokuapp.com)
 
 CrossOff is a full-stack web application that helps users create to-do lists and manage their tasks, inspired by TickTick.
