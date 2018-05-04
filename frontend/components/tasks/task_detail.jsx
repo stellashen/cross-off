@@ -100,8 +100,6 @@ export default class TaskDetail extends React.Component {
               <div className="errors">{this.renderErrors()}</div>
               <br/>
               <span className="strong">Title</span>
-              <span> Title cannot be empty.</span>
-              <span>Enter the new title before deleting the old title.</span>
               <textarea
                 cols="30" rows="3"
                 value={this.state.title}
