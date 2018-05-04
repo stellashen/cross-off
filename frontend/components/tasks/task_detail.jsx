@@ -46,9 +46,12 @@ export default class TaskDetail extends React.Component {
   }
 
   renderErrors() {
+    if (this.props.errors.taskdetail === undefined) {
+      return;
+    }
     return(
       <ul>
-        {this.props.errors.map((error, i) => (
+        {this.props.errors.taskdetail.map((error, i) => (
           <li key={`taskdetailformerror-${error.id}`}>
             {error}
           </li>

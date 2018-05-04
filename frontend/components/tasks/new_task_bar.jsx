@@ -48,9 +48,12 @@ class NewTaskBar extends React.Component {
   }
 
   renderErrors() {
+    if (this.props.errors.newtask === undefined) {
+      return;
+    }
     return(
       <ul>
-        {this.props.errors.map((error, i) => (
+        {this.props.errors.newtask.map((error, i) => (
           <li key={`error-${i}`}>
             {error}
           </li>

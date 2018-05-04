@@ -27,7 +27,7 @@ class Api::TasksController < ApplicationController
     if @task.save
       render :show
     else
-      render json: @task.errors.full_messages, status: 422
+      render :new_task_error, status: 422
     end
   end
 
@@ -37,7 +37,7 @@ class Api::TasksController < ApplicationController
     if @task.update(task_params)
       render :show
     else
-      render json: @task.errors.full_messages, status: 422
+      render :task_detail_error, status: 422
     end
   end
 
