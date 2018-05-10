@@ -71,7 +71,7 @@ class NewTaskBar extends React.Component {
               value={this.state.title}
               onChange={this.update('title')}
               className="list-form-input"
-              placeholder={`Add Task: press Enter to save to the "${this.props.list.name.length <= 10? this.props.list.name : this.props.list.name.slice(0,9).concat("...")}" list`}
+              placeholder={`Add Task: press Enter to save to the current list`}
               onKeyPress={this.handleKeyPress}
             />
             <div className="errors">{this.renderErrors()}</div>
