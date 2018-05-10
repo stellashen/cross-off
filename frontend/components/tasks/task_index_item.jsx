@@ -57,7 +57,7 @@ export default class TaskIndexItem extends React.Component {
        &nbsp;&nbsp;
        <Link to={this.props.taskType === "trash"? "/lists/trash" : `/lists/${task.list_id}/${task.id}`}>
          <span>
-           {task.title}
+           {task.title.length <= 31? task.title : task.title.slice(0, 30).concat("...")}
            &nbsp;&nbsp;&nbsp;&nbsp;
            <p className="due">{task.due_date? `due: ${formatDate}` : ''}</p>
          </span>
