@@ -57,7 +57,7 @@ export default class TaskIndexItem extends React.Component {
          onChange={this.handleCheckBox(task)}
        />
        &nbsp;&nbsp;
-       <Link to={this.props.taskType === "trash"? "/lists/trash" : `/lists/${task.list_id}/${task.id}`}>
+       <Link to={this.props.taskType === "trash"? `/lists/trash/${task.id}` : `/lists/${task.list_id}/${task.id}`}>
          <span>
            {title}
            &nbsp;&nbsp;&nbsp;&nbsp;
