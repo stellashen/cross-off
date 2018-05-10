@@ -5,9 +5,9 @@
 //  + footer
 
 .nav-bar {
-  position: sticky;
+  position: fixed;
   top: 0;
-  padding: 20px 45px;
+  padding: 10px 45px;
   width: 100%;
   min-width: 750px;
   border-bottom: 1px solid $gray;
@@ -35,6 +35,7 @@
 
 .splash {
   padding: 20px 45px;
+  padding-top: 160px;
   height: 100%;
   overflow: scroll;
 
@@ -42,7 +43,7 @@
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    height: 100vh;
+    //height: 100vh;
     // match the viewport height of the browser window
   }
 
