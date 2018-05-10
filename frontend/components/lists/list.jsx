@@ -23,7 +23,7 @@ export default class List extends React.Component {
     return lists.map((list, idx) => (
       <li key={`${idx}${list.name}`} className="list">
         <Link to={`/lists/${list.id}`}>
-          <span>{list.name}</span>
+          <span>{list.name.length < 13? list.name : list.name.slice(0, 12).concat("...") }</span>
         </Link>
 
         <span className="list-delete"
