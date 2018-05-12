@@ -14,9 +14,15 @@ export default class TaskDetail extends React.Component {
       saved:''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    const id = props.match.params.taskId;
+    console.log(id);
   }
 
   componentDidMount() {
+    const id = this.props.match.params.listId;
+    if (id !== "trash") {
+      this.props.fetchList(id);
+    }
     const task = this.getCurrentTask();
     if (task && this.state.title.length === 0) {
       this.setState(task);
@@ -81,6 +87,7 @@ export default class TaskDetail extends React.Component {
   }
 
   getCurrentTask() {
+    console.log(this.props);
     const id = this.props.match.params.taskId;
     if (this.props.tasks === undefined) return null;
     const todosHash = this.props.tasks.todos;
