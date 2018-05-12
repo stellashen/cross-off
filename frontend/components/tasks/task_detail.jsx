@@ -14,14 +14,16 @@ export default class TaskDetail extends React.Component {
       saved:''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-    const id = props.match.params.taskId;
-    console.log(id);
   }
 
   componentDidMount() {
-    const id = this.props.match.params.listId;
-    if (id !== "trash") {
-      this.props.fetchList(id);
+    const listId = this.props.match.params.listId;
+    const taskId = this.props.match.params.taskId;
+    if (listId !== "trash") {
+      this.props.fetchList(listId);
+    }
+    if (taskId) {
+      this.props.requestSingleTask(taskId);
     }
     const task = this.getCurrentTask();
     if (task && this.state.title.length === 0) {
@@ -30,9 +32,10 @@ export default class TaskDetail extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const id = nextProps.match.params.taskId;
-    if (this.props.match.params.taskId !== id) {
+    const taskId = nextProps.match.params.taskId;
+    if (this.props.match.params.taskId !== taskId) {
       this.props.clearErrors();
+      this.props.requestSingleTask(taskId);
       this.setState({
         title:'',
         description:'',
@@ -87,7 +90,6 @@ export default class TaskDetail extends React.Component {
   }
 
   getCurrentTask() {
-    console.log(this.props);
     const id = this.props.match.params.taskId;
     if (this.props.tasks === undefined) return null;
     const todosHash = this.props.tasks.todos;
