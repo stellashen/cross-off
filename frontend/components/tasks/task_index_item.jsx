@@ -37,6 +37,13 @@ export default class TaskIndexItem extends React.Component {
     const date = d.getDate();
     const month = d.getMonth();
     const year = d.getFullYear();
+    if (month === 11 && date === 31) return `1/1/${year + 1}`;
+    if (date === 31) return `${month + 2}/1/${year}`;
+    if ((date === 28 || date === 29) && month === 1) return `3/1/${year}`;
+    if (date === 30 && (month === 3 || month === 5
+      || month === 8 || month === 9 || month === 10)) {
+        return `${month + 2}/1/${year}`;
+    }
     return `${month + 1}/${date + 1}/${year}`;
   }
 
