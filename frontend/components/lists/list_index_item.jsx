@@ -63,8 +63,10 @@ export default class ListIndexItem extends React.Component {
         <h1 className="list-name">{currentList.name}</h1>
         <br/>
         <NewTaskBarContainer />
-        {this.renderTodos(tasks.todos)}
-        {this.renderCompleted(tasks.completed)}
+        <section className="lists-scroll">
+          {this.renderTodos(tasks.todos)}
+          {this.renderCompleted(tasks.completed)}
+        </section>
       </div>
     );
   }

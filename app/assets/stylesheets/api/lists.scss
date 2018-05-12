@@ -130,6 +130,10 @@
   min-width: 780px;
 }
 
+.lists-scroll {
+  overflow: auto;
+}
+
 .todos-heading, .completed-heading {
   position: relative;
   left: 250px;

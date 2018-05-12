@@ -100,7 +100,7 @@ export default class TaskDetail extends React.Component {
   render() {
     return (
       <div className="task-detail">
-        <div className="antiscroll">
+        <div className="antiscroll task-detail-wrapper">
           <form onSubmit={this.handleSubmit} className="task-detail-form">
             <div className="task-form-header">
               <button className="list-save button task-detail-save" type="submit">
@@ -116,7 +116,7 @@ export default class TaskDetail extends React.Component {
                 cols="30" rows="3"
                 value={this.state.title}
                 onChange={this.update('title')}
-                className="task-form-input task-detail-title-input"
+                className="task-form-input task-detail-title-input input-width"
                 placeholder="Title"
               />
               <br/>
@@ -132,7 +132,7 @@ export default class TaskDetail extends React.Component {
                 cols="30" rows="10"
                 value={this.state.description}
                 onChange={this.update('description')}
-                className="task-form-input"
+                className="task-form-input input-width"
                 placeholder="Description" />
             </div>
           </form>
