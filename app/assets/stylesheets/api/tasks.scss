@@ -39,11 +39,6 @@
     }
 }
 
-.task-no-detail-warning {
-  margin: 50px 20px;
-  color: $textgray;
-}
-
 .antiscroll {
   position: static;
   height: 100%;
@@ -104,6 +99,8 @@
   border: 1px solid $darkgray;
   margin: 10px 0;
   width: 150px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .task-detail-title-input {
@@ -119,25 +116,25 @@
   display: inline;
 }
 
-@media only screen and (min-width: 1050px) {
+@media only screen and (min-width: 1080px) {
   .input-width {
     width: 18%;
   }
 }
 
-@media only screen and (min-width: 1120px) {
+@media only screen and (min-width: 1150px) {
   .input-width {
-    width: 27%;
+    width: 25%;
   }
 }
 
-@media only screen and (min-width: 1260px) {
+@media only screen and (min-width: 1290px) {
   .input-width {
-    width: 35%;
+    width: 33%;
   }
 }
 
-@media only screen and (min-width: 1400px) {
+@media only screen and (min-width: 1430px) {
   .input-width {
     width: 40%;
   }
