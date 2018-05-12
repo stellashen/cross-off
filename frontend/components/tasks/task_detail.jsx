@@ -11,6 +11,7 @@ export default class TaskDetail extends React.Component {
       title:'',
       description:'',
       due_date:'',
+      saved:''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -30,6 +31,7 @@ export default class TaskDetail extends React.Component {
         title:'',
         description:'',
         due_date:'',
+        saved:''
       });
     }
     const task = this.getCurrentTask();
@@ -64,6 +66,12 @@ export default class TaskDetail extends React.Component {
     e.preventDefault();
     const updatedTask = Object.assign({}, this.state);
     this.props.editTask(updatedTask);
+    this.changeSavedMessage("Changes Saved");
+    setTimeout(()=>this.changeSavedMessage(""), 2000);
+  }
+
+  changeSavedMessage(message) {
+    this.setState({["saved"]: message})
   }
 
   update(field) {
@@ -98,6 +106,7 @@ export default class TaskDetail extends React.Component {
               <button className="list-save button task-detail-save" type="submit">
                 Save Change
               </button>
+              <p className="task-detail-save-reminder">{this.state.saved}</p>
             </div>
             <div className="task-form-body">
               <div className="errors">{this.renderErrors()}</div>
