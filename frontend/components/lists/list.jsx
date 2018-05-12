@@ -8,10 +8,22 @@ export default class List extends React.Component {
   constructor(props) {
     super(props);
     this.handleOpenModal = this.handleOpenModal.bind(this);
+    this.state = {
+      selectedList: ''
+    }
   }
 
   componentDidMount() {
     this.props.fetchLists();
+    const id = this.props.match.params.listId;
+    this.setState(["selectedList"]: id);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const id = nextProps.match.params.listId;
+    if (id !== this.props.match.params.listId) {
+      this.setState(["selectedList"]: id);
+    }
   }
 
   handleOpenModal(modalName, listId) {
@@ -21,7 +33,7 @@ export default class List extends React.Component {
   renderLists() {
     const lists = Object.values(this.props.lists);
     return lists.map((list, idx) => (
-      <li key={`${idx}${list.name}`} className="list">
+      <li key={`${idx}${list.name}`} className={list.id === this.props.match.params.listId? "list selected-list" : "list"}>
         <Link to={`/lists/${list.id}`}>
           <span>{list.name.length <= 13? list.name : list.name.slice(0, 12).concat("...") }</span>
         </Link>

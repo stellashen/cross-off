@@ -82,13 +82,21 @@
 
 // list.jsx
 .lists-nav {
-  padding: 10px;
+  padding: 10px 0;
 }
 
 .list {
   position: relative;
   padding: 10px 20px;
   font-size: 16px;
+}
+
+.list:hover {
+  background-color: $hoverblue;
+}
+
+.selected-list {
+  background-color: $selectedList;
 }
 
 .list-edit {
