@@ -11,8 +11,8 @@ Tech Stack:
 
 [Design Documents - CrossOff wiki](https://github.com/stellashen/cross-off/wiki)
 
-![before login](https://github.com/stellashen/cross-off/blob/master/wiki/screenshots/splash.png)
-![after login](https://github.com/stellashen/cross-off/blob/master/wiki/screenshots/main.png)
+![before login](https://github.com/stellashen/cross-off/blob/master/wiki/screenshots/c1.png)
+![after login](https://github.com/stellashen/cross-off/blob/master/wiki/screenshots/c2.png)
 
 ## Features
 #### User authentication:
