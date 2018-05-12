@@ -8,22 +8,19 @@ export default class List extends React.Component {
   constructor(props) {
     super(props);
     this.handleOpenModal = this.handleOpenModal.bind(this);
-    this.state = {
-      selectedList: ''
-    }
   }
 
   componentDidMount() {
     this.props.fetchLists();
-    const id = this.props.match.params.listId;
-    this.setState(["selectedList"]: id);
   }
 
-  componentWillReceiveProps(nextProps) {
-    const id = nextProps.match.params.listId;
-    if (id !== this.props.match.params.listId) {
-      this.setState(["selectedList"]: id);
+  highlightSelectedList(listId) {
+    const selectedList = document.getElementById(listId);
+    const lastSelectedList = document.getElementsByClassName("selected-list");
+    if (lastSelectedList.length > 0) {
+      lastSelectedList[0].classList.remove("selected-list");
     }
+    selectedList.classList.add("selected-list");
   }
 
   handleOpenModal(modalName, listId) {
@@ -33,9 +30,11 @@ export default class List extends React.Component {
   renderLists() {
     const lists = Object.values(this.props.lists);
     return lists.map((list, idx) => (
-      <li key={`${idx}${list.name}`} className={list.id === this.props.match.params.listId? "list selected-list" : "list"}>
+      <li key={`${idx}${list.name}`} className="list" id={list.id}>
         <Link to={`/lists/${list.id}`}>
-          <span>{list.name.length <= 13? list.name : list.name.slice(0, 12).concat("...") }</span>
+          <span onClick={() => this.highlightSelectedList(list.id)}>
+            {list.name.length <= 13? list.name : list.name.slice(0, 12).concat("...") }
+          </span>
         </Link>
 
         <span className="list-delete"
