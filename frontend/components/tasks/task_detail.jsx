@@ -54,6 +54,7 @@ export default class TaskDetail extends React.Component {
 
   componentWillUnmount() {
     this.props.clearErrors();
+    this.props.closeTask();
   }
 
   renderErrors() {

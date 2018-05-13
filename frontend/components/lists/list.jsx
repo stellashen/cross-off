@@ -12,11 +12,11 @@ export default class List extends React.Component {
 
   componentDidMount() {
     this.props.fetchLists();
-    const id = this.props.match.params.listId;
-    console.log(id);
-    if (id) {
-      this.highlightSelectedList(id);
-    }
+    // const id = this.props.listId;
+    // console.log(id);
+    // if (id) {
+    //   this.highlightSelectedList(id);
+    // }
   }
 
   highlightSelectedList(listId) {

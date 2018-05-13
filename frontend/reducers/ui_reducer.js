@@ -4,5 +4,5 @@ import currentTaskReducer from './current_task_reducer';
 
 export default combineReducers({
   modal,
-  currentTask: currentTaskReducer,
+  taskId: currentTaskReducer,
 });
