@@ -15,9 +15,11 @@ const mapStateToProps = (state, ownProps) => {
   const nullStyle = {textDecoration: 'none', color: 'black'};
   const task = ownProps.task;
   const divStyle = task.completed? style : nullStyle;
+  const activeTaskId = state.ui.taskId;
   return {
     task,
     divStyle,
+    activeTaskId,
     taskType: ownProps.taskType,
   };
 };

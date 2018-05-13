@@ -55,8 +55,10 @@ export default class TaskIndexItem extends React.Component {
     const charsNumLimit = task.due_date? 22 : 31;
     const title = task.title.length <= charsNumLimit? task.title : task.title.slice(0, charsNumLimit - 1).concat("...")
 
+    const active = this.props.activeTaskId === this.props.task.id ? "task-item active-task" : "task-item";
+
     return (
-     <div style={this.props.divStyle} className="task-item">
+     <div style={this.props.divStyle} className={active}>
        <input
          checked={this.props.task.completed? true : false}
          id={`taskCheckBox${task.id}`}
