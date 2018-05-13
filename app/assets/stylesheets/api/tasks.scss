@@ -11,10 +11,6 @@
   margin-left: 270px;
 }
 
-.task {
-  border-bottom: 1px solid $gray;
-}
-
 .task-detail {
   width: 100%;
   height: 100%;
@@ -107,14 +103,23 @@
 
 .task-item {
   display: block;
-  padding-top: 15px;
-  padding-bottom: 15px;
   padding-right: 20px;
   padding-left: 30px;
 }
 
+.task-item-inner-wrapper {
+  border-bottom: 1px solid $gray;
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+
 .active-task {
-  background-color: $gray;
+  background-color: $darkergray;
+  outline: 1px solid $darkergray;
+  .task-item-inner-wrapper {
+    padding-bottom: 16px;
+    border: 0;
+  }
 }
 
 .due {
