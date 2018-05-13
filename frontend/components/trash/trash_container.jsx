@@ -5,6 +5,7 @@ import { fetchTasks,
   deleteTask } from '../../actions/task_actions';
 import Trash from './trash';
 import { withRouter } from 'react-router-dom';
+import { trash, closeList } from '../../actions/list_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -18,6 +19,8 @@ const mapDispatchToProps = dispatch => {
     fetchTasks: (flag) => dispatch(fetchTasks(flag)),
     clearErrors: () => dispatch(clearErrors()),
     deleteTask: (id) => dispatch(deleteTask(id)),
+    trash:() => dispatch(trash()),
+    closeList: () => dispatch(closeList()),
   };
 };
 

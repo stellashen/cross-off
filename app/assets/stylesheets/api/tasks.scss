@@ -113,9 +113,18 @@
   padding-top: 15px;
 }
 
+.task-item:hover {
+  background-color: $gray;
+  outline: 1px solid white;
+  .task-item-inner-wrapper {
+    padding-bottom: 16px;
+    border: 0;
+  }
+}
+
 .active-task {
   background-color: $darkergray;
-  outline: 1px solid $darkergray;
+  outline: 1px solid white;
   .task-item-inner-wrapper {
     padding-bottom: 16px;
     border: 0;

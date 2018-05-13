@@ -4,6 +4,8 @@ export const RECEIVE_LISTS = 'RECEIVE_LISTS';
 export const RECEIVE_LIST = 'RECEIVE_LIST';
 export const RECEIVE_LIST_ERRORS = 'RECEIVE_LIST_ERRORS';
 export const REMOVE_LIST = "REMOVE_LIST";
+export const TRASH = "TRASH";
+export const CLOSE_LIST = "CLOSE_LIST";
 
 export const addNewList = formList => dispatch => (
   APIUtil.addList(formList).then(listInfo => (
@@ -33,6 +35,18 @@ export const fetchList = (id) => dispatch => (
   ))
 );
 
+export const closeList = () => {
+  return {
+    type: CLOSE_LIST
+  };
+}
+
+export const trash = () => {
+  return {
+    type: TRASH
+  };
+}
+
 export const deleteList = (listId) => dispatch => (
   APIUtil.deleteList(listId).then(() => (
     dispatch(removeList(listId))
@@ -57,6 +71,11 @@ export const receiveLists = lists => ({
 export const receiveList = listInfo => ({
   type: RECEIVE_LIST,
   listInfo
+});
+
+export const requestList = list => ({
+  type: REQUEST_LIST,
+  list
 });
 
 export const receiveListErrors = errors => ({

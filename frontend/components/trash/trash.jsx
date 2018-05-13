@@ -13,6 +13,11 @@ export default class Trash extends React.Component {
 
   componentDidMount() {
     this.props.fetchTasks(true);
+    this.props.trash();
+  }
+
+  componentWillUnmount() {
+    this.props.closeList();
   }
 
   emptyTrash(tasks) {

@@ -13,19 +13,19 @@ export default class ListIndexItem extends React.Component {
 
   componentDidMount() {
     const id = this.props.match.params.listId;
-    if (id !== "trash") {
-      this.props.fetchList(id);
-    }
+    this.props.fetchList(id);
   }
 
   componentWillReceiveProps(nextProps) {
     const id = nextProps.match.params.listId;
     if (this.props.match.params.listId !== id) {
       this.props.clearTasks();
-      if (id !== "trash") {
-        this.props.fetchList(nextProps.match.params.listId);
-      }
+      this.props.fetchList(nextProps.match.params.listId);
     }
+  }
+
+  componentWillUnmount() {
+    this.props.closeList();
   }
 
   renderTodos(todos) {

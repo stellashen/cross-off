@@ -7,6 +7,7 @@ import { withRouter } from 'react-router-dom';
 const mapStateToProps = state => {
   return {
     lists: state.entities.lists,
+    activeListId: state.ui.listId
   };
 };
 

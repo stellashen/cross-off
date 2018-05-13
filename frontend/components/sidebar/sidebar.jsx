@@ -17,6 +17,7 @@ export default class Sidebar extends React.Component {
   }
 
   render() {
+    const activeListId = this.props.activeListId;
     return (
       <aside className="sidebar">
         <UserProfileContainer />
@@ -30,7 +31,7 @@ export default class Sidebar extends React.Component {
         <ListContainer />
 
         <Link to="/lists/trash">
-            <span className="add-new-list-button trash-nav">
+            <span className={activeListId === "trash" ? "selected-list add-new-list-button trash-nav" : "add-new-list-button trash-nav"}>
               <FontAwesomeIcon icon="trash-alt" />
               <p>Trash</p>
             </span>

@@ -5,7 +5,7 @@ import {
   editTask,
   clearTasks,
 } from '../../actions/task_actions';
-import { fetchList } from '../../actions/list_actions';
+import { fetchList, closeList } from '../../actions/list_actions';
 import ListIndexItem from './list_index_item';
 import { withRouter } from 'react-router-dom';
 
@@ -23,9 +23,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchList: (id) => dispatch(fetchList(id)),
-    clearErrors: () => dispatch(clearErrors()),
+    closeList: () => dispatch(closeList()),
     clearTasks: () => dispatch(clearTasks()),
-    editTask: (task) => dispatch(editTask(task)),
   };
 };
 

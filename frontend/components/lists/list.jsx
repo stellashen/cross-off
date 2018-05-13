@@ -12,20 +12,6 @@ export default class List extends React.Component {
 
   componentDidMount() {
     this.props.fetchLists();
-    // const id = this.props.listId;
-    // console.log(id);
-    // if (id) {
-    //   this.highlightSelectedList(id);
-    // }
-  }
-
-  highlightSelectedList(listId) {
-    const selectedList = document.getElementById(listId);
-    const lastSelectedList = document.getElementsByClassName("selected-list");
-    if (lastSelectedList.length > 0) {
-      lastSelectedList[0].classList.remove("selected-list");
-    }
-    selectedList.classList.add("selected-list");
   }
 
   handleOpenModal(modalName, listId) {
@@ -34,10 +20,12 @@ export default class List extends React.Component {
 
   renderLists() {
     const lists = Object.values(this.props.lists);
+    const activeListId = this.props.activeListId;
+
     return lists.map((list, idx) => (
-      <li key={`${idx}${list.name}`} className="list" id={list.id}>
+      <li key={`${idx}${list.name}`} className={activeListId === list.id ? "selected-list list" : "list"} id={list.id}>
         <Link to={`/lists/${list.id}`}>
-          <span onClick={() => this.highlightSelectedList(list.id)}>
+          <span>
             {list.name.length <= 13? list.name : list.name.slice(0, 12).concat("...") }
           </span>
         </Link>
