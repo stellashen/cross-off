@@ -5,6 +5,7 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import solids from '@fortawesome/fontawesome-free-solid';
 import NewTaskBarContainer from '../tasks/new_task_bar_container';
 import TaskIndexContainer from '../tasks/task_index_container';
+import Main from '../main/main';
 
 export default class ListIndexItem extends React.Component {
   constructor(props) {
@@ -54,7 +55,8 @@ export default class ListIndexItem extends React.Component {
 
   render() {
     const { currentList, tasks } = this.props;
-    if (!currentList) return null;
+    console.log(this.props);
+    if (!currentList) return <Main />;
     if (Object.keys(tasks).length === 0) return (
       <div className="list-index-item">
         <h1 className="list-name">{currentList.name}</h1>

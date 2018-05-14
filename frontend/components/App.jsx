@@ -20,12 +20,12 @@ const App = () => (
     <AuthRoute exact path="/signup" component={SignUpFormContainer} />
 
     <ProtectedRoute path="/lists" component={SidebarContainer} />
-    <ProtectedRoute exact path="/lists" component={Main} />
     <Modal />
 
     <Switch>
         <ProtectedRoute path="/lists/trash" component={TrashContainer} />
         <ProtectedRoute path="/lists/:listId" component={ListIndexItemContainer} />
+        <ProtectedRoute path="/lists" component={Main} />
     </Switch>
 
     <Switch>
