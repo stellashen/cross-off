@@ -3,10 +3,7 @@
 
 CrossOff is a full-stack web application that helps users create to-do lists and manage their tasks, inspired by TickTick.
 
-This is the 1st version. Updates will come out in the future.
-
-Update May 13, 2018:
-- highlight the current list/task
+This is the 2nd version. More updates will come out in the future.
 
 Tech Stack:
 - backend: Ruby on Rails, PostgreSQL
@@ -18,6 +15,7 @@ Tech Stack:
 ![after login](https://github.com/stellashen/cross-off/blob/master/wiki/screenshots/main.png)
 
 ## Features
+### version 1.0  (April 15, 2018)
 #### User authentication:
 + encrypt the password using BCrypt
 + redirect url path using AuthRoute and ProtectedRoute.
@@ -34,6 +32,20 @@ Tech Stack:
 + Users can click a task title to view its details
 + Users can add due date to a task, and due date will show up next to the task title in the list view
 + Users can update the task details
+
+### version 1.1 new features (May 13, 2018)
+#### style
++ Hover effects for hovering over list/task name.
++ The current list/task will be highlighted in the navigation.
++ Long list/task name will be displayed in nice format.
+
+#### scroll
++ Users can scroll the tasks under the list page. The sidebar and task detail page will not be affected by scrolling.
+
+#### task detail page (the right section after clicking a task title)
++ "Changes Saved!" will show up after clicking "Save Change" button, and disappear after 2 seconds.
++ Users can drag the right bottom corner of description input box, to enlarge the box.
++ If users scroll page with mouse on the task detail right section, the task detail form will be scrolled, but the "Save Change" button will stay on the top, so it's convenient to click.
 
 ## Reuse Modal form component
 `<Modal />` is nested directly under the `App` component. Technically it is always on the page, but we can make it show up or hide by calling `openModal` and `closeModal` actions:
