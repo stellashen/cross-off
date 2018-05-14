@@ -33,6 +33,8 @@ class DeleteList extends React.Component {
   }
 
   render() {
+    const name = this.props.listName;
+    const listName = name.length <= 13? name : name.slice(0, 12).concat("...");
     return (
       <div className="list-form-container delete-list">
         <div className = "list-form-header">
@@ -45,8 +47,8 @@ class DeleteList extends React.Component {
           <div className="list-form-body">
             <br/>
             <div>
-              Are you sure you want to delete list
-              <p className="strong">{this.props.listName}</p>?
+              Are you sure you want to delete list (
+              <strong>{listName}</strong>)?
               Tasks within this list will be permanently deleted. (That is, you will not see them in the trash can.)
             </div>
             <br/>
