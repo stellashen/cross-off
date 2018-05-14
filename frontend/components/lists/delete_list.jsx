@@ -46,7 +46,7 @@ class DeleteList extends React.Component {
             <br/>
             <div>
               Are you sure you want to delete list
-              (<p className="strong">{this.props.listName}</p>)?
+              <p className="strong">{this.props.listName}</p>?
               Tasks within this list will be permanently deleted. (That is, you will not see them in the trash can.)
             </div>
             <br/>

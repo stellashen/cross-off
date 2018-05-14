@@ -25,6 +25,8 @@ const mapDispatchToProps = dispatch => {
     fetchList: (id) => dispatch(fetchList(id)),
     closeList: () => dispatch(closeList()),
     clearTasks: () => dispatch(clearTasks()),
+    clearErrors: () => dispatch(clearErrors()),
+    editTask: (task) => dispatch(editTask(task)),
   };
 };
 
