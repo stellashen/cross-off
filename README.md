@@ -43,7 +43,7 @@ Tech Stack:
 + Users can scroll the tasks under the list page. The sidebar and task detail page will not be affected by scrolling.
 
 #### task detail page (the right section after clicking a task title)
-+ "Changes Saved!" will show up after clicking "Save Change" button, and disappear after 2 seconds.
++ "Changes Saved!" will show up after clicking "Save Changes" button, and disappear after 2 seconds.
 + Users can drag the right bottom corner of description input box, to enlarge the box.
 + If users scroll page with mouse on the task detail right section, the task detail form will be scrolled, but the "Save Change" button will stay on the top, so it's convenient to click.
 

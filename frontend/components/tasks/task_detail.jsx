@@ -114,7 +114,7 @@ export default class TaskDetail extends React.Component {
           <form onSubmit={this.handleSubmit} className="task-detail-form">
             <div className="task-form-header">
               <button className="list-save button task-detail-save" type="submit">
-                Save Change
+                Save Changes
               </button>
               <p className="task-detail-save-reminder">{this.state.saved}</p>
             </div>
