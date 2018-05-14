@@ -25,8 +25,8 @@ export default class List extends React.Component {
     return lists.map((list, idx) => (
       <li key={`${idx}${list.name}`} className={activeListId === list.id ? "selected-list list" : "list"} id={list.id}>
         <Link to={`/lists/${list.id}`}>
-          <span>
-            {list.name.length <= 13? list.name : list.name.slice(0, 12).concat("...") }
+          <span className="list-title">
+            {list.name}
           </span>
         </Link>
 
