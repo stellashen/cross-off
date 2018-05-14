@@ -62,7 +62,7 @@ export default class TaskIndexItem extends React.Component {
            type="checkbox"
            onChange={this.handleCheckBox(task)}
          />
-         &nbsp;&nbsp;
+
          <Link to={this.props.taskType === "trash"? `/lists/trash/${task.id}` : `/lists/${task.list_id}/${task.id}`}>
            <span className={task.due_date? "task-title task-title-with-due" : "task-title"}>
              {task.title}

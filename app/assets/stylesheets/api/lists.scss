@@ -16,6 +16,7 @@
 .list-title {
   display: inline-block;
   width: 160px;
+  overflow: hidden;
 }
 
 .delete-list {
@@ -127,6 +128,7 @@
   margin-left: 296px;
   margin-top: 20px;
   width: 500px;
+  overflow: hidden;
 }
 
 .empty-warning {
