@@ -53,8 +53,9 @@ export default class TaskIndexItem extends React.Component {
 
     const formatDate = this.getFormatDate(task.due_date);
     const active = this.props.activeTaskId === this.props.task.id ? "task-item active-task" : "task-item";
+    const divStyle = this.props.divStyle;
     return (
-     <div style={this.props.divStyle} className={active}>
+     <div className={active}>
        <div className="task-item-inner-wrapper">
          <input
            checked={this.props.task.completed? true : false}
@@ -64,10 +65,12 @@ export default class TaskIndexItem extends React.Component {
          />
 
          <Link to={this.props.taskType === "trash"? `/lists/trash/${task.id}` : `/lists/${task.list_id}/${task.id}`}>
-           <span className={task.due_date? "task-title task-title-with-due" : "task-title"}>
+           <span
+             style={divStyle}
+             className={task.due_date? "task-title task-title-with-due" : "task-title"}>
              {task.title}
            </span>
-           <p className="due">{task.due_date? `  due: ${formatDate}` : ''}</p>
+           <p style={divStyle} className="due">{task.due_date? `  due: ${formatDate}` : ''}</p>
          </Link>
 
          <span className="list-delete" onClick={this.handleTrash(task)}>

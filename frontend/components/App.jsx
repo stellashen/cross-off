@@ -23,8 +23,10 @@ const App = () => (
     <ProtectedRoute exact path="/lists" component={Main} />
     <Modal />
 
-    <ProtectedRoute path="/lists/trash" component={TrashContainer} />
-    <ProtectedRoute path="/lists/:listId" component={ListIndexItemContainer} />
+    <Switch>
+        <ProtectedRoute path="/lists/trash" component={TrashContainer} />
+        <ProtectedRoute path="/lists/:listId" component={ListIndexItemContainer} />
+    </Switch>
 
     <Switch>
       <ProtectedRoute

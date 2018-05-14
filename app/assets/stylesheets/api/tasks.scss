@@ -152,9 +152,13 @@
 .due {
   margin: 0 10px;
   display: inline;
-  color: red;
   font-size: 13px;
   font-family: 'Nunito', sans-serif;
+}
+
+.completed-style {
+  text-decoration: line-through;
+  color: gray;
 }
 
 @media only screen and (min-width: 1080px) {
