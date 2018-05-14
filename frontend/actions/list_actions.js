@@ -3,6 +3,7 @@ import * as APIUtil from '../util/list_api_util';
 export const RECEIVE_LISTS = 'RECEIVE_LISTS';
 export const RECEIVE_LIST = 'RECEIVE_LIST';
 export const RECEIVE_LIST_ERRORS = 'RECEIVE_LIST_ERRORS';
+export const REQUEST_LIST = "REQUEST_LIST";
 export const REMOVE_LIST = "REMOVE_LIST";
 export const TRASH = "TRASH";
 export const CLOSE_LIST = "CLOSE_LIST";
@@ -30,6 +31,14 @@ export const fetchLists = () => dispatch => (
 export const fetchList = (id) => dispatch => (
   APIUtil.fetchList(id).then(listInfo => (
     dispatch(receiveList(listInfo))
+  ), err => (
+    dispatch(receiveListErrors(err.responseJSON))
+  ))
+);
+
+export const requestSingleList = (id) => dispatch => (
+  APIUtil.fetchList(id).then(list => (
+    dispatch(requestList(list))
   ), err => (
     dispatch(receiveListErrors(err.responseJSON))
   ))
@@ -73,9 +82,9 @@ export const receiveList = listInfo => ({
   listInfo
 });
 
-export const requestList = list => ({
+export const requestList = listInfo => ({
   type: REQUEST_LIST,
-  list
+  listInfo
 });
 
 export const receiveListErrors = errors => ({

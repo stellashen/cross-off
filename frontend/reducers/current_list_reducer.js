@@ -1,10 +1,10 @@
 import merge from 'lodash/merge';
-import { RECEIVE_LIST, CLOSE_LIST, TRASH } from '../actions/list_actions';
+import { REQUEST_LIST, CLOSE_LIST, TRASH } from '../actions/list_actions';
 
 const currentListReducer = (state = null, action) => {
   Object.freeze(state);
   switch(action.type) {
-    case RECEIVE_LIST:
+    case REQUEST_LIST:
       return action.listInfo.list.id;
     case TRASH:
       return "trash";
