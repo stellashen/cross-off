@@ -40,7 +40,6 @@ Tech Stack:
 + Long list/task name will be displayed in nice format.
 
 #### scroll
-After login:
 + Users can scroll the tasks under the list page (middle section). The sidebar and task detail page will not be affected by scrolling.
 + If users have many lists in the sidebar (left section), users can scroll the sidebar.
 + On the task detail page (right section), users can drag the bottom right corner of the description input box to enlarge the box. When the box height is over the browser window's height, users can scroll the task detail page. The "Save Changes" button will stay on top during scrolling for easy access.

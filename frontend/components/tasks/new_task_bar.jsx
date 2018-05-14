@@ -70,7 +70,7 @@ class NewTaskBar extends React.Component {
             <input type="text"
               value={this.state.title}
               onChange={this.update('title')}
-              className="list-form-input"
+              className="list-form-input new-task-input"
               placeholder={`Add Task: press Enter to save to the current list`}
               onKeyPress={this.handleKeyPress}
             />
