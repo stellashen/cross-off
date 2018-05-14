@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import fontawesome from '@fortawesome/fontawesome';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import solids from '@fortawesome/fontawesome-free-solid';
@@ -55,8 +55,7 @@ export default class ListIndexItem extends React.Component {
 
   render() {
     const { currentList, tasks } = this.props;
-    console.log(this.props);
-    if (!currentList) return <Main />;
+    if (!currentList) return <Redirect to="/lists" />;
     if (Object.keys(tasks).length === 0) return (
       <div className="list-index-item">
         <h1 className="list-name">{currentList.name}</h1>
