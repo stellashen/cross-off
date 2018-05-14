@@ -5,14 +5,17 @@ CrossOff is a full-stack web application that helps users create to-do lists and
 
 This is the 1st version. Updates will come out in the future.
 
+Update May 13, 2018:
+- highlight the current list/task
+
 Tech Stack:
 - backend: Ruby on Rails, PostgreSQL
 - frontend: JavaScript/React/Redux, HTML, JSX, SCSS
 
 [Design Documents - CrossOff wiki](https://github.com/stellashen/cross-off/wiki)
 
-![before login](https://github.com/stellashen/cross-off/blob/master/wiki/screenshots/c1.png)
-![after login](https://github.com/stellashen/cross-off/blob/master/wiki/screenshots/c2.png)
+![before login](https://github.com/stellashen/cross-off/blob/master/wiki/screenshots/splash.png)
+![after login](https://github.com/stellashen/cross-off/blob/master/wiki/screenshots/main.png)
 
 ## Features
 #### User authentication:
@@ -98,8 +101,6 @@ Will add the following features:
 - add a restore button for trash
 - provide avatar image options
 - cross off custom animation
-- welcome email & email confirmation
-- highlight the current list/task
 - a toggle button to hide completed tasks
 
 More features:
