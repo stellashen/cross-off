@@ -21,8 +21,10 @@ export default class ListIndexItem extends React.Component {
     const id = nextProps.match.params.listId;
     if (this.props.match.params.listId !== id) {
       this.props.clearTasks();
-      this.props.fetchList(id);
-      this.props.requestSingleList(id);
+      if (id !== "trash") {
+        this.props.fetchList(id);
+        this.props.requestSingleList(id);
+      }
     }
   }
 
