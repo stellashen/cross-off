@@ -111,6 +111,9 @@
   border-bottom: 1px solid $gray;
   padding-bottom: 15px;
   padding-top: 15px;
+  a {
+    vertical-align: middle;
+  }
 }
 
 .task-item:hover {
@@ -131,9 +134,18 @@
   }
 }
 
+.task-title {
+  display: inline-block;
+  width: 298px;
+  overflow: hidden;
+}
+
 .due {
   margin: 0 10px;
   display: inline;
+  color: red;
+  font-size: 13px;
+  font-family: 'Nunito', sans-serif;
 }
 
 @media only screen and (min-width: 1080px) {

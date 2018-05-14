@@ -53,8 +53,6 @@ export default class TaskIndexItem extends React.Component {
 
     const formatDate = this.getFormatDate(task.due_date);
     const charsNumLimit = task.due_date? 22 : 31;
-    const title = task.title.length <= charsNumLimit? task.title : task.title.slice(0, charsNumLimit - 1).concat("...")
-
     const active = this.props.activeTaskId === this.props.task.id ? "task-item active-task" : "task-item";
 
     return (
@@ -68,11 +66,10 @@ export default class TaskIndexItem extends React.Component {
          />
          &nbsp;&nbsp;
          <Link to={this.props.taskType === "trash"? `/lists/trash/${task.id}` : `/lists/${task.list_id}/${task.id}`}>
-           <span>
-             {title}
-             &nbsp;&nbsp;&nbsp;&nbsp;
-             <p className="due">{task.due_date? `due: ${formatDate}` : ''}</p>
+           <span className="task-title">
+             {task.title}
            </span>
+           <p className="due">{task.due_date? `  due: ${formatDate}` : '  '}</p>
          </Link>
 
          <span className="list-delete" onClick={this.handleTrash(task)}>
