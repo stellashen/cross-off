@@ -136,8 +136,16 @@
 
 .task-title {
   display: inline-block;
-  width: 298px;
+  width: 420px;
   overflow: hidden;
+}
+
+.task-title-with-due {
+  width: 318px;
+}
+
+.task .list-delete {
+  margin-left: 0;
 }
 
 .due {

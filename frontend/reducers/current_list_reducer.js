@@ -5,7 +5,6 @@ const currentListReducer = (state = null, action) => {
   Object.freeze(state);
   switch(action.type) {
     case RECEIVE_LIST:
-      console.log(action);
       return action.listInfo.list.id;
     case TRASH:
       return "trash";
