@@ -12,7 +12,7 @@ Tech Stack:
 [Design Documents - CrossOff wiki](https://github.com/stellashen/cross-off/wiki)
 
 ![before login](https://github.com/stellashen/cross-off/blob/master/wiki/screenshots/splash.png)
-![after login](https://github.com/stellashen/cross-off/blob/master/wiki/screenshots/view.png)
+![after login](https://github.com/stellashen/cross-off/blob/master/wiki/screenshots/main.png)
 
 ## Features
 ### version 1.0  (April 15, 2018)
