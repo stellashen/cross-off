@@ -1,5 +1,5 @@
 # CrossOff - Todo List & Task Manager Tool
-<a href="http://www.mycrossoff.com/" target="_blank">CrossOff Live Site</a>
+[CrossOff Live Site](http://www.mycrossoff.com/)
 
 CrossOff is a full-stack web application that helps users create to-do lists and manage their tasks, inspired by TickTick.
 
@@ -9,7 +9,7 @@ Tech Stack:
 - backend: Ruby on Rails, PostgreSQL
 - frontend: JavaScript/React/Redux, HTML, JSX, SCSS
 
-<a href="https://github.com/stellashen/cross-off/wiki" target="_blank">Design Documents - CrossOff wiki</a>
+[Design Documents - CrossOff wiki](https://github.com/stellashen/cross-off/wiki)
 
 ![before login](https://github.com/stellashen/cross-off/blob/master/wiki/screenshots/splash.png)
 ![after login](https://github.com/stellashen/cross-off/blob/master/wiki/screenshots/main.png)
@@ -58,8 +58,7 @@ After we check a task, it will be moved to display under "Completed". Three thin
 
 After we delete a task, it will be moved to the "Trash" can, and we can click the "Trash" button on the sidebar to open the trash page and view the deleted tasks.
 
-View sample state here:
-<a href="https://github.com/stellashen/cross-off/wiki/sample-state" target="_blank">Sample State - CrossOff wiki</a>
+View sample state here: [Sample State - CrossOff wiki](https://github.com/stellashen/cross-off/wiki/sample-state)
 
 To achieve these goals, I used the following code:
 
