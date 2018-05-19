@@ -363,11 +363,6 @@ Will add the following features:
 - provide avatar image options
 - cross off custom animation
 - a toggle button to hide completed tasks
-
-More features:
+- task detail: Quill-enabled rich text editor + upload image/files
 - tags
 - search tasks by keyword
-
-For readability & accessibility:
-- implement responsive design (for larger screen, and mobile screen)
-- provide language options
