@@ -103,12 +103,12 @@ switch (modal.name) {
 ```
 
 ### Example 2: Move a task to "Completed" / "Todos"
-A task has "completed" and "trash" boolean values (true/false). When a new task is created, it is set to the default value `completed: false` and `trash: false`, and its listId is the current list's id. So a new task is always under 'Todos' in the current list.
+A task has a "completed" field (true/false). When a new task is created, it is set to the default value `completed: false`. So a new task is always under 'Todos'.
 
 After we check a task, it will be moved to display under "Completed". Three things need to happen after that:
-1. Update the task in the database to have `completed: true`.
-2. Render the task with a different style (grayed out, crossed off).
-3. Re-render the current list component to display the tasks in their correct positions (that is, a completed task should display under "Completed").
+Goal 1. Update the task in the database to have `completed: true`.
+Goal 2. Render the task with a different style (grayed out, crossed off).
+Goal 3. Re-render the current list component to display the tasks in their correct positions (that is, a completed task should display under "Completed").
 
 After we uncheck a task, it will be moved back to "Todos".
 
@@ -116,7 +116,7 @@ View sample state here: [Sample State - CrossOff wiki](https://github.com/stella
 
 To achieve these goals, I wrote the following code:
 
-#### component for one single task:
+#### Goal 1: update the task in the database
 In the container, dipatch `moveToCompleted` and `moveToTodos` actions to props.
 In the component, write a function to update the task (in the database and in the state) when its checkbox is clicked.
 ```jsx
@@ -146,7 +146,7 @@ Under render() function, call `handleCheckBox(task)` function when the checkbox 
   />
 ```
 
-#### actions for moving a task to completed/todos:
+Write actions for moving a task to completed/todos:
 ```js
 //task_actions.js
 // ...
@@ -181,8 +181,7 @@ export const moveTaskToTodos = task => ({
 //...
 ```
 
-#### tasks reducer:
-Update tasks' state in reducer.
+Update tasks' state in reducer:
 - When receive tasks, put tasks under "todos" or "completed".
 - Update state when a task's `completed` field is updated.
 - When receive a list, replace the tasks' old state with the tasks of the current list. Thus, only the tasks we need to render on the current page are kept in the state.
@@ -216,9 +215,19 @@ case RECEIVE_LIST:
   return tasksState;
 // ...
 ```
+### Goal 2. Render the task with a different style (grayed out, crossed off)
+This is handled by adding inline style `style={divStyle}` to a task in the `task_index_item.jsx` component. `divStyle` is passed in as props based on whether this task's `completed` field is true or false.
+```jsx
+const style = {textDecoration: 'line-through', color: 'gray'};
+const nullStyle = {textDecoration: 'none', color: 'black'};
+const divStyle = task.completed? style : nullStyle;
+```
 
-#### lists jbuilder view:
-Add tasks to the list 'show' view.
+Another way to implement this is to pass in `completed: true/false` as props, then add different CSS classes to div based on the value of `this.props.completed`.
+
+### Goal 3. Re-render the current list component to display the tasks in their correct positions
+
+Add tasks to the list 'show' view:
 
 app/views/api/lists/show.json.jbuilder
 ```json
@@ -245,7 +254,8 @@ json.tasks do
 end
 
 ```
-#### lists actions:
+
+lists actions:
 ```js
 // lists_actions.js
 //...
@@ -257,19 +267,8 @@ export const receiveList = listInfo => ({
 });
 ```
 
-#### lists reducer:
-```js
-// lists_reducer.js
-//...
-case RECEIVE_LIST:
-  const newList = {[action.listInfo.list.id]: action.listInfo.list};
-  return merge({}, state, newList);
-//...
-```
-Note that tasks in the current list are also added to the state, implemented by the tasks reducer shown above.
-
-#### list component:
-Pass todos and completed tasks as props.
+Use nested components:
+`ListIndexItem` passes todos and completed tasks as props to `TaskIndex`, then `TaskIndex` pass each task to `TaskIndexItem`:
 
 ```jsx
 // list_index_item.jsx
@@ -319,8 +318,7 @@ Pass todos and completed tasks as props.
   }
 ```
 
-#### task index:
-This component renders a group of tasks under "Todos" or "Completed".
+The `TaskIndex` component renders a group of tasks under "Todos" or "Completed":
 ```jsx
 // task_index.jsx
 import React from 'react';
