@@ -1,5 +1,5 @@
 # CrossOff - Todo List & Task Manager Tool
-[CrossOff Live Site](http://www.mycrossoff.com/)
+<a href="http://www.mycrossoff.com/" target="_blank">CrossOff Live Site</a>
 
 CrossOff is a full-stack web application that helps users create to-do lists and manage their tasks, inspired by TickTick.
 
@@ -9,7 +9,7 @@ Tech Stack:
 - backend: Ruby on Rails, PostgreSQL
 - frontend: JavaScript/React/Redux, HTML, JSX, SCSS
 
-[Design Documents - CrossOff wiki](https://github.com/stellashen/cross-off/wiki)
+<a href="https://github.com/stellashen/cross-off/wiki" target="_blank">Design Documents - CrossOff wiki</a>
 
 ![before login](https://github.com/stellashen/cross-off/blob/master/wiki/screenshots/splash.png)
 ![after login](https://github.com/stellashen/cross-off/blob/master/wiki/screenshots/main.png)
@@ -54,11 +54,12 @@ A task has "completed" and "trash" boolean values (true/false). When a new task 
 After we check a task, it will be moved to display under "Completed". Three things need to happen after that:
 1. Update the task in the database to have `completed: true`.
 2. Render the task with a different style (grayed out, crossed off).
-3. Re-render the current list component to display the tasks in their correct positions (that is, a completed task should display under "Completeds").
+3. Re-render the current list component to display the tasks in their correct positions (that is, a completed task should display under "Completed").
 
 After we delete a task, it will be moved to the "Trash" can, and we can click the "Trash" button on the sidebar to open the trash page and view the deleted tasks.
 
-View sample state here: [Sample State - CrossOff wiki](https://github.com/stellashen/cross-off/wiki/sample-state)
+View sample state here:
+<a href="https://github.com/stellashen/cross-off/wiki/sample-state" target="_blank">Sample State - CrossOff wiki</a>
 
 To achieve these goals, I used the following code:
 
