@@ -56,6 +56,10 @@ After we check a task, it will be moved to display under "Completed". Three thin
 2. Render the task with a different style (grayed out, crossed off).
 3. Re-render the current list component to display the tasks in their correct positions (that is, a completed task should display under "Completeds").
 
+After we delete a task, it will be moved to the "Trash" can, and we can click the "Trash" button on the sidebar to open the trash page and view the deleted tasks.
+
+View sample state here: [Sample State - CrossOff wiki](https://github.com/stellashen/cross-off/wiki/sample-state)
+
 To achieve these goals, I used the following code:
 
 #### container for one task:
@@ -247,6 +251,7 @@ Update tasks' state in reducer.
 - When receive tasks, put tasks under "todos" or "completed".
 - Update state when a task's `completed` or `trash` field is updated.
 - When receive a list, replace the tasks' old state with the tasks of the current list. Thus, only the tasks we need to render on the current page are kept in the state.
+
 ```js
 //tasks_reducer.js
 // ...
@@ -289,6 +294,7 @@ case RECEIVE_LIST:
 
 #### lists jbuilder view:
 Add tasks to the list 'show' view.
+
 app/views/api/lists/show.json.jbuilder
 ```json
 json.list do
