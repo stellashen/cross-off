@@ -343,54 +343,95 @@ case RECEIVE_LIST:
 ```
 Note that tasks in the current list are also added to the state, implemented by the tasks reducer shown above.
 
-#### list component
-Pass todos and completed tasks as props:
+#### list component:
+- Re-render 1) after first mount and 2) when we navigate to a different list.
+- Pass todos and completed tasks as props.
+
+Note: there is a different component `trash.jsx` for rendering the trash page.
+
 ```jsx
-renderTodos(todos) {
-  if (!todos) return null;
-  return (
-    <div className="todos">
-      <h4 className="todos-heading">Todos:</h4>
-      <TaskIndexContainer tasks={todos} taskType='list'/>
-    </div>
-  );
-}
+// list_index_item.jsx
+import React from 'react';
+import { Link, Redirect } from 'react-router-dom';
+import fontawesome from '@fortawesome/fontawesome';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import solids from '@fortawesome/fontawesome-free-solid';
+import NewTaskBarContainer from '../tasks/new_task_bar_container';
+import TaskIndexContainer from '../tasks/task_index_container';
+import Main from '../main/main';
 
-renderCompleted(completed) {
-  if (!completed) return null;
-  return (
-    <div className="completed">
-      <h4 className="completed-heading">Completed:</h4>
-      <TaskIndexContainer tasks={completed} taskType='list'/>
-    </div>
-  );
-}
+export default class ListIndexItem extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
-render() {
-  const { currentList, tasks } = this.props;
-  if (!currentList) return <Redirect to="/lists" />;
-  if (Object.keys(tasks).length === 0) return (
-    <div className="list-index-item">
-      <h1 className="list-name">{currentList.name}</h1>
-      <br/>
-      <NewTaskBarContainer />
-    </div>
-  );
-  return (
-    <div className="list-index-item">
-      <h1 className="list-name">{currentList.name}</h1>
-      <br/>
-      <NewTaskBarContainer />
-      <section className="lists-scroll">
-        {this.renderTodos(tasks.todos)}
-        {this.renderCompleted(tasks.completed)}
-      </section>
-    </div>
-  );
+  componentDidMount() {
+    const id = this.props.match.params.listId;
+    this.props.fetchList(id);
+    this.props.requestSingleList(id);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const id = nextProps.match.params.listId;
+    if (this.props.match.params.listId !== id) {
+      this.props.clearTasks();
+      if (id !== "trash") {
+        this.props.fetchList(id);
+        this.props.requestSingleList(id);
+      }
+    }
+  }
+
+  componentWillUnmount() {
+    this.props.closeList();
+  }
+
+  renderTodos(todos) {
+    if (!todos) return null;
+    return (
+      <div className="todos">
+        <h4 className="todos-heading">Todos:</h4>
+        <TaskIndexContainer tasks={todos} taskType='list'/>
+      </div>
+    );
+  }
+
+  renderCompleted(completed) {
+    if (!completed) return null;
+    return (
+      <div className="completed">
+        <h4 className="completed-heading">Completed:</h4>
+        <TaskIndexContainer tasks={completed} taskType='list'/>
+      </div>
+    );
+  }
+
+  render() {
+    const { currentList, tasks } = this.props;
+    if (!currentList) return <Redirect to="/lists" />;
+    if (Object.keys(tasks).length === 0) return (
+      <div className="list-index-item">
+        <h1 className="list-name">{currentList.name}</h1>
+        <br/>
+        <NewTaskBarContainer />
+      </div>
+    );
+    return (
+      <div className="list-index-item">
+        <h1 className="list-name">{currentList.name}</h1>
+        <br/>
+        <NewTaskBarContainer />
+        <section className="lists-scroll">
+          {this.renderTodos(tasks.todos)}
+          {this.renderCompleted(tasks.completed)}
+        </section>
+      </div>
+    );
+  }
 }
 ```
 
-#### task index
+#### task index:
 This component renders a group of tasks under "Todos" or "Completed".
 ```jsx
 // task_index.jsx
