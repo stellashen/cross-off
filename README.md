@@ -47,78 +47,81 @@ Tech Stack:
 #### task detail page (the right section after clicking a task title)
 + "Changes Saved!" will show up after clicking "Save Changes" button, and disappear after 2 seconds.
 
-## Implementation
-### Move a task to "Completed" / "Todos" / "Trash"
-A task has "completed" and "trash" boolean values (true/false). When a new task is created, it is set to the default value `completed: false` and `trash: false`. So a new task is always under 'Todos' in a list.
+## Implementation Examples
+### Example 1: Reuse Modal form component
+`<Modal />` is nested directly under the `App` component. Technically it is always on the page, but we can make it show up or hide by calling `openModal` and `closeModal` actions:
+```js
+//modal_actions.js
+export const OPEN_MODAL = 'OPEN_MODAL';
+export const CLOSE_MODAL = 'CLOSE_MODAL';
+
+export const openModal = (modalName, listId) => {
+  return {
+    type: OPEN_MODAL,
+    modal: { name: modalName, listId: listId }
+  };
+};
+
+export const closeModal = () => {
+  return {
+    type: CLOSE_MODAL
+  };
+};
+```
+
+Because it is always on the page, I can use it whenever I need to, without thinking about route.
+
+I used the same modal component for three forms: add list form, edit list form, and delete list form.
+
+![add list](https://github.com/stellashen/cross-off/blob/master/wiki/screenshots/modal-add-list.png)
+![edit list](https://github.com/stellashen/cross-off/blob/master/wiki/screenshots/modal-edit-list.png)
+![delete list](https://github.com/stellashen/cross-off/blob/master/wiki/screenshots/modal-delete-list.png)
+
+To do that, I just need to pass in the form type to the modal component as props. And then, in the modal, we find the right component by `switch...case...` conditional statements:
+
+```js
+// modal.jsx
+//...more code...
+if (!modal) {
+  return null;
+}
+let component;
+switch (modal.name) {
+  case 'addListForm':
+    component = <AddListFormContainer />;
+    break;
+  case 'editListForm':
+    component = <EditListFormContainer listId={modal.listId}/>;
+    break;
+  case 'deleteList':
+    component = <DeleteListContainer listId={modal.listId}/>;
+    break;
+  default:
+    return null;
+}
+//...more code...
+```
+
+### Example 2: Move a task to "Completed" / "Todos"
+A task has "completed" and "trash" boolean values (true/false). When a new task is created, it is set to the default value `completed: false` and `trash: false`, and its listId is the current list's id. So a new task is always under 'Todos' in the current list.
 
 After we check a task, it will be moved to display under "Completed". Three things need to happen after that:
 1. Update the task in the database to have `completed: true`.
 2. Render the task with a different style (grayed out, crossed off).
 3. Re-render the current list component to display the tasks in their correct positions (that is, a completed task should display under "Completed").
 
-After we delete a task, it will be moved to the "Trash" can, and we can click the "Trash" button on the sidebar to open the trash page and view the deleted tasks.
+After we uncheck a task, it will be moved back to "Todos".
 
 View sample state here: [Sample State - CrossOff wiki](https://github.com/stellashen/cross-off/wiki/sample-state)
 
-To achieve these goals, I used the following code:
+To achieve these goals, I wrote the following code:
 
-#### container for one task:
-```jsx
-//task_index_item_container.jsx
-import { connect } from 'react-redux';
-import React from 'react';
-import {
-  editTask,
-  deleteTask,
-  moveToCompleted,
-  moveToTodos,
-  moveToTrash,
-} from '../../actions/task_actions';
-import TaskIndexItem from './task_index_item';
-import { withRouter } from 'react-router-dom';
-
-const mapStateToProps = (state, ownProps) => {
-  const style = {textDecoration: 'line-through', color: 'gray'};
-  const nullStyle = {textDecoration: 'none', color: 'black'};
-  const task = ownProps.task;
-  const divStyle = task.completed? style : nullStyle;
-  const activeTaskId = state.ui.taskId;
-  return {
-    task,
-    divStyle,
-    activeTaskId,
-    taskType: ownProps.taskType,
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    editTask: (task) => dispatch(editTask(task)),
-    deleteTask: (id) => dispatch(deleteTask(id)),
-    moveToCompleted: (task) => dispatch(moveToCompleted(task)),
-    moveToTodos: (task) => dispatch(moveToTodos(task)),
-    moveToTrash: (task) => dispatch(moveToTrash(task)),
-  };
-};
-
-export default withRouter(connect(
-  mapStateToProps, mapDispatchToProps
-)(TaskIndexItem));
-```
-#### component for one task:
+#### component for one single task:
+In the container, dipatch `moveToCompleted` and `moveToTodos` actions to props.
+In the component, write a function to update the task (in the database and in the state) when its checkbox is clicked.
 ```jsx
 // task_index_item.jsx
-import React from 'react';
-import { Link } from 'react-router-dom';
-import fontawesome from '@fortawesome/fontawesome';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import solids from '@fortawesome/fontawesome-free-solid';
-
-export default class TaskIndexItem extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
+// ...
   handleCheckBox(task) {
     return e => {
       if (e.target.checked) {
@@ -130,75 +133,25 @@ export default class TaskIndexItem extends React.Component {
       }
     };
   }
-
-  handleTrash(task) {
-    return e => {
-      if (this.props.taskType === 'trash') {
-        this.props.deleteTask(task.id);
-      } else {
-        task.trash = true;
-        this.props.moveToTrash(task);
-      }
-    };
-  }
-
-  getFormatDate(str) {
-    const d = new Date(str);
-    const date = d.getDate();
-    const month = d.getMonth();
-    const year = d.getFullYear();
-    if (month === 11 && date === 31) return `1/1/${year + 1}`;
-    if (date === 31) return `${month + 2}/1/${year}`;
-    if ((date === 28 || date === 29) && month === 1) return `3/1/${year}`;
-    if (date === 30 && (month === 3 || month === 5
-      || month === 8 || month === 9 || month === 10)) {
-        return `${month + 2}/1/${year}`;
-    }
-    return `${month + 1}/${date + 1}/${year}`;
-  }
-
-  render() {
-    const task = this.props.task;
-    if (task === undefined || !task || Object.keys(task).length === 0) return null;
-
-    const formatDate = this.getFormatDate(task.due_date);
-    const active = this.props.activeTaskId === this.props.task.id ? "task-item active-task" : "task-item";
-    const divStyle = this.props.divStyle;
-    return (
-     <div className={active}>
-       <div className="task-item-inner-wrapper">
-         <input
-           checked={this.props.task.completed? true : false}
-           id={`taskCheckBox${task.id}`}
-           type="checkbox"
-           onChange={this.handleCheckBox(task)}
-         />
-
-         <Link to={this.props.taskType === "trash"? `/lists/trash/${task.id}` : `/lists/${task.list_id}/${task.id}`}>
-           <span
-             style={divStyle}
-             className={task.due_date? "task-title task-title-with-due" : "task-title"}>
-             {task.title}
-           </span>
-           <p style={divStyle} className="due">{task.due_date? `  due: ${formatDate}` : ''}</p>
-         </Link>
-
-         <span className="list-delete" onClick={this.handleTrash(task)}>
-           <FontAwesomeIcon icon='trash-alt'/>
-         </span>
-       </div>
-     </div>
-    );
-  }
-}
 ```
-#### actions for moving a task to completed/todos/trash:
+
+Under render() function, call `handleCheckBox(task)` function when the checkbox before a task is checked or unchecked.
+```jsx
+<div className="task-item-inner-wrapper">
+  <input
+    checked={this.props.task.completed? true : false}
+    id={`taskCheckBox${task.id}`}
+    type="checkbox"
+    onChange={this.handleCheckBox(task)}
+  />
+```
+
+#### actions for moving a task to completed/todos:
 ```js
 //task_actions.js
 // ...
 export const MOVE_TASK_TO_COMPLETED = "MOVE_TASK_TO_COMPLETED";
 export const MOVE_TASK_TO_TODOS = "MOVE_TASK_TO_TODOS";
-export const MOVE_TASK_TO_TRASH = "MOVE_TASK_TO_TRASH";
 
 export const moveToCompleted = (task) => dispatch => (
   APIUtil.updateTask(task).then(t => (
@@ -216,14 +169,6 @@ export const moveToTodos = (task) => dispatch => (
   ))
 );
 
-export const moveToTrash = (task) => dispatch => (
-  APIUtil.updateTask(task).then(t => (
-    dispatch(moveTaskToTrash(t))
-  ), err => (
-    dispatch(receiveTaskErrors(err.responseJSON))
-  ))
-);
-
 export const moveTaskToCompleted = task => ({
   type: MOVE_TASK_TO_COMPLETED,
   task
@@ -233,23 +178,13 @@ export const moveTaskToTodos = task => ({
   type: MOVE_TASK_TO_TODOS,
   task
 });
-
-export const moveTaskToTrash = task => ({
-  type: MOVE_TASK_TO_TRASH,
-  task
-});
-
-export const receiveTaskErrors = errors => ({
-  type: RECEIVE_TASK_ERRORS,
-  errors
-});
 //...
 ```
 
 #### tasks reducer:
 Update tasks' state in reducer.
 - When receive tasks, put tasks under "todos" or "completed".
-- Update state when a task's `completed` or `trash` field is updated.
+- Update state when a task's `completed` field is updated.
 - When receive a list, replace the tasks' old state with the tasks of the current list. Thus, only the tasks we need to render on the current page are kept in the state.
 
 ```js
@@ -276,16 +211,6 @@ case MOVE_TASK_TO_TODOS:
   const tState = merge({}, state, {"todos": inCompletedTask});
   delete tState["completed"][action.task.id];
   return tState;
-case MOVE_TASK_TO_TRASH:
-  const stateAfterTrash = merge({}, state);
-  const trashTask = action.task;
-  if (trashTask.completed) {
-    delete stateAfterTrash["completed"][trashTask.id];
-  } else {
-    delete stateAfterTrash["todos"][trashTask.id];
-  }
-  return stateAfterTrash;
-// ...
 case RECEIVE_LIST:
   const tasksState = action.listInfo.tasks || {};
   return tasksState;
@@ -344,47 +269,11 @@ case RECEIVE_LIST:
 Note that tasks in the current list are also added to the state, implemented by the tasks reducer shown above.
 
 #### list component:
-- Re-render 1) after first mount and 2) when we navigate to a different list.
-- Pass todos and completed tasks as props.
-
-Note: there is a different component `trash.jsx` for rendering the trash page.
+Pass todos and completed tasks as props.
 
 ```jsx
 // list_index_item.jsx
-import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
-import fontawesome from '@fortawesome/fontawesome';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import solids from '@fortawesome/fontawesome-free-solid';
-import NewTaskBarContainer from '../tasks/new_task_bar_container';
-import TaskIndexContainer from '../tasks/task_index_container';
-import Main from '../main/main';
-
-export default class ListIndexItem extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  componentDidMount() {
-    const id = this.props.match.params.listId;
-    this.props.fetchList(id);
-    this.props.requestSingleList(id);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const id = nextProps.match.params.listId;
-    if (this.props.match.params.listId !== id) {
-      this.props.clearTasks();
-      if (id !== "trash") {
-        this.props.fetchList(id);
-        this.props.requestSingleList(id);
-      }
-    }
-  }
-
-  componentWillUnmount() {
-    this.props.closeList();
-  }
+// ...
 
   renderTodos(todos) {
     if (!todos) return null;
@@ -428,7 +317,6 @@ export default class ListIndexItem extends React.Component {
       </div>
     );
   }
-}
 ```
 
 #### task index:
@@ -466,60 +354,6 @@ export default class TaskIndex extends React.Component {
     );
   }
 }
-```
-
-### Reuse Modal form component
-`<Modal />` is nested directly under the `App` component. Technically it is always on the page, but we can make it show up or hide by calling `openModal` and `closeModal` actions:
-```js
-//modal_actions.js
-export const OPEN_MODAL = 'OPEN_MODAL';
-export const CLOSE_MODAL = 'CLOSE_MODAL';
-
-export const openModal = (modalName, listId) => {
-  return {
-    type: OPEN_MODAL,
-    modal: { name: modalName, listId: listId }
-  };
-};
-
-export const closeModal = () => {
-  return {
-    type: CLOSE_MODAL
-  };
-};
-```
-
-Because it is always on the page, I can use it whenever I need to, without thinking about route.
-
-I used the same modal component for three forms: add list form, edit list form, and delete list form.
-
-![add list](https://github.com/stellashen/cross-off/blob/master/wiki/screenshots/modal-add-list.png)
-![edit list](https://github.com/stellashen/cross-off/blob/master/wiki/screenshots/modal-edit-list.png)
-![delete list](https://github.com/stellashen/cross-off/blob/master/wiki/screenshots/modal-delete-list.png)
-
-To do that, I just need to pass in the form type to the modal component as props. And then, in the modal, we find the right component by `switch...case...` conditional statements:
-
-```js
-// modal.jsx
-//...more code...
-if (!modal) {
-  return null;
-}
-let component;
-switch (modal.name) {
-  case 'addListForm':
-    component = <AddListFormContainer />;
-    break;
-  case 'editListForm':
-    component = <EditListFormContainer listId={modal.listId}/>;
-    break;
-  case 'deleteList':
-    component = <DeleteListContainer listId={modal.listId}/>;
-    break;
-  default:
-    return null;
-}
-//...more code...
 ```
 
 ## Future Directions
