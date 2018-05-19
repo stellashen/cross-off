@@ -48,7 +48,16 @@ Tech Stack:
 + "Changes Saved!" will show up after clicking "Save Changes" button, and disappear after 2 seconds.
 
 ## Implementation
-### Move a task to "Completed" or "Trash"
+### Move a task to "Completed" / "Todos" / "Trash"
+A task has "completed" and "trash" boolean values (true/false). When a new task is created, it is set to the default value `completed: false` and `trash: false`. So a new task is always under 'Todos' in a list.
+
+After we check a task, it will be moved to display under "Completed". Three things need to happen after that:
+1. Update the task in the database to have `completed: true`.
+2. Render the task with a different style (grayed out, crossed off).
+3. Re-render the current list component to display the tasks in their correct positions (that is, a completed task should display under "Completeds").
+
+To achieve these goals, I used the following code:
+
 #### container for one task:
 ```jsx
 //task_index_item_container.jsx
@@ -92,7 +101,7 @@ export default withRouter(connect(
   mapStateToProps, mapDispatchToProps
 )(TaskIndexItem));
 ```
-#### component for one task
+#### component for one task:
 ```jsx
 // task_index_item.jsx
 import React from 'react';
@@ -179,7 +188,7 @@ export default class TaskIndexItem extends React.Component {
   }
 }
 ```
-#### actions for moving a task to completed/todos/trash
+#### actions for moving a task to completed/todos/trash:
 ```js
 //task_actions.js
 // ...
@@ -233,7 +242,7 @@ export const receiveTaskErrors = errors => ({
 //...
 ```
 
-#### reducer
+#### tasks reducer:
 Update tasks' state in reducer.
 - When receive tasks, put tasks under "todos" or "completed".
 - Update state when a task's `completed` or `trash` field is updated.
@@ -276,6 +285,140 @@ case RECEIVE_LIST:
   const tasksState = action.listInfo.tasks || {};
   return tasksState;
 // ...
+```
+
+#### lists jbuilder view:
+Add tasks to the list 'show' view.
+app/views/api/lists/show.json.jbuilder
+```json
+json.list do
+  json.partial! 'api/lists/list', list: @list
+end
+
+json.tasks do
+  json.todos do
+    @todos.each do |task|
+      json.set! task.id do
+        json.partial! 'api/tasks/task', task: task
+      end
+    end
+  end
+
+  json.completed do
+    @completed.each do |task|
+      json.set! task.id do
+        json.partial! 'api/tasks/task', task: task
+      end
+    end
+  end
+end
+
+```
+#### lists actions:
+```js
+// lists_actions.js
+//...
+export const RECEIVE_LIST = 'RECEIVE_LIST';
+
+export const receiveList = listInfo => ({
+  type: RECEIVE_LIST,
+  listInfo
+});
+```
+
+#### lists reducer:
+```js
+// lists_reducer.js
+//...
+case RECEIVE_LIST:
+  const newList = {[action.listInfo.list.id]: action.listInfo.list};
+  return merge({}, state, newList);
+//...
+```
+Note that tasks in the current list are also added to the state, implemented by the tasks reducer shown above.
+
+#### list component
+Pass todos and completed tasks as props:
+```jsx
+renderTodos(todos) {
+  if (!todos) return null;
+  return (
+    <div className="todos">
+      <h4 className="todos-heading">Todos:</h4>
+      <TaskIndexContainer tasks={todos} taskType='list'/>
+    </div>
+  );
+}
+
+renderCompleted(completed) {
+  if (!completed) return null;
+  return (
+    <div className="completed">
+      <h4 className="completed-heading">Completed:</h4>
+      <TaskIndexContainer tasks={completed} taskType='list'/>
+    </div>
+  );
+}
+
+render() {
+  const { currentList, tasks } = this.props;
+  if (!currentList) return <Redirect to="/lists" />;
+  if (Object.keys(tasks).length === 0) return (
+    <div className="list-index-item">
+      <h1 className="list-name">{currentList.name}</h1>
+      <br/>
+      <NewTaskBarContainer />
+    </div>
+  );
+  return (
+    <div className="list-index-item">
+      <h1 className="list-name">{currentList.name}</h1>
+      <br/>
+      <NewTaskBarContainer />
+      <section className="lists-scroll">
+        {this.renderTodos(tasks.todos)}
+        {this.renderCompleted(tasks.completed)}
+      </section>
+    </div>
+  );
+}
+```
+
+#### task index
+This component renders a group of tasks under "Todos" or "Completed".
+```jsx
+// task_index.jsx
+import React from 'react';
+import { Link } from 'react-router-dom';
+import TaskIndexItemContainer from '../tasks/task_index_item_container';
+
+export default class TaskIndex extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  renderTasks(tasks) {
+    return tasks.map((task, idx) => {
+      return (
+        <li key={`${idx}${task.id}${task.title}`} className="task">
+          <TaskIndexItemContainer task={task} taskType={this.props.taskType} />
+        </li>
+      );
+    });
+  }
+
+  render() {
+    const tasks = Object.values(this.props.tasks);
+    if (Object.keys(tasks).length === 0) return null;
+    return (
+      <div className="tasks">
+        <ul>
+          {this.renderTasks(tasks)}
+        </ul>
+      </div>
+    );
+  }
+}
 ```
 
 ### Reuse Modal form component
