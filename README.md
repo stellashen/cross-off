@@ -49,7 +49,8 @@ Tech Stack:
 
 ## Implementation
 ### Move a task to "Completed" or "Trash"
-```
+#### container for one task:
+```jsx
 //task_index_item_container.jsx
 import { connect } from 'react-redux';
 import React from 'react';
@@ -91,6 +92,7 @@ export default withRouter(connect(
   mapStateToProps, mapDispatchToProps
 )(TaskIndexItem));
 ```
+#### component for one task
 ```jsx
 // task_index_item.jsx
 import React from 'react';
@@ -177,7 +179,104 @@ export default class TaskIndexItem extends React.Component {
   }
 }
 ```
+#### actions for moving a task to completed/todos/trash
+```js
+//task_actions.js
+// ...
+export const MOVE_TASK_TO_COMPLETED = "MOVE_TASK_TO_COMPLETED";
+export const MOVE_TASK_TO_TODOS = "MOVE_TASK_TO_TODOS";
+export const MOVE_TASK_TO_TRASH = "MOVE_TASK_TO_TRASH";
 
+export const moveToCompleted = (task) => dispatch => (
+  APIUtil.updateTask(task).then(t => (
+    dispatch(moveTaskToCompleted(t))
+  ), err => (
+    dispatch(receiveTaskErrors(err.responseJSON))
+  ))
+);
+
+export const moveToTodos = (task) => dispatch => (
+  APIUtil.updateTask(task).then(t => (
+    dispatch(moveTaskToTodos(t))
+  ), err => (
+    dispatch(receiveTaskErrors(err.responseJSON))
+  ))
+);
+
+export const moveToTrash = (task) => dispatch => (
+  APIUtil.updateTask(task).then(t => (
+    dispatch(moveTaskToTrash(t))
+  ), err => (
+    dispatch(receiveTaskErrors(err.responseJSON))
+  ))
+);
+
+export const moveTaskToCompleted = task => ({
+  type: MOVE_TASK_TO_COMPLETED,
+  task
+});
+
+export const moveTaskToTodos = task => ({
+  type: MOVE_TASK_TO_TODOS,
+  task
+});
+
+export const moveTaskToTrash = task => ({
+  type: MOVE_TASK_TO_TRASH,
+  task
+});
+
+export const receiveTaskErrors = errors => ({
+  type: RECEIVE_TASK_ERRORS,
+  errors
+});
+//...
+```
+
+#### reducer
+Update tasks' state in reducer.
+- When receive tasks, put tasks under "todos" or "completed".
+- Update state when a task's `completed` or `trash` field is updated.
+- When receive a list, replace the tasks' old state with the tasks of the current list. Thus, only the tasks we need to render on the current page are kept in the state.
+```js
+//tasks_reducer.js
+// ...
+case RECEIVE_TASK:
+  let afterState = merge({}, state);
+  const NewOrUpdatedTask = {[action.task.id]: action.task};
+  if (action.task.completed) {
+    afterState = merge(afterState, {"completed": NewOrUpdatedTask});
+  } else {
+    afterState = merge(afterState, {"todos": NewOrUpdatedTask});
+  }
+  return afterState;
+case MOVE_TASK_TO_COMPLETED:
+  const cTask = action.task;
+  const completedTask = {[cTask.id]: cTask};
+  const cState = merge({}, state, {"completed": completedTask});
+  delete cState["todos"][action.task.id];
+  return cState;
+case MOVE_TASK_TO_TODOS:
+  const todoTask = action.task;
+  const inCompletedTask = {[todoTask.id]: todoTask};
+  const tState = merge({}, state, {"todos": inCompletedTask});
+  delete tState["completed"][action.task.id];
+  return tState;
+case MOVE_TASK_TO_TRASH:
+  const stateAfterTrash = merge({}, state);
+  const trashTask = action.task;
+  if (trashTask.completed) {
+    delete stateAfterTrash["completed"][trashTask.id];
+  } else {
+    delete stateAfterTrash["todos"][trashTask.id];
+  }
+  return stateAfterTrash;
+// ...
+case RECEIVE_LIST:
+  const tasksState = action.listInfo.tasks || {};
+  return tasksState;
+// ...
+```
 
 ### Reuse Modal form component
 `<Modal />` is nested directly under the `App` component. Technically it is always on the page, but we can make it show up or hide by calling `openModal` and `closeModal` actions:
@@ -232,13 +331,6 @@ switch (modal.name) {
 }
 //...more code...
 ```
-
-## Other Pages
-#### Signup form
-![signup form](https://github.com/stellashen/cross-off/blob/master/wiki/screenshots/signup.png)
-
-#### Trash
-![trash page](https://github.com/stellashen/cross-off/blob/master/wiki/screenshots/trash.png)
 
 ## Future Directions
 Will add the following features:
