@@ -106,11 +106,14 @@ switch (modal.name) {
 A task has a "completed" field (true/false). When a new task is created, it is set to the default value `completed: false`. So a new task is always under 'Todos'.
 
 After we check a task, it will be moved to display under "Completed". Three things need to happen after that:
-Goal 1. Update the task in the database to have `completed: true`.
-Goal 2. Render the task with a different style (grayed out, crossed off).
-Goal 3. Re-render the current list component to display the tasks in their correct positions (that is, a completed task should display under "Completed").
 
-After we uncheck a task, it will be moved back to "Todos".
+**Goal 1. Update the task in the database to have `completed: true`.**
+
+**Goal 2. Render the task with a different style (grayed out, crossed off).**
+
+**Goal 3. Re-render the current list component to display the tasks in their correct positions (that is, a completed task should display under "Completed").**
+
+Similarly, after we uncheck a task, it will be moved back to "Todos".
 
 View sample state here: [Sample State - CrossOff wiki](https://github.com/stellashen/cross-off/wiki/sample-state)
 
