@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import fontawesome from '@fortawesome/fontawesome';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import solids from '@fortawesome/fontawesome-free-solid';
@@ -108,6 +108,8 @@ export default class TaskDetail extends React.Component {
   }
 
   render() {
+    const listId = this.props.match.params.listId;
+    if (!this.getCurrentTask()) return <Redirect to={`/lists/${listId}`} />;
     return (
       <div className="task-detail">
         <div className="antiscroll task-detail-wrapper">
