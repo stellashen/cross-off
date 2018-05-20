@@ -48,6 +48,9 @@ Tech Stack:
 + "Changes Saved!" will show up after clicking "Save Changes" button, and disappear after 2 seconds.
 
 ## Implementation Examples
+- Example 1: Reuse Modal form component
+- Example 2: Move a task to "Completed" / "Todos"
+
 ### Example 1: Reuse Modal form component
 `<Modal />` is nested directly under the `App` component. Technically it is always on the page, but we can make it show up or hide by calling `openModal` and `closeModal` actions:
 ```js
