@@ -50,6 +50,7 @@ Tech Stack:
 ## Implementation Examples
 - Example 1: Reuse Modal form component
 - Example 2: Move a task to "Completed" / "Todos"
+- Example 3: Highlight the current task
 
 ### Example 1: Reuse Modal form component
 `<Modal />` is nested directly under the `App` component. Technically it is always on the page, but we can make it show up or hide by calling `openModal` and `closeModal` actions:
@@ -221,7 +222,7 @@ case RECEIVE_LIST:
   return tasksState;
 // ...
 ```
-### Goal 2. Render the task with a different style (grayed out, crossed off)
+#### Goal 2. Render the task with a different style (grayed out, crossed off)
 This is handled by adding inline style `style={divStyle}` to a task in the `task_index_item.jsx` component. `divStyle` is passed in as props based on whether this task's `completed` field is true or false.
 ```jsx
 const style = {textDecoration: 'line-through', color: 'gray'};
@@ -231,7 +232,7 @@ const divStyle = task.completed? style : nullStyle;
 
 Another way to implement this is to pass in `completed: true/false` as props, then add different CSS classes to div based on the value of `this.props.completed`.
 
-### Goal 3. Re-render the current list component to display the tasks in their correct positions
+#### Goal 3. Re-render the current list component to display the tasks in their correct positions
 
 Add tasks to the list 'show' view:
 
@@ -359,6 +360,121 @@ export default class TaskIndex extends React.Component {
   }
 }
 ```
+
+### Example 3: Highlight the current task
+Step 1: Write actions to request a task, and close a task.
+```js
+//task_actions.js
+export const REQUEST_TASK = "REQUEST_TASK";
+export const CLOSE_TASK = "CLOSE_TASK";
+export const requestSingleTask = (id) => dispatch => (
+  APIUtil.fetchTask(id).then(task => (
+    dispatch(requestTask(task))
+  ), err => (
+    dispatch(receiveTaskErrors(err.responseJSON))
+  ))
+);
+export const closeTask = () => {
+  return {
+    type: CLOSE_TASK
+  };
+}
+export const requestTask = task => ({
+  type: REQUEST_TASK,
+  task
+});
+```
+
+Step 2: Write reducers for adding the current task id to state under `ui`.
+```js
+//current_task_reducer.js
+import merge from 'lodash/merge';
+import { REQUEST_TASK, CLOSE_TASK } from '../actions/task_actions';
+
+const currentTaskReducer = (state = null, action) => {
+  Object.freeze(state);
+  switch(action.type) {
+    case REQUEST_TASK:
+      return action.task.id;
+    case CLOSE_TASK:
+      return null;
+    default:
+      return state;
+  }
+};
+
+export default currentTaskReducer;
+
+//ui_reducer.js
+import { combineReducers } from 'redux';
+import modal from './modal_reducer';
+import currentListReducer from './current_list_reducer';
+import currentTaskReducer from './current_task_reducer';
+
+export default combineReducers({
+  modal,
+  listId: currentListReducer,
+  taskId: currentTaskReducer
+});
+```
+
+Step 3: Fetch current task id and add it to state when the task detail component mounts or receive new props (change to a different task); remove task id from state when the component unmounts.
+```jsx
+//task_detail.jsx
+componentDidMount() {
+  const taskId = this.props.match.params.taskId;
+  if (taskId) {
+    this.props.requestSingleTask(taskId);
+  }
+}
+
+componentWillReceiveProps(nextProps) {
+  const taskId = nextProps.match.params.taskId;
+  if (this.props.match.params.taskId !== taskId) {
+    this.props.requestSingleTask(taskId);
+  }
+}
+
+componentWillUnmount() {
+  this.props.closeTask();
+}
+```
+
+Step 4: On the middle section, where we display task titles, we can highlight the current task by adding an `active-task` class to it.
+```jsx
+// task_index_item.jsx
+render() {
+  const active = this.props.activeTaskId === this.props.task.id ? "task-item active-task" : "task-item";
+  return (
+   <div className={active}>
+      // ...more code...
+   </div>
+  );
+}
+```
+
+Step 5: Write the CSS class. Now the current task is always highlighted, no matter you click a task title, or enter a url with task id, or refresh page.
+
+Step 6: What happens when we click a task title to open its task detail page, but then delete the current task? We should go back to the listId url. For example, we should be redirected from "https://www.mycrossoff.com/#/lists/103/257" to "https://www.mycrossoff.com/#/lists/103" when we delete task 257.
+
+```jsx
+render() {
+  const listId = this.props.match.params.listId;
+  const task = this.getCurrentTask();
+  if (!task) {
+    if (listId === undefined) {
+      return <Redirect to="/lists/trash" />;
+    }
+    return <Redirect to={`/lists/${listId}`} />;
+  }
+  return (
+    <div className="task-detail">
+      // ... code for task detail ...
+    </div>
+  );
+}
+```
+Note: I have a different route for `trash`. So when listId is undefined, we are on the trash page.
 
 ## Future Directions
 Will add the following features:
