@@ -109,7 +109,13 @@ export default class TaskDetail extends React.Component {
 
   render() {
     const listId = this.props.match.params.listId;
-    if (!this.getCurrentTask()) return <Redirect to={`/lists/${listId}`} />;
+    const task = this.getCurrentTask();
+    if (!task) {
+      if (listId === undefined) {
+        return <Redirect to="/lists/trash" />;
+      }
+      return <Redirect to={`/lists/${listId}`} />;
+    }
     return (
       <div className="task-detail">
         <div className="antiscroll task-detail-wrapper">
