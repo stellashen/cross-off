@@ -34,7 +34,7 @@ class ListForm extends React.Component {
   }
 
   renderErrors() {
-    if (!this.props.errors) return;
+    console.log(this.props.errors);
     return(
       <ul>
         {this.props.errors.map((error, i) => (
