@@ -20,18 +20,6 @@ class DeleteList extends React.Component {
     this.props.deleteList(this.props.listId);
   }
 
-  renderErrors() {
-    return(
-      <ul>
-        {this.props.errors.map((error, i) => (
-          <li key={`error-${i}`}>
-            {error}
-          </li>
-        ))}
-      </ul>
-    );
-  }
-
   render() {
     const name = this.props.listName;
     const listName = name.length <= 13? name : name.slice(0, 12).concat("...");
@@ -52,7 +40,6 @@ class DeleteList extends React.Component {
               Tasks within this list will be permanently deleted. (That is, you will not see them in the trash can.)
             </div>
             <br/>
-            <div className="errors">{this.renderErrors()}</div>
           </div>
 
           <br/>
