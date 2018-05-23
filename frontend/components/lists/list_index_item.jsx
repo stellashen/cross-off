@@ -26,11 +26,11 @@ export default class ListIndexItem extends React.Component {
         this.props.requestSingleList(id);
       }
     }
-    // const activeListId = nextProps.listId;
-    // if (activeListId && this.props.listId != activeListId) {
-    //   this.props.closeTask();
-    //   this.props.history.push(`${activeListId}`);
-    // }
+    const activeListId = nextProps.listId;
+    if (activeListId && this.props.listId != activeListId) {
+      this.props.closeTask();
+      this.props.history.push(`${activeListId}`);
+    }
   }
 
   componentWillUnmount() {

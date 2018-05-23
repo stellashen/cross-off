@@ -14,7 +14,11 @@ export default class Sidebar extends React.Component {
 
   handleOpenModal(modalName) {
     const listId = this.props.activeListId;
-    this.props.history.push(`/lists/${listId}`);
+    if (listId){
+      this.props.history.push(`/lists/${listId}`);
+    } else {
+      this.props.history.push("/lists");
+    }
     this.props.openModal(modalName);
   }
 
