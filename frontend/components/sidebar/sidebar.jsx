@@ -13,6 +13,7 @@ export default class Sidebar extends React.Component {
   }
 
   handleOpenModal(modalName) {
+    this.props.history.push('');
     this.props.openModal(modalName);
   }
 
