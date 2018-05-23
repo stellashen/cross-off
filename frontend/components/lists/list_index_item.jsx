@@ -28,7 +28,8 @@ export default class ListIndexItem extends React.Component {
     }
     const activeListId = nextProps.listId;
     if (activeListId && this.props.listId != activeListId) {
-      this.props.history.push(`${nextProps.listId}`);
+      this.props.closeTask();
+      this.props.history.push(`${activeListId}`);
     }
   }
 

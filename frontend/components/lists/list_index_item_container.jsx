@@ -4,6 +4,7 @@ import {
   clearErrors,
   editTask,
   clearTasks,
+  closeTask
 } from '../../actions/task_actions';
 import { fetchList, closeList, requestSingleList } from '../../actions/list_actions';
 import ListIndexItem from './list_index_item';
@@ -30,6 +31,7 @@ const mapDispatchToProps = dispatch => {
     clearTasks: () => dispatch(clearTasks()),
     clearErrors: () => dispatch(clearErrors()),
     editTask: (task) => dispatch(editTask(task)),
+    closeTask: () => dispatch(closeTask()),
   };
 };
 
