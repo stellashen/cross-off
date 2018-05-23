@@ -9,6 +9,7 @@ import { trash, closeList } from '../../actions/list_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
+    listId: state.ui.listId,
     errors: state.errors.tasks,
     tasks: state.entities.tasks,
   };

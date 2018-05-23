@@ -21,7 +21,6 @@ export default class List extends React.Component {
   renderLists() {
     const lists = Object.values(this.props.lists);
     const activeListId = this.props.activeListId;
-
     return lists.map((list, idx) => (
       <li key={`${idx}${list.name}`} className={activeListId === list.id ? "selected-list list" : "list"} id={list.id}>
         <Link to={`/lists/${list.id}`}>

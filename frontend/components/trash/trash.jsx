@@ -16,6 +16,13 @@ export default class Trash extends React.Component {
     this.props.trash();
   }
 
+  componentWillReceiveProps(nextProps) {
+    const listId = nextProps.listId;
+    if (listId != 'trash') {
+      this.props.history.push(`${listId}`);
+    }
+  }
+
   componentWillUnmount() {
     this.props.closeList();
   }

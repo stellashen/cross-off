@@ -26,6 +26,10 @@ export default class ListIndexItem extends React.Component {
         this.props.requestSingleList(id);
       }
     }
+    const activeListId = nextProps.listId;
+    if (activeListId && this.props.listId != activeListId) {
+      this.props.history.push(`${nextProps.listId}`);
+    }
   }
 
   componentWillUnmount() {
@@ -53,7 +57,7 @@ export default class ListIndexItem extends React.Component {
   }
 
   render() {
-    const { currentList, tasks } = this.props;
+    const { currentList, listId, tasks } = this.props;
     if (!currentList) return <Redirect to="/lists" />;
     if (Object.keys(tasks).length === 0) return (
       <div className="list-index-item">

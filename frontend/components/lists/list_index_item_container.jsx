@@ -11,10 +11,12 @@ import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state, ownProps) => {
   const lists = state.entities.lists;
-  const currentList = lists[state.ui.listId];
+  const currentList = lists[ownProps.match.params.listId];
+  const listId = state.ui.listId;
   const tasks = state.entities.tasks;
   return {
     currentList,
+    listId,
     tasks,
     errors: state.errors.tasks,
   };
