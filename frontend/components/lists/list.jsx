@@ -15,7 +15,7 @@ export default class List extends React.Component {
   }
 
   handleOpenModal(modalName, listId) {
-    this.props.history.push('');
+    this.props.history.push(`/lists/${listId}`);
     this.props.openModal(modalName, listId);
   }
 
