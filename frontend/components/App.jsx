@@ -4,7 +4,7 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import SignUpFormContainer from './session_form/signup_form_container';
 import SignInFormContainer from './session_form/signin_form_container';
 import SidebarContainer from './sidebar/sidebar_container';
-import Main from './main/main';
+import MainContainer from './main/main_container';
 import Modal from './modal/modal';
 import ListIndexItemContainer from './lists/list_index_item_container';
 import TrashContainer from './trash/trash_container';
@@ -20,7 +20,7 @@ const App = () => (
     <AuthRoute exact path="/signup" component={SignUpFormContainer} />
 
     <ProtectedRoute path="/lists" component={SidebarContainer} />
-    <ProtectedRoute exact path="/lists" component={Main} />
+    <ProtectedRoute exact path="/lists" component={MainContainer} />
     <Modal />
 
     <Switch>

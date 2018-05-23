@@ -5,7 +5,6 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import solids from '@fortawesome/fontawesome-free-solid';
 import NewTaskBarContainer from '../tasks/new_task_bar_container';
 import TaskIndexContainer from '../tasks/task_index_container';
-import Main from '../main/main';
 
 export default class ListIndexItem extends React.Component {
   constructor(props) {
