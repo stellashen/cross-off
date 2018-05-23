@@ -19,7 +19,8 @@ export default class TaskDetail extends React.Component {
   componentDidMount() {
     const listId = this.props.match.params.listId;
     const taskId = this.props.match.params.taskId;
-    if (listId !== "trash") {
+    // listId is undefined for Trash
+    if (listId) {
       this.props.fetchList(listId);
     }
     if (taskId) {

@@ -18,7 +18,7 @@ export default class Trash extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     const listId = nextProps.listId;
-    if (listId != 'trash') {
+    if (listId && listId != 'trash') {
       this.props.history.push(`${listId}`);
     }
   }
