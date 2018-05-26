@@ -384,6 +384,9 @@ export const requestTask = task => ({
   task
 });
 ```
+*Note:*
+
+I later realized that I actually don't need to fetch the task. For highlighting, I only need taskId. I can just dispatch `requestTask` action directly to pass the id. But just in case in the future I want to do something else, I'll leave it this way for now.
 
 Step 2: Write reducers for adding the current task id to state under `ui`.
 ```js
