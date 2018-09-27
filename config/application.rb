@@ -15,9 +15,6 @@ module CrossOff
 
     # enable asset pipeline
     config.assets.enabled = true
-
-    # stop Rails from connecting to db during compilation, so Heroku doesn't error out while compiling the assets 
-    config.assets.initialize_on_precompile = false 
   
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
