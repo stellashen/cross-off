@@ -14,7 +14,7 @@ guest = User.create!(
   username: "guest",
   email: "guest@crossoff.com",
   password: "password",
-  img_url: "<%= asset_path 'defaultAvatar.png' %>"
+  img_url: "https://res.cloudinary.com/devleg/image/upload/v1538035179/defaultAvatar.png"
 )
 
 login(guest)
