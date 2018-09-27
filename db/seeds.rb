@@ -154,3 +154,59 @@ task16 = Task.create!(
   list_id: long_list.id,
   user_id: guest.id
 )
+task17 = Task.create!(
+  title: "Ah. I am also crossed off.",
+  completed: true,
+  trash: false,
+  list_id: long_list.id,
+  user_id: guest.id
+)
+task17 = Task.create!(
+  title: "Scrolling...",
+  completed: true,
+  trash: false,
+  list_id: long_list.id,
+  user_id: guest.id
+)
+task18 = Task.create!(
+  title: "Scrolling...",
+  completed: true,
+  trash: false,
+  list_id: long_list.id,
+  user_id: guest.id
+)
+task19 = Task.create!(
+  title: "Scrolling...",
+  completed: true,
+  trash: false,
+  list_id: long_list.id,
+  user_id: guest.id
+)
+task20 = Task.create!(
+  title: "Scrolling...",
+  completed: true,
+  trash: false,
+  list_id: long_list.id,
+  user_id: guest.id
+)
+task21 = Task.create!(
+  title: "Scrolling...",
+  completed: true,
+  trash: false,
+  list_id: long_list.id,
+  user_id: guest.id
+)
+task22 = Task.create!(
+  title: "Scrolling...",
+  completed: true,
+  trash: false,
+  list_id: long_list.id,
+  user_id: guest.id
+)
+task23 = Task.create!(
+  title: "Scrolling...",
+  completed: true,
+  trash: false,
+  list_id: long_list.id,
+  user_id: guest.id
+)
