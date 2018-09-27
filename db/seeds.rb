@@ -17,8 +17,6 @@ guest = User.create!(
   img_url: "https://res.cloudinary.com/devleg/image/upload/v1538035179/defaultAvatar.png"
 )
 
-login(guest)
-
 homework = List.create!(
   name: "Homework",
   user_id: guest.id
@@ -106,3 +104,5 @@ task10 = Task.create!(
   list_id: places.id,
   user_id: guest.id
 )
+
+login(guest)
