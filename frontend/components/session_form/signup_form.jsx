@@ -11,7 +11,7 @@ class SignupForm extends React.Component {
       username: '',
       email: '',
       password: '',
-      img_url: 'assets/defaultAvatar.png'
+      img_url: '<%= asset_path 'defaultAvatar.png' %>'
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
