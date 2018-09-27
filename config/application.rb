@@ -13,6 +13,9 @@ module CrossOff
 
     config.assets.paths << Rails.root.join('app', 'assets', 'images', 'logo')
 
+    # enable asset pipeline
+    config.assets.enabled = true
+
     # stop Rails from connecting to db during compilation, so Heroku doesn't error out while compiling the assets 
     config.assets.initialize_on_precompile = false 
   
