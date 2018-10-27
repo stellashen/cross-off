@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  require 'sidekiq/web'
+  mount Sidekiq:: Web => "/sidekiq"
+  
   namespace :api, defaults: { format: :json } do
     resource :user, only: [:create]
     resource :session, only: %i(create destroy show)
