@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :tasks, only: %i(index show create update destroy)
     resources :tags, only: %i(index show create)
     resources :add_tags, only: %i(index show create destroy)
+    resources :reports
   end
   root "static_pages#root"
 end

@@ -1,9 +1,9 @@
 class ReportWorker
-  include Sidekiq::ReportWorker
+  include Sidekiq::Worker
   sidekiq_options retry: false
 
-  def perfrom(user)
-    puts "SIDEKIQ WORKER generating report for #{user.username}"
+  def perfrom(username)
+    puts "SIDEKIQ WORKER generating report for #{username}"
   end
 
 end

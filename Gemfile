@@ -35,6 +35,7 @@ gem 'jquery-rails'
 
 gem 'figaro'
 
+gem 'rack-protection', '>= 1.5.0'
 gem 'sidekiq'
 gem 'sinatra', github: 'sinatra/sinatra'
 
